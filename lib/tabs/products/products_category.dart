@@ -3,6 +3,8 @@ import '../../widgets/products/products_category.dart';
 import '../../tabs/home_tab.dart';
 
 class ProductsCategory extends StatelessWidget {
+  const ProductsCategory({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

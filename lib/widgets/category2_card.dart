@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CategoryCard extends StatelessWidget {
+class Category2Card extends StatelessWidget {
   final String imageUrl;
   final String label;
 
-  CategoryCard({required this.imageUrl, required this.label});
+  const Category2Card({required this.imageUrl, required this.label});
 
   @override
   Widget build(BuildContext context) {
