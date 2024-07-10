@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/screens/sign_up_screen.dart';
+import 'package:star_pharm/screens/sing_in_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -10,8 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      home: SignUpScreen(),
     );
   }
 }
