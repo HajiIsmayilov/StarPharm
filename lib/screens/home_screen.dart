@@ -49,41 +49,45 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Əsas',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Axtarış',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_bag),
-                label: 'Məhsullar',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.question_answer),
-                label: 'Sual-Cavab',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle),
-                label: 'Hesab',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.blue,
-            unselectedItemColor: Colors.black,
-            onTap: _onItemTapped,
-            type: BottomNavigationBarType.fixed,
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
-            selectedLabelStyle: const TextStyle(color: Colors.blue),
-            unselectedLabelStyle: const TextStyle(color: Colors.black),
-          ),
+          child: _bottomNavigationBar(),
         ),
       ),
     );
+  }
+
+  BottomNavigationBar _bottomNavigationBar() {
+    return BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Əsas',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Axtarış',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag),
+              label: 'Məhsullar',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.question_answer),
+              label: 'Sual-Cavab',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              label: 'Hesab',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.black,
+          onTap: _onItemTapped,
+          type: BottomNavigationBarType.fixed,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedLabelStyle: const TextStyle(color: Colors.blue),
+          unselectedLabelStyle: const TextStyle(color: Colors.black),
+        );
   }
 }

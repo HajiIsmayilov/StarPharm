@@ -4,7 +4,7 @@ class CustomNetworkImage extends StatelessWidget {
   const CustomNetworkImage({
     super.key,
     required this.url,
-    required this.width,
+    this.width = 40,
     this.fit = BoxFit.cover,
   });
 
@@ -17,7 +17,7 @@ class CustomNetworkImage extends StatelessWidget {
     return Image.network(
       url,
       width: width,
-      fit: BoxFit.cover,
+      fit: fit,
     );
   }
 }

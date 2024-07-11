@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/widgets/custom_network_image.dart';
 
 class Category2Card extends StatelessWidget {
   final String imageUrl;
@@ -27,13 +28,8 @@ class Category2Card extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.network(
-            imageUrl,
-            height: 40.0,
-            width: 40.0,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(height: 8.0),
+          CustomNetworkImage(url: imageUrl, width: 40),
+          const SizedBox(height: 8.0),
           Text(
             label,
             textAlign: TextAlign.center,
