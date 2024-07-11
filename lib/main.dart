@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:star_pharm/screens/forgot_password_screen.dart';
 import 'package:star_pharm/screens/home_screen.dart';
 import 'package:star_pharm/screens/sign_up_screen.dart';
+import 'package:star_pharm/screens/sing_in_screen.dart';
 import 'package:star_pharm/screens/test_screen.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
+      home:SignUpScreen(),
     );
   }
 }

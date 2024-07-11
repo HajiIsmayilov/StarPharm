@@ -49,7 +49,9 @@ class _SingInScreenState extends State<SingInScreen> {
                   _space(),
                   TextFormField(
                       obscureText: _obscureText,
+                      
                       decoration: InputDecoration(
+                        labelText: SingInScreenStrings._password,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(_radius),
                           ),

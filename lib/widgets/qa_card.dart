@@ -1,49 +1,34 @@
 import 'package:flutter/material.dart';
+
 class QuestionCard extends StatelessWidget {
-  final String name;
-  final String question;
+  const QuestionCard({
+    super.key,
+    required this.imageUrl,
+    required this.questioner,
+    required this.question,
+  });
+
   final String imageUrl;
+  final String questioner;
+  final String question;
 
-  QuestionCard({required this.name, required this.question, required this.imageUrl});
-
+  static const double _avatarRadius = 30;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
-      padding: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 3),
+    return Card(
+      color: Colors.white,
+      child: ListTile(
+        leading: CircleAvatar(
+          backgroundImage: NetworkImage(imageUrl),
+          radius: _avatarRadius,
+        ),
+        title: Text(
+          questioner,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
           ),
-        ],
-      ),
-      child: Row(
-        children: <Widget>[
-          CircleAvatar(
-            backgroundImage: NetworkImage(imageUrl),
-            radius: 30,
-          ),
-          SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  name,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 5),
-                Text(question),
-              ],
-            ),
-          ),
-        ],
+        ),
+        subtitle: Text(question),
       ),
     );
   }
