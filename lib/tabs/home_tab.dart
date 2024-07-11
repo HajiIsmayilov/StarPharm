@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../widgets/category2_card.dart';
+import '../models/category.dart';
 import '../widgets/doctor_card.dart';
 import '../widgets/post_card.dart';
 import '../widgets/category_cart.dart';
 
 class HomeTab extends StatelessWidget {
-  const HomeTab({super.key});
+  HomeTab({super.key});
 
   Future<List<Doctor>> fetchDoctors() async {
     final response = await http.get(
@@ -21,6 +21,18 @@ class HomeTab extends StatelessWidget {
       throw Exception('Failed to load doctors');
     }
   }
+
+  final List<Category> _categories = [
+    Category(
+        title: 'Həkimlər', imageUrl: 'https://biturbo.az/flutter/doctor.png'),
+    Category(
+        title: 'Təqvim', imageUrl: 'https://biturbo.az/flutter/calendar.png'),
+    Category(
+        title: 'Suallar',
+        imageUrl: 'https://biturbo.az/flutter/question-mark.png'),
+    Category(
+        title: 'Məhsullar', imageUrl: 'https://biturbo.az/flutter/drugs.png')
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -54,33 +66,16 @@ class HomeTab extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    CategoryCard(
-                      imageUrl: 'https://biturbo.az/flutter/doctor.png',
-                      label: 'Həkimlər',
-                    ),
-                    CategoryCard(
-                      imageUrl:
-                          'https://biturbo.az/flutter/calendar.png', // Təqvim şəkli
-                      label: 'Təqvim',
-                    ),
-                    CategoryCard(
-                      imageUrl:
-                          'https://biturbo.az/flutter/question-mark.png', // Suallar şəkli
-                      label: 'Suallar',
-                    ),
-                    CategoryCard(
-                      imageUrl:
-                          'https://biturbo.az/flutter/drugs.png', // Məhsullar şəkli
-                      label: 'Məhsullar',
-                    ),
-                  ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: 98,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _categories.length,
+                  itemBuilder: (context, index) => CategoryCard(
+                      imageUrl: _categories[index].imageUrl,
+                      label: _categories[index].title),
                 ),
               ),
             ),
