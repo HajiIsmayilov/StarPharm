@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:star_pharm/widgets/qa_card.dart';
 import '../models/question.dart';
-import '../widgets/qa_card2.dart';
 
 class QATab extends StatelessWidget {
   final List<Question> questions = [
