@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:star_pharm/widgets/custom_rectangle_border_button.dart';
 
 import '../validations/regexes.dart';
@@ -55,6 +56,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 _space(),
+                makeInputDate(context, label: "Birthdate"),
+                _space(),
                 TextFormField(
                   validator: ValidationRules().phoneValidation,
                   decoration: const InputDecoration(
@@ -79,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 TextFormField(
                     obscureText: _obscureText,
                     decoration: InputDecoration(
-                       labelText: SingUpScreenStrings._confirmPassword,
+                        labelText: SingUpScreenStrings._confirmPassword,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(_radius),
                         ),
@@ -144,6 +147,50 @@ class _SignUpScreenState extends State<SignUpScreen> {
       _obscureText = !_obscureText;
     });
   }
+
+  DateTime selectedDate = DateTime.now();
+
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(1950),
+        lastDate: DateTime(2022));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
+  Widget makeInputDate(context, {label, obscureText = false}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          label,
+          style: const TextStyle(
+              fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        GestureDetector(
+            onTap: () {
+              _selectDate(context);
+            },
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+              decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+              child: Text(DateFormat('yyyy/MM/dd').format(selectedDate)),
+            )),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
 }
 
 class SingUpScreenStrings {
@@ -158,7 +205,7 @@ class SingUpScreenStrings {
 }
 
 class SingUpScreenPaddings {
-  static const EdgeInsets _verticalPadding = EdgeInsets.symmetric(vertical: 16);
+  //static const EdgeInsets _verticalPadding = EdgeInsets.symmetric(vertical: 16);
   static const EdgeInsets _horizontalPadding =
       EdgeInsets.symmetric(horizontal: 12);
 }

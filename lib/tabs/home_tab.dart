@@ -3,9 +3,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../models/category.dart';
+import '../models/post.dart';
 import '../widgets/doctor_card.dart';
-import '../widgets/post_card.dart';
+import '../widgets/post_card2.dart';
 import '../widgets/category_cart.dart';
+import '../widgets/post_cart.dart';
 
 class HomeTab extends StatelessWidget {
   HomeTab({super.key});
@@ -32,6 +34,23 @@ class HomeTab extends StatelessWidget {
         imageUrl: 'https://biturbo.az/flutter/question-mark.png'),
     Category(
         title: 'Məhsullar', imageUrl: 'https://biturbo.az/flutter/drugs.png')
+  ];
+
+  final List<Post> _posts = [
+    Post(
+      title: 'Allergik rinitin nədir və əlamətləri hansılardır?',
+      authors: 'MBBS, BCS',
+      views: 1250,
+      imageUrl:
+          'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
+    ),
+    Post(
+      title: 'Qida allergiyasının ən effektiv müalicəsi',
+      authors: 'MBBS, BCS',
+      views: 1250,
+      imageUrl:
+          'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
+    )
   ];
 
   @override
@@ -119,27 +138,16 @@ class HomeTab extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 270,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  PostCard(
-                    title: 'Allergik rinitin nədir və əlamətləri hansılardır?',
-                    author: 'MBBS, BCS',
-                    views: 1250,
-                    imageUrl:
-                        'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
-                  ),
-                  PostCard(
-                    title: 'Qida allergiyasının ən effektiv müalicəsi',
-                    author: 'MBBS, BCS',
-                    views: 1250,
-                    imageUrl:
-                        'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
-                  ),
-                ],
-              ),
-            ),
+                height: 270,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                    itemCount: _posts.length,
+                    itemBuilder: (context, index) => PostCard(
+                          imageUrl: _posts[index].imageUrl,
+                          title: _posts[index].title,
+                          authors: _posts[index].authors,
+                          views: _posts[index].views,
+                        ))),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:star_pharm/screens/sign_up_screen.dart';
+//import 'package:star_pharm/screens/sign_up_screen.dart';
 
 import '../validations/regexes.dart';
 import '../widgets/jpg_image.dart';

@@ -5,7 +5,7 @@ class CategoryCard extends StatelessWidget {
   final String imageUrl;
   final String label;
 
-  static const double _width = 40.0;
+  //static const double _width = 40.0;
   static const double _fontSize = 14.0;
 
   const CategoryCard({

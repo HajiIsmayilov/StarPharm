@@ -116,7 +116,7 @@ class SingInScreenStrings {
 }
 
 class SingInScreenPaddings {
-  static const EdgeInsets _verticalPadding = EdgeInsets.symmetric(vertical: 16);
+ //static const EdgeInsets _verticalPadding = EdgeInsets.symmetric(vertical: 16);
   static const EdgeInsets _horizontalPadding =
       EdgeInsets.symmetric(horizontal: 12);
 }
