@@ -22,7 +22,7 @@ class QATab extends StatelessWidget {
           'Salam, 37 yaşım var 4 ildir astma xəstəsiyəm. Salbitamol və bexitrol istifadə edirəm bunların mənə ziyanı var mı?',
     ),
     Question(
-        imageUrl: 'Ruslan Mehdiyev',
+        imageUrl: 'https://biturbo.az/flutter/doc3.jpg',
         questioner: 'Ruslan Mehdiyev',
         question:
             'Salamlar Çağla Xanım, şəkər xəstəsiyəm 52 yaşındayam. Artıq 5 həftədən çox davam edən quru öskürəyim var. Vərəəm ola bilərəm mi? Vərəəm üçün mütləq öskürəkdə qan olmalıdır mı? Təşəkkür edirəm.'),
@@ -33,17 +33,13 @@ class QATab extends StatelessWidget {
             'Salam Xuraman həkim mənim böyük bir inamsızlığım var içimdə. Sağalmağıma inamım yoxdur ölümü fikirləşirəm. Sağalacağımı qorxuduram urey döyüntüm artır sonradan özümü çox dərin sakitləşdirirəm həkim gunum belə keçir sağalmaqda istəyirəm sağalmamaqda həkim nədən edilm mənə kömək edə bilər?')
   ];
 
+  QATab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Suallar'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        title: const Text('Suallar'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -53,7 +49,7 @@ class QATab extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
                   hintText: 'Axtarış',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),

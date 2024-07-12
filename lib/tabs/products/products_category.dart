@@ -10,12 +10,6 @@ class ProductsCategory extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Məhsullar'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -62,7 +56,8 @@ class ProductsCategory extends StatelessWidget {
                       );
                     },
                     child: CategoryCard(
-                      imageUrl: 'https://biturbo.az/flutter/gastroenterology.png',
+                      imageUrl:
+                          'https://biturbo.az/flutter/gastroenterology.png',
                       label: 'Mədə-bağırsaq',
                     ),
                   ),

@@ -2,23 +2,13 @@ import 'package:flutter/material.dart';
 import '../widgets/account_card.dart';
 
 class AccountTab extends StatelessWidget {
+  const AccountTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Malikoğlu Anar'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
+        title: const Text('Malikoğlu Anar'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

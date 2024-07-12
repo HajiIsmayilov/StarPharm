@@ -5,7 +5,6 @@ import 'dart:convert';
 import '../models/category.dart';
 import '../models/post.dart';
 import '../widgets/doctor_card.dart';
-import '../widgets/post_card2.dart';
 import '../widgets/category_cart.dart';
 import '../widgets/post_cart.dart';
 
@@ -92,9 +91,12 @@ class HomeTab extends StatelessWidget {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: _categories.length,
-                  itemBuilder: (context, index) => CategoryCard(
-                      imageUrl: _categories[index].imageUrl,
-                      label: _categories[index].title),
+                  itemBuilder: (context, index) => Container(
+                    constraints: const BoxConstraints(minWidth: 94),
+                    child: CategoryCard(
+                        imageUrl: _categories[index].imageUrl,
+                        label: _categories[index].title),
+                  ),
                 ),
               ),
             ),
@@ -140,13 +142,16 @@ class HomeTab extends StatelessWidget {
             SizedBox(
                 height: 270,
                 child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
+                    scrollDirection: Axis.horizontal,
                     itemCount: _posts.length,
-                    itemBuilder: (context, index) => PostCard(
-                          imageUrl: _posts[index].imageUrl,
-                          title: _posts[index].title,
-                          authors: _posts[index].authors,
-                          views: _posts[index].views,
+                    itemBuilder: (context, index) => SizedBox(
+                          width: 240,
+                          child: PostCard(
+                            imageUrl: _posts[index].imageUrl,
+                            title: _posts[index].title,
+                            authors: _posts[index].authors,
+                            views: _posts[index].views,
+                          ),
                         ))),
           ],
         ),
