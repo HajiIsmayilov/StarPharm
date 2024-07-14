@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _ProfilePageState createState() => _ProfilePageState();
+  _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfileScreenState extends State<ProfileScreen> {
   final _formKey = GlobalKey<FormState>();
   String fullName = 'Malikoğlu Anar';
   String username = '@mrAnar';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/screens/camera2_screen.dart';
 
 class AccountCard extends StatelessWidget {
   final String name;
@@ -44,7 +45,8 @@ class AccountCard extends StatelessWidget {
               Row(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: NetworkImage('https://biturbo.az/flutter/doc1.jpg'),
+                    backgroundImage:
+                        NetworkImage('https://biturbo.az/flutter/doc1.jpg'),
                     radius: 30,
                   ),
                   SizedBox(width: 10),
@@ -53,7 +55,8 @@ class AccountCard extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         name,
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
                       ),
                       Text(username),
                     ],
@@ -75,7 +78,8 @@ class AccountCard extends StatelessWidget {
                       children: <Widget>[
                         Text('Tam ad'),
                         SizedBox(height: 5),
-                        Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(name,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -85,7 +89,8 @@ class AccountCard extends StatelessWidget {
                       children: <Widget>[
                         Text('Doğum Tarixi'),
                         SizedBox(height: 5),
-                        Text(birthdate, style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(birthdate,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -101,7 +106,8 @@ class AccountCard extends StatelessWidget {
                       children: <Widget>[
                         Text('Cinsiyyət'),
                         SizedBox(height: 5),
-                        Text(gender, style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(gender,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -111,7 +117,8 @@ class AccountCard extends StatelessWidget {
                       children: <Widget>[
                         Text('Phone'),
                         SizedBox(height: 5),
-                        Text(phone, style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(phone,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -127,7 +134,8 @@ class AccountCard extends StatelessWidget {
                       children: <Widget>[
                         Text('Email'),
                         SizedBox(height: 5),
-                        Text(email, style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(email,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -137,7 +145,8 @@ class AccountCard extends StatelessWidget {
                       children: <Widget>[
                         Text('Location'),
                         SizedBox(height: 5),
-                        Text(location, style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(location,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -148,7 +157,11 @@ class AccountCard extends StatelessWidget {
         ),
         SectionCard(
           title: 'Reseptlər',
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context)=> const Camera2Screen())
+            );
+          },
         ),
         SectionCard(
           title: 'Şifrənin tənzimlənməsi',
