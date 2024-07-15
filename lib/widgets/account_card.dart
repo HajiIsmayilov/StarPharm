@@ -159,7 +159,7 @@ class AccountCard extends StatelessWidget {
           title: 'Reseptlər',
           onTap: () {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (context)=> const Camera2Screen())
+              MaterialPageRoute(builder: (context) => const Camera2Screen()),
             );
           },
         ),

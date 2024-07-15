@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const SearchTab(),
     const ProductsCategory(),
     QATab(),
-    AccountTab(),
+    const AccountTab(),
   ];
 
   void _onItemTapped(int index) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/account_card.dart';
+import '../screens/camera2_screen.dart';
+import '../widgets/account2_card.dart';
 
 class AccountTab extends StatelessWidget {
   const AccountTab({super.key});
@@ -7,19 +8,31 @@ class AccountTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Malikoğlu Anar'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: AccountCard(
-          name: 'Malikoğlu Anar',
-          username: '@mrAnar',
-          birthdate: '11 Yanvar 2024',
-          gender: 'Kişi',
-          phone: '018868**37',
-          email: 'singh@gmail.com',
-          location: 'India',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            children: [
+              const Account2Card(
+                fullName: 'Kazim Kazimli',
+                username: '@mr.Kazim',
+                birthdate: '02.02.2020',
+                gender: 'Kisi',
+                phone: '0702111111',
+                email: 'KazimKzm@gmail.com',
+                location: 'Azerbaijan',
+              ),
+              CardSection2(
+                  label: 'Reseptlər',
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => const Camera2Screen()),
+                    );
+                  }),
+              CardSection2(label: 'Şifrənin tənzimlənməsi', onTap: () {}),
+            ],
+          ),
         ),
       ),
     );
