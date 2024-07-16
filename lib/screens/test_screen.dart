@@ -80,11 +80,11 @@ class _TestScreenState extends State<TestScreen> {
           fillColor: Colors.white,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide(color: Colors.blue, strokeAlign: 1),
+            borderSide: const BorderSide(color: Colors.blue, strokeAlign: 1),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Color.fromRGBO(227, 220, 228, 1),
             ),
           ),

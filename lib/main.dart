@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:star_pharm/screens/camera_screen.dart';
 import 'package:star_pharm/screens/home_screen.dart';
+import 'package:star_pharm/screens/sign_up_screen.dart';
 import 'package:star_pharm/tabs/account_tab.dart';
 
 import 'screens/camera2_screen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: AccountTab(),
+      home: SignUpScreen(),
     );
   }
 }

@@ -25,10 +25,12 @@ class CustomRectangleBorderButton extends StatelessWidget {
           backgroundColor: Colors.teal,
           padding: const EdgeInsets.symmetric(vertical: _verticalPadding),
           textStyle: const TextStyle(
-            color: Colors.black,
-            fontSize: 16,
+            fontSize: 20,
           )),
-      child: Text(title),
+      child: Text(
+        title,
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 }
