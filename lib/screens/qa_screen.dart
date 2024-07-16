@@ -1,35 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:star_pharm/widgets/post_cart.dart';
 
-class TestScreen extends StatefulWidget {
-  const TestScreen({super.key});
+class QaScreen extends StatelessWidget {
+  QaScreen({super.key});
 
-  @override
-  State<TestScreen> createState() => _TestScreenState();
-}
-
-class _TestScreenState extends State<TestScreen> {
   final TextEditingController controller = TextEditingController();
+  String? txt;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
+      body: Column(
         children: [
-          Container(
-            height: double.infinity,
-            color: Theme.of(context).primaryColor,
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: _bottom(),
-          ),
+          Expanded(child: Container()),
+          const Divider(),
+          _chatInput(),
         ],
       ),
     );
   }
 
-  Widget _bottom() {
+  Widget _chatInput() {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Row(
@@ -53,6 +43,7 @@ class _TestScreenState extends State<TestScreen> {
             child: GestureDetector(
               child: const Icon(Icons.send),
               onTap: () {
+                txt = controller.text;
                 controller.text = '';
               },
             ),

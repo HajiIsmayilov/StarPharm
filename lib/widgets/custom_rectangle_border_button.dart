@@ -21,12 +21,9 @@ class CustomRectangleBorderButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(_borderRadius),
           ),
-          //primary: Colors.teal,
-          backgroundColor: Colors.teal,
+          backgroundColor: Theme.of(context).primaryColor,
           padding: const EdgeInsets.symmetric(vertical: _verticalPadding),
-          textStyle: const TextStyle(
-            fontSize: 20,
-          )),
+          textStyle: Theme.of(context).primaryTextTheme.labelLarge),
       child: Text(
         title,
         style: const TextStyle(color: Colors.white),

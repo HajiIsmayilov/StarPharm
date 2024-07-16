@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/screens/qa_screen.dart';
 import 'package:star_pharm/widgets/qa_card.dart';
 import '../models/question.dart';
+import '../widgets/custom_rectangle_border_button.dart';
 
 class QATab extends StatelessWidget {
   final List<Question> questions = [
@@ -33,13 +35,31 @@ class QATab extends StatelessWidget {
             'Salam Xuraman həkim mənim böyük bir inamsızlığım var içimdə. Sağalmağıma inamım yoxdur ölümü fikirləşirəm. Sağalacağımı qorxuduram urey döyüntüm artır sonradan özümü çox dərin sakitləşdirirəm həkim gunum belə keçir sağalmaqda istəyirəm sağalmamaqda həkim nədən edilm mənə kömək edə bilər?')
   ];
 
+  final TextEditingController controller = TextEditingController();
+  static const String _fullname = 'Kazim Kazimli';
   QATab({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Suallar'),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 8.0),
+          child: Text('Suallar'),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              icon: const Icon(Icons.question_mark),
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => Center(child: _card(context)));
+              },
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -71,6 +91,73 @@ class QATab extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _card(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: Card(
+        child: SizedBox(
+          height: 368,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage:
+                          NetworkImage('https://biturbo.az/flutter/doc1.jpg'),
+                      radius: 30,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      _fullname,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+              const Divider(),
+              const SizedBox(height: 10),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: controller,
+                        decoration: InputDecoration(
+                            hintText: "Ask your question",
+                            labelText: "Ask",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0))),
+                        minLines: 6,
+                        maxLines: 6,
+                        keyboardType: TextInputType.multiline,
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: double.infinity,
+                        child: CustomRectangleBorderButton(
+                          title: 'Send',
+                          onPressed: () {
+                             Navigator.pop(context);
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

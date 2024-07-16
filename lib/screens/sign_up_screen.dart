@@ -1,6 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter/widgets.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:star_pharm/widgets/custom_rectangle_border_button.dart';
 
@@ -58,6 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 _space(),
                 TextFormField(
+                  keyboardType:TextInputType.emailAddress,
                   validator: ValidationRules().emailValidation,
                   decoration: const InputDecoration(
                     hintText: SignUpScreenHints._email,
@@ -67,6 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 _space(),
                 TextFormField(
+                  keyboardType:TextInputType.datetime,
                   decoration: const InputDecoration(
                     hintText: SignUpScreenHints._birthdate,
                     labelText: SignUpScreenStrings._birthday,
@@ -76,6 +78,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 _space(),
                 TextFormField(
+                  keyboardType:TextInputType.phone,
                   inputFormatters: [SignUpScreenMaskes().phoneMask],
                   decoration: const InputDecoration(
                     hintText: SignUpScreenHints._phone,
@@ -109,7 +112,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   isSelected: isSelectedGender,
                   selectedColor: Colors.white,
                   color: Colors.black,
-                  fillColor: Colors.teal,
+                  fillColor: Theme.of(context).primaryColor,
                   textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   renderBorder: true,
                   borderColor: Colors.black,
@@ -119,15 +122,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                            child:
-                                Text('MALE', style: TextStyle(fontSize: 18))),
+                            child: Text(SignUpScreenStrings._male,
+                                style: TextStyle(fontSize: 18))),
                       ),
                     ),
                     FittedBox(
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                          child: Text('FEMALE', style: TextStyle(fontSize: 18)),
+                          child: Text(SignUpScreenStrings._female,
+                              style: TextStyle(fontSize: 18)),
                         ),
                       ),
                     ),
@@ -135,28 +139,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                            child:
-                                Text('OTHER', style: TextStyle(fontSize: 18))),
+                            child: Text(SignUpScreenStrings._other,
+                                style: TextStyle(fontSize: 18))),
                       ),
                     ),
                   ],
-                  // to select or deselect when pressed
                   onPressed: (int newIndex) {
-                    setState(() {
-                      // looping through the list of booleans values
-                      for (int index = 0;
-                          index < isSelectedGender.length;
-                          index++) {
-                        // checking for the index value
-                        if (index == newIndex) {
-                          // one button is always set to true
-                          isSelectedGender[index] = true;
-                        } else {
-                          // other two will be set to false and not selected
-                          isSelectedGender[index] = false;
-                        }
-                      }
-                    });
+                    _selectGender(newIndex);
                   },
                 ),
                 _space(),
@@ -164,7 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   isSelected: isSelectedUserRole,
                   selectedColor: Colors.white,
                   color: Colors.black,
-                  fillColor: Colors.teal,
+                  fillColor: Theme.of(context).primaryColor,
                   textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   renderBorder: true,
                   borderColor: Colors.black,
@@ -174,7 +163,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                            child: Text('PATIENT',
+                            child: Text(SignUpScreenStrings._patient,
                                 style: TextStyle(fontSize: 18))),
                       ),
                     ),
@@ -182,7 +171,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                          child: Text('DOCTOR', style: TextStyle(fontSize: 18)),
+                          child: Text(SignUpScreenStrings._doctor,
+                              style: TextStyle(fontSize: 18)),
                         ),
                       ),
                     ),
@@ -190,28 +180,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                            child: Text('PHARMACIST',
+                            child: Text(SignUpScreenStrings._pharmacist,
                                 style: TextStyle(fontSize: 18))),
                       ),
                     ),
                   ],
-                  // to select or deselect when pressed
                   onPressed: (int newIndex) {
-                    setState(() {
-                      // looping through the list of booleans values
-                      for (int index = 0;
-                          index < isSelectedUserRole.length;
-                          index++) {
-                        // checking for the index value
-                        if (index == newIndex) {
-                          // one button is always set to true
-                          isSelectedUserRole[index] = true;
-                        } else {
-                          // other two will be set to false and not selected
-                          isSelectedUserRole[index] = false;
-                        }
-                      }
-                    });
+                    _selectedRole(newIndex);
                   },
                 ),
                 _space(),
@@ -258,9 +233,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: const Text(
+                      child: Text(
                         SignUpScreenStrings._logIn,
-                        style: TextStyle(color: Colors.teal, fontSize: 16),
+                        style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontSize: 16),
                       ),
                     ),
                   ],
@@ -271,6 +248,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  void _selectedRole(int newIndex) {
+    setState(() {
+      for (int index = 0; index < isSelectedUserRole.length; index++) {
+        if (index == newIndex) {
+          isSelectedUserRole[index] = true;
+        } else {
+          isSelectedUserRole[index] = false;
+        }
+      }
+    });
+  }
+
+  void _selectGender(int newIndex) {
+    setState(() {
+      for (int index = 0; index < isSelectedGender.length; index++) {
+        if (index == newIndex) {
+          isSelectedGender[index] = true;
+        } else {
+          isSelectedGender[index] = false;
+        }
+      }
+    });
   }
 
   String? _validateRule(value) {
@@ -300,21 +301,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       _obscureText = !_obscureText;
     });
   }
-
-  DateTime selectedDate = DateTime.now();
-
-  Future<Null> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(1950),
-        lastDate: DateTime(2022));
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
-  }
 }
 
 class SignUpScreenStrings {
@@ -327,6 +313,12 @@ class SignUpScreenStrings {
   static const String _password = 'Password';
   static const String _confirmPassword = 'Confirm Password';
   static const String _haveAccount = 'Already have an account?';
+  static const String _male = 'MALE';
+  static const String _female = 'FEMALE';
+  static const String _other = 'OTHER';
+  static const String _patient = 'PATIENT';
+  static const String _doctor = 'DOCTOR';
+  static const String _pharmacist = 'FARMACIST';
 }
 
 class SignUpScreenMaskes {
