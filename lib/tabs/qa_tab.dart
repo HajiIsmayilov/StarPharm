@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:star_pharm/screens/qa_screen.dart';
 import 'package:star_pharm/widgets/qa_card.dart';
 import '../models/question.dart';
@@ -39,6 +40,8 @@ class QATab extends StatelessWidget {
   static const String _fullname = 'Kazim Kazimli';
   QATab({super.key});
 
+  List<bool> isSelected = [true, false];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +51,7 @@ class QATab extends StatelessWidget {
           child: Text('Suallar'),
         ),
         actions: [
+          _toggleButton(context),
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: IconButton(
@@ -92,6 +96,38 @@ class QATab extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _toggleButton(BuildContext context) {
+    return SizedBox(
+      height: 40,
+      child: ToggleButtons(
+        isSelected: isSelected,
+        selectedColor: Colors.white,
+        color: Colors.black,
+        fillColor: Theme.of(context).primaryColor,
+        textStyle: const TextStyle(fontWeight: FontWeight.bold),
+        renderBorder: true,
+        borderColor: Colors.black,
+        borderRadius: BorderRadius.circular(10),
+        children: const [
+          SizedBox(
+            width: 60,
+            child:
+                Center(child: Text('Cavablı', style: TextStyle(fontSize: 13))),
+          ),
+          SizedBox(
+            width: 60,
+            child: Center(
+              child: Text('Cavabsız', style: TextStyle(fontSize: 13)),
+            ),
+          ),
+        ],
+        onPressed: (int newIndex) {
+          //  _selectedRole(newIndex);
+        },
       ),
     );
   }
@@ -148,7 +184,7 @@ class QATab extends StatelessWidget {
                         child: CustomRectangleBorderButton(
                           title: 'Send',
                           onPressed: () {
-                             Navigator.pop(context);
+                            Navigator.pop(context);
                           },
                         ),
                       )

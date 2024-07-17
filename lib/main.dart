@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:star_pharm/screens/camera_screen.dart';
 import 'package:star_pharm/screens/home_screen.dart';
 import 'package:star_pharm/screens/qa2_screen.dart';
+import 'package:star_pharm/screens/qa_doctor_screen.dart';
 import 'package:star_pharm/screens/qa_screen.dart';
 import 'package:star_pharm/screens/sign_up_screen.dart';
 import 'package:star_pharm/screens/test_screen.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           primaryTextTheme: const TextTheme(
               labelLarge: TextStyle(fontSize: 20),
               labelMedium: TextStyle(fontSize: 16))),
-      home: const SignUpScreen(),
+      home: HomeScreen(),
     );
   }
 }
