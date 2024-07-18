@@ -22,7 +22,7 @@ class _SingInScreenState extends State<SingInScreen> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: SingInScreenPaddings._horizontalPadding,
+          padding: SingInScreenPaddings().horizontalPadding,
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
@@ -33,7 +33,7 @@ class _SingInScreenState extends State<SingInScreen> {
                       url: SingInScreen._url, width: SingInScreen._imgWidth),
                   _space(),
                   const Text(
-                    SingInScreenStrings._logIn,
+                    SingInScreenStrings.logIn,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class _SingInScreenState extends State<SingInScreen> {
                   _space(),
                   TextFormField(
                     decoration: const InputDecoration(
-                      labelText: SingInScreenStrings._email,
+                      labelText: SingInScreenStrings.email,
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -50,7 +50,7 @@ class _SingInScreenState extends State<SingInScreen> {
                   TextFormField(
                       obscureText: _obscureText,
                       decoration: InputDecoration(
-                          labelText: SingInScreenStrings._password,
+                          labelText: SingInScreenStrings.password,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(_radius),
                           ),
@@ -63,7 +63,7 @@ class _SingInScreenState extends State<SingInScreen> {
                     child: TextButton(
                       onPressed: () {},
                       child: const Text(
-                        SingInScreenStrings._forgotPassword,
+                        SingInScreenStrings.forgotPassword,
                         style: TextStyle(color: Colors.teal),
                       ),
                     ),
@@ -71,16 +71,16 @@ class _SingInScreenState extends State<SingInScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: CustomRectangleBorderButton(
-                      title: SingInScreenStrings._logIn,
+                      title: SingInScreenStrings.logIn,
                       onPressed: () {},
                     ),
                   ),
                   Row(
                     children: [
-                      const Text(SingInScreenStrings._dontHaveAccount),
+                      const Text(SingInScreenStrings.dontHaveAccount),
                       TextButton(
                         onPressed: () {},
-                        child: const Text(SingInScreenStrings._signUp),
+                        child: const Text(SingInScreenStrings.signUp),
                       )
                     ],
                   )
@@ -107,16 +107,15 @@ class _SingInScreenState extends State<SingInScreen> {
 }
 
 class SingInScreenStrings {
-  static const String _logIn = 'Log in';
-  static const String _signUp = 'Sign up';
-  static const String _email = 'Email';
-  static const String _password = 'Password';
-  static const String _forgotPassword = 'Forgot Password?';
-  static const String _dontHaveAccount = 'Don\'t have an account?';
+  static const String logIn = 'Log in';
+  static const String signUp = 'Sign up';
+  static const String email = 'Email';
+  static const String password = 'Password';
+  static const String forgotPassword = 'Forgot Password?';
+  static const String dontHaveAccount = 'Don\'t have an account?';
 }
 
 class SingInScreenPaddings {
- //static const EdgeInsets _verticalPadding = EdgeInsets.symmetric(vertical: 16);
-  static const EdgeInsets _horizontalPadding =
-      EdgeInsets.symmetric(horizontal: 12);
+  final EdgeInsets horizontalPadding =
+      const EdgeInsets.symmetric(horizontal: 12);
 }

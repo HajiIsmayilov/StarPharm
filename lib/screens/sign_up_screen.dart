@@ -21,7 +21,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   static const double _radius = 8.0;
   late String? dropdownValue = 'Male';
 
-  // one must always be true, means selected.
   List<bool> isSelectedGender = [true, false, false];
   List<bool> isSelectedUserRole = [true, false, false];
 
@@ -29,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: SignUpScreenPaddings._horizontalPadding,
+        padding: SignUpScreenPaddings().horizontalPadding,
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -40,7 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const JpgImage(
                     url: SignUpScreen._url, width: SignUpScreen._imgWidth),
                 const Text(
-                  SignUpScreenStrings._signUp,
+                  SignUpScreenStrings.signUp,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -50,38 +49,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 TextFormField(
                   validator: ValidationRules().userNameValidation,
                   decoration: const InputDecoration(
-                    hintText: SignUpScreenHints._username,
-                    labelText: SignUpScreenStrings._username,
+                    hintText: SignUpScreenHints.username,
+                    labelText: SignUpScreenStrings.username,
                     border: OutlineInputBorder(),
                   ),
                 ),
                 _space(),
                 TextFormField(
-                  keyboardType:TextInputType.emailAddress,
+                  keyboardType: TextInputType.emailAddress,
                   validator: ValidationRules().emailValidation,
                   decoration: const InputDecoration(
-                    hintText: SignUpScreenHints._email,
-                    labelText: SignUpScreenStrings._email,
+                    hintText: SignUpScreenHints.email,
+                    labelText: SignUpScreenStrings.email,
                     border: OutlineInputBorder(),
                   ),
                 ),
                 _space(),
                 TextFormField(
-                  keyboardType:TextInputType.datetime,
+                  keyboardType: TextInputType.datetime,
                   decoration: const InputDecoration(
-                    hintText: SignUpScreenHints._birthdate,
-                    labelText: SignUpScreenStrings._birthday,
+                    hintText: SignUpScreenHints.birthdate,
+                    labelText: SignUpScreenStrings.birthdate,
                     border: OutlineInputBorder(),
                   ),
                   inputFormatters: [SignUpScreenMaskes().birthdayMask],
                 ),
                 _space(),
                 TextFormField(
-                  keyboardType:TextInputType.phone,
+                  keyboardType: TextInputType.phone,
                   inputFormatters: [SignUpScreenMaskes().phoneMask],
                   decoration: const InputDecoration(
-                    hintText: SignUpScreenHints._phone,
-                    labelText: SignUpScreenStrings._phone,
+                    hintText: SignUpScreenHints.phone,
+                    labelText: SignUpScreenStrings.phone,
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -121,7 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                            child: Text(SignUpScreenStrings._male,
+                            child: Text(SignUpScreenStrings.male,
                                 style: TextStyle(fontSize: 18))),
                       ),
                     ),
@@ -129,7 +128,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                          child: Text(SignUpScreenStrings._female,
+                          child: Text(SignUpScreenStrings.female,
                               style: TextStyle(fontSize: 18)),
                         ),
                       ),
@@ -138,7 +137,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                            child: Text(SignUpScreenStrings._other,
+                            child: Text(SignUpScreenStrings.other,
                                 style: TextStyle(fontSize: 18))),
                       ),
                     ),
@@ -162,7 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                            child: Text(SignUpScreenStrings._patient,
+                            child: Text(SignUpScreenStrings.patient,
                                 style: TextStyle(fontSize: 18))),
                       ),
                     ),
@@ -170,7 +169,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                          child: Text(SignUpScreenStrings._doctor,
+                          child: Text(SignUpScreenStrings.doctor,
                               style: TextStyle(fontSize: 18)),
                         ),
                       ),
@@ -179,7 +178,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SizedBox(
                         width: 120,
                         child: Center(
-                            child: Text(SignUpScreenStrings._pharmacist,
+                            child: Text(SignUpScreenStrings.pharmacist,
                                 style: TextStyle(fontSize: 18))),
                       ),
                     ),
@@ -193,7 +192,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     obscureText: _obscureText,
                     validator: ValidationRules().passwordValidation,
                     decoration: InputDecoration(
-                        labelText: SignUpScreenStrings._password,
+                        labelText: SignUpScreenStrings.password,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(_radius),
                         ),
@@ -205,7 +204,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 TextFormField(
                     obscureText: _obscureText,
                     decoration: InputDecoration(
-                        labelText: SignUpScreenStrings._confirmPassword,
+                        labelText: SignUpScreenStrings.confirmPassword,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(_radius),
                         ),
@@ -217,7 +216,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: CustomRectangleBorderButton(
-                    title: SignUpScreenStrings._signUp,
+                    title: SignUpScreenStrings.signUp,
                     onPressed: () {
                       _validate(context);
                     },
@@ -227,13 +226,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      SignUpScreenStrings._haveAccount,
+                      SignUpScreenStrings.haveAccount,
                       style: TextStyle(fontSize: 16),
                     ),
                     TextButton(
                       onPressed: () {},
                       child: Text(
-                        SignUpScreenStrings._logIn,
+                        SignUpScreenStrings.logIn,
                         style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 16),
@@ -303,21 +302,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
 }
 
 class SignUpScreenStrings {
-  static const String _logIn = 'Log in';
-  static const String _signUp = 'Sign up';
-  static const String _username = 'User Name';
-  static const String _birthday = 'Birthdate';
-  static const String _email = 'Email';
-  static const String _phone = 'Mobile Number';
-  static const String _password = 'Password';
-  static const String _confirmPassword = 'Confirm Password';
-  static const String _haveAccount = 'Already have an account?';
-  static const String _male = 'MALE';
-  static const String _female = 'FEMALE';
-  static const String _other = 'OTHER';
-  static const String _patient = 'PATIENT';
-  static const String _doctor = 'DOCTOR';
-  static const String _pharmacist = 'FARMACIST';
+  static const String logIn = 'Log in';
+  static const String signUp = 'Sign up';
+  static const String username = 'User Name';
+  static const String birthdate = 'Birthdate';
+  static const String email = 'Email';
+  static const String phone = 'Mobile Number';
+  static const String password = 'Password';
+  static const String confirmPassword = 'Confirm Password';
+  static const String haveAccount = 'Already have an account?';
+  static const String male = 'MALE';
+  static const String female = 'FEMALE';
+  static const String other = 'OTHER';
+  static const String patient = 'PATIENT';
+  static const String doctor = 'DOCTOR';
+  static const String pharmacist = 'FARMACIST';
 }
 
 class SignUpScreenMaskes {
@@ -332,14 +331,13 @@ class SignUpScreenMaskes {
 }
 
 class SignUpScreenHints {
-  static const String _username = 'Kerim Kerimli';
-  static const String _email = 'kerimkrm@gmail.com';
-  static const String _birthdate = '07/07/2007';
-  static const String _phone = '(090) 111-11-11';
+  static const String username = 'Kerim Kerimli';
+  static const String email = 'kerimkrm@gmail.com';
+  static const String birthdate = '07/07/2007';
+  static const String phone = '(090) 111-11-11';
 }
 
 class SignUpScreenPaddings {
-  //static const EdgeInsets _verticalPadding = EdgeInsets.symmetric(vertical: 16);
-  static const EdgeInsets _horizontalPadding =
-      EdgeInsets.symmetric(horizontal: 12);
+  final EdgeInsets horizontalPadding =
+      const EdgeInsets.symmetric(horizontal: 12);
 }
