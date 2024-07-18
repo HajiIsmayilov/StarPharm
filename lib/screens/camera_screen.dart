@@ -13,6 +13,7 @@ class _CameraScreenState extends State<CameraScreen> {
   CameraController? cameraController;
 
   Future<void> _setupCameraController() async {
+    // ignore: no_leading_underscores_for_local_identifiers
     List<CameraDescription> _cameras = await availableCameras();
 
     if (_cameras.isNotEmpty) {

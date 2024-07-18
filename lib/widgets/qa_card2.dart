@@ -5,14 +5,14 @@ class QuestionCard2 extends StatelessWidget {
   final String question;
   final String imageUrl;
 
-  QuestionCard2(
-      {required this.name, required this.question, required this.imageUrl});
+  const QuestionCard2(
+      {super.key, required this.name, required this.question, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
-      padding: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.0),
@@ -21,7 +21,7 @@ class QuestionCard2 extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -31,16 +31,16 @@ class QuestionCard2 extends StatelessWidget {
             backgroundImage: NetworkImage(imageUrl),
             radius: 30,
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   name,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(question),
               ],
             ),

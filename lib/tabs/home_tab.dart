@@ -10,6 +10,7 @@ import '../widgets/post_cart.dart';
 
 class HomeTab extends StatelessWidget {
   HomeTab({super.key});
+  static const String _username = 'Dr. Anar';
 
   Future<List<Doctor>> fetchDoctors() async {
     final response = await http.get(
@@ -56,14 +57,15 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Xoş gəlmisiniz, Dr. Anar'),
-        actions: <Widget>[
+        titleSpacing: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.account_circle),
+          onPressed: () {},
+        ),
+        title: const Text('${HomeTabStrings.welcome} $_username'),
+        actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.account_circle),
             onPressed: () {},
           ),
         ],
@@ -77,7 +79,7 @@ class HomeTab extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
-                  hintText: 'Axtarış üçün açar sözü daxil edin..',
+                  hintText: HomeTabStrings.searchKeyHint,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -103,7 +105,7 @@ class HomeTab extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
-                'Pediatrlar',
+                HomeTabStrings.peadiatrs,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
@@ -135,7 +137,7 @@ class HomeTab extends StatelessWidget {
               margin: const EdgeInsets.all(8.0),
               padding: const EdgeInsets.all(8.0),
               child: const Text(
-                'Yeni paylaşımlar',
+                HomeTabStrings.newPosts,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
@@ -158,4 +160,11 @@ class HomeTab extends StatelessWidget {
       ),
     );
   }
+}
+
+class HomeTabStrings {
+  static const String welcome = 'Xoş gəlmisiniz, ';
+  static const String searchKeyHint = 'Axtarış üçün açar sözü daxil edin..';
+  static const String peadiatrs = 'Pediatrlar';
+  static const String newPosts = 'Yeni paylaşımlar';
 }

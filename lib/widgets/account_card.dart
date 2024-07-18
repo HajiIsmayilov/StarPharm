@@ -10,7 +10,7 @@ class AccountCard extends StatelessWidget {
   final String email;
   final String location;
 
-  AccountCard({
+  const AccountCard({super.key, 
     required this.name,
     required this.username,
     required this.birthdate,
@@ -25,8 +25,8 @@ class AccountCard extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.symmetric(vertical: 8.0),
-          padding: EdgeInsets.all(16.0),
+          margin: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10.0),
@@ -35,7 +35,7 @@ class AccountCard extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 5,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -44,31 +44,31 @@ class AccountCard extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundImage:
                         NetworkImage('https://biturbo.az/flutter/doc1.jpg'),
                     radius: 30,
                   ),
-                  SizedBox(width: 10),
+                 const SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
                         name,
-                        style: TextStyle(
+                        style:const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
                       ),
                       Text(username),
                     ],
                   ),
-                  Spacer(),
+                 const Spacer(),
                   IconButton(
-                    icon: Icon(Icons.edit, color: Colors.blue),
+                    icon:const Icon(Icons.edit, color: Colors.blue),
                     onPressed: () {},
                   ),
                 ],
               ),
-              Divider(height: 20, thickness: 1),
+             const Divider(height: 20, thickness: 1),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -76,10 +76,10 @@ class AccountCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Tam ad'),
-                        SizedBox(height: 5),
+                       const Text('Tam ad'),
+                       const SizedBox(height: 5),
                         Text(name,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                            style:const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -87,16 +87,16 @@ class AccountCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Doğum Tarixi'),
-                        SizedBox(height: 5),
+                      const  Text('Doğum Tarixi'),
+                      const  SizedBox(height: 5),
                         Text(birthdate,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                            style:const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+             const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -104,10 +104,10 @@ class AccountCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Cinsiyyət'),
-                        SizedBox(height: 5),
+                      const  Text('Cinsiyyət'),
+                      const  SizedBox(height: 5),
                         Text(gender,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                            style:const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -115,16 +115,16 @@ class AccountCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Phone'),
-                        SizedBox(height: 5),
+                       const Text('Phone'),
+                       const SizedBox(height: 5),
                         Text(phone,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                            style:const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+             const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -132,10 +132,10 @@ class AccountCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Email'),
-                        SizedBox(height: 5),
+                       const Text('Email'),
+                      const  SizedBox(height: 5),
                         Text(email,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                            style:const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -143,10 +143,10 @@ class AccountCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Location'),
-                        SizedBox(height: 5),
+                      const  Text('Location'),
+                      const  SizedBox(height: 5),
                         Text(location,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                            style: const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -176,12 +176,12 @@ class SectionCard extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
 
-  SectionCard({required this.title, required this.onTap});
+  const SectionCard({super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.0),
@@ -190,13 +190,13 @@ class SectionCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: ListTile(
         title: Text(title),
-        trailing: Icon(Icons.chevron_right),
+        trailing: const Icon(Icons.chevron_right),
         onTap: onTap,
       ),
     );

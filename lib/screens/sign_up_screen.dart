@@ -1,6 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:star_pharm/widgets/custom_rectangle_border_button.dart';
 
@@ -274,12 +273,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
   }
 
-  String? _validateRule(value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter some text';
-    }
-    return null;
-  }
+  // String? _validateRule(value) {
+  //   if (value == null || value.isEmpty) {
+  //     return 'Please enter some text';
+  //   }
+  //   return null;
+  // }
 
   String? _validate(context) {
     if (_formKey.currentState!.validate()) {

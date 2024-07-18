@@ -4,12 +4,13 @@ import '../widgets/account2_card.dart';
 
 class AccountTab extends StatelessWidget {
   const AccountTab({super.key});
+  final String username = 'Kazim Kazimli';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kazim Kazimli'),
+        title: Text(username),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -26,18 +27,24 @@ class AccountTab extends StatelessWidget {
                 location: 'Azerbaijan',
               ),
               CardSection2(
-                  label: 'Reseptlər',
+                  label: AccountTabStrings.receipts,
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) => const Camera2Screen()),
                     );
                   }),
-              CardSection2(label: 'Şifrənin tənzimlənməsi', onTap: () {}),
+              CardSection2(
+                  label: AccountTabStrings.passwordAdjustment, onTap: () {}),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+class AccountTabStrings {
+  static const String receipts = 'Reseptlər';
+  static const String passwordAdjustment = 'Şifrənin tənzimlənməsi';
 }

@@ -6,7 +6,11 @@ class SearchTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Axtarış Səhifəsi'),
+      child: Text(SearchTabStrings.searchPage),
     );
   }
+}
+
+class SearchTabStrings {
+  static const String searchPage = 'Axtarış Səhifəsi';
 }

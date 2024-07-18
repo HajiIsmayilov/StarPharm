@@ -21,13 +21,13 @@ class DoctorCard extends StatelessWidget {
   final String hospital;
   final String imageUrl;
 
-  DoctorCard({required this.name, required this.hospital, required this.imageUrl});
+  const DoctorCard({super.key, required this.name, required this.hospital, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 175,
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.0),
@@ -36,7 +36,7 @@ class DoctorCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),

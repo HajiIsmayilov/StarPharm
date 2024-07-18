@@ -19,9 +19,9 @@ class Qa2Screen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: const Row(
+                  const Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         CircleAvatar(

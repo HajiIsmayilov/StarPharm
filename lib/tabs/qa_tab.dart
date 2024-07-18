@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:star_pharm/screens/qa_screen.dart';
 import 'package:star_pharm/widgets/qa_card.dart';
 import '../models/question.dart';
 import '../widgets/custom_rectangle_border_button.dart';
 
+// ignore: must_be_immutable
 class QATab extends StatelessWidget {
   final List<Question> questions = [
     Question(
@@ -48,7 +47,7 @@ class QATab extends StatelessWidget {
       appBar: AppBar(
         title: const Padding(
           padding: EdgeInsets.only(left: 8.0),
-          child: Text('Suallar'),
+          child: Text(QATabStrings.questions),
         ),
         actions: [
           _toggleButton(context),
@@ -74,7 +73,7 @@ class QATab extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
-                  hintText: 'Axtarış',
+                  hintText: QATabStrings.askQuestionLabel,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -115,13 +114,15 @@ class QATab extends StatelessWidget {
         children: const [
           SizedBox(
             width: 60,
-            child:
-                Center(child: Text('Cavablı', style: TextStyle(fontSize: 13))),
+            child: Center(
+                child: Text(QATabStrings.answered,
+                    style: TextStyle(fontSize: 13))),
           ),
           SizedBox(
             width: 60,
             child: Center(
-              child: Text('Cavabsız', style: TextStyle(fontSize: 13)),
+              child: Text(QATabStrings.nonAnswered,
+                  style: TextStyle(fontSize: 13)),
             ),
           ),
         ],
@@ -170,8 +171,8 @@ class QATab extends StatelessWidget {
                       TextFormField(
                         controller: controller,
                         decoration: InputDecoration(
-                            hintText: "Ask your question",
-                            labelText: "Ask",
+                            hintText: QATabStrings.askQuestion,
+                            labelText: QATabStrings.askQuestionLabel,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8.0))),
                         minLines: 6,
@@ -182,7 +183,7 @@ class QATab extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: CustomRectangleBorderButton(
-                          title: 'Send',
+                          title: QATabStrings.send,
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -198,4 +199,14 @@ class QATab extends StatelessWidget {
       ),
     );
   }
+}
+
+class QATabStrings {
+  static const String questions = 'Suallar';
+  static const String search = 'Axtarış';
+  static const String answered = 'Cavablı';
+  static const String nonAnswered = 'Cavabsız';
+  static const String askQuestion = 'Sualınızı verin';
+  static const String askQuestionLabel = 'Sual';
+  static const String send = 'Göndər';
 }

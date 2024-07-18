@@ -9,19 +9,19 @@ class ProductsCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Məhsullar'),
+        title: const Text(ProductCategory.products),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
-                  hintText: 'Məhsul axtar',
+                  hintText: ProductCategory.searchProduct,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -35,7 +35,7 @@ class ProductsCategory extends StatelessWidget {
                 childAspectRatio: 1.5,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
-                children: <Widget>[
+                children: [
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -43,7 +43,7 @@ class ProductsCategory extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomeTab()),
                       );
                     },
-                    child: CategoryCard(
+                    child: const CategoryCard(
                       imageUrl: 'https://biturbo.az/flutter/gynecology.png',
                       label: 'Ginekoloji',
                     ),
@@ -55,7 +55,7 @@ class ProductsCategory extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomeTab()),
                       );
                     },
-                    child: CategoryCard(
+                    child: const CategoryCard(
                       imageUrl:
                           'https://biturbo.az/flutter/gastroenterology.png',
                       label: 'Mədə-bağırsaq',
@@ -68,7 +68,7 @@ class ProductsCategory extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomeTab()),
                       );
                     },
-                    child: CategoryCard(
+                    child: const CategoryCard(
                       imageUrl: 'https://biturbo.az/flutter/pediatrics.png',
                       label: 'Uşaqlar',
                     ),
@@ -80,7 +80,7 @@ class ProductsCategory extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomeTab()),
                       );
                     },
-                    child: CategoryCard(
+                    child: const CategoryCard(
                       imageUrl: 'https://biturbo.az/flutter/urology.png',
                       label: 'Urologiya',
                     ),
@@ -92,7 +92,7 @@ class ProductsCategory extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomeTab()),
                       );
                     },
-                    child: CategoryCard(
+                    child: const CategoryCard(
                       imageUrl: 'https://biturbo.az/flutter/sexology.png',
                       label: 'Cinsi',
                     ),
@@ -104,7 +104,7 @@ class ProductsCategory extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomeTab()),
                       );
                     },
-                    child: CategoryCard(
+                    child: const CategoryCard(
                       imageUrl: 'https://biturbo.az/flutter/general.png',
                       label: 'Ümumi',
                     ),
@@ -116,7 +116,7 @@ class ProductsCategory extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomeTab()),
                       );
                     },
-                    child: CategoryCard(
+                    child: const CategoryCard(
                       imageUrl: 'https://biturbo.az/flutter/dermatology.png',
                       label: 'Dermatoloji',
                     ),
@@ -128,7 +128,7 @@ class ProductsCategory extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomeTab()),
                       );
                     },
-                    child: CategoryCard(
+                    child: const CategoryCard(
                       imageUrl: 'https://biturbo.az/flutter/psychology.png',
                       label: 'Psixoloji',
                     ),
@@ -141,4 +141,9 @@ class ProductsCategory extends StatelessWidget {
       ),
     );
   }
+}
+
+class ProductCategory {
+  static const String products = 'Məhsullar';
+  static const String searchProduct = 'Məhsul axtar';
 }

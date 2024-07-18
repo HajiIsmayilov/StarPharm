@@ -5,7 +5,7 @@ class Category2Card extends StatelessWidget {
   final String imageUrl;
   final String label;
 
-  const Category2Card({required this.imageUrl, required this.label});
+  const Category2Card({super.key, required this.imageUrl, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Category2Card extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),

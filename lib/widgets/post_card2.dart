@@ -7,7 +7,7 @@ class PostCard2 extends StatelessWidget {
   final String imageUrl;
 
   const PostCard2(
-      {required this.title,
+      {super.key, required this.title,
       required this.author,
       required this.views,
       required this.imageUrl});
