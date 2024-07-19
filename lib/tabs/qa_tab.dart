@@ -64,7 +64,11 @@ class _QATabState extends State<QATab> {
               onPressed: () {
                 showDialog(
                     context: context,
-                    builder: (context) => Center(child: _card(context)));
+                    builder: (context) => Column(
+                          children: [
+                            _card(context),
+                          ],
+                        ));
               },
             ),
           ),
@@ -73,7 +77,7 @@ class _QATabState extends State<QATab> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          children: <Widget>[
+          children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
@@ -95,6 +99,7 @@ class _QATabState extends State<QATab> {
                     imageUrl: questions[index].imageUrl,
                     questioner: questions[index].questioner,
                     question: questions[index].question,
+                    onPressed: () {},
                   ),
                 ),
               ),
@@ -152,7 +157,7 @@ class _QATabState extends State<QATab> {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Card(
         child: SizedBox(
-          height: 368,
+          height: MediaQuery.of(context).size.height * 0.48,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -184,6 +189,7 @@ class _QATabState extends State<QATab> {
                     children: [
                       TextFormField(
                         controller: controller,
+                        autofocus: true,
                         decoration: InputDecoration(
                             hintText: QATabStrings.askQuestion,
                             labelText: QATabStrings.askQuestionLabel,

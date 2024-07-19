@@ -297,12 +297,12 @@ class SignUpScreenStrings {
   static const String password = 'Password';
   static const String confirmPassword = 'Confirm Password';
   static const String haveAccount = 'Already have an account?';
-  static const String male = 'MALE';
-  static const String female = 'FEMALE';
-  static const String other = 'OTHER';
-  static const String patient = 'PATIENT';
-  static const String doctor = 'DOCTOR';
-  static const String pharmacist = 'FARMACIST';
+  static const String male = 'Kişi';
+  static const String female = 'Qadın';
+  static const String other = 'Digər';
+  static const String patient = 'Xəstə';
+  static const String doctor = 'Həkim';
+  static const String pharmacist = 'Əczaçı';
 }
 
 class SignUpScreenMaskes {

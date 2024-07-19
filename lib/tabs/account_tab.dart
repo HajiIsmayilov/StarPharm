@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:star_pharm/screens/camera_screen.dart';
+import 'package:star_pharm/screens/change_password_screen.dart';
 import '../widgets/account2_card.dart';
 
 class AccountTab extends StatelessWidget {
@@ -35,7 +36,13 @@ class AccountTab extends StatelessWidget {
                     );
                   }),
               CardSection2(
-                  label: AccountTabStrings.passwordAdjustment, onTap: () {}),
+                  label: AccountTabStrings.passwordAdjustment,
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => ChangePasswordScreen()),
+                    );
+                  }),
               CardSection2(label: AccountTabStrings.logOut, onTap: () {})
             ],
           ),

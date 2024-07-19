@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   BottomNavigationBar _bottomNavigationBar() {
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Əsas',

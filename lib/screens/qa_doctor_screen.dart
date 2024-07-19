@@ -30,8 +30,9 @@ class QaDoctorScreen extends StatelessWidget {
                 imageUrl: imageUrl,
                 questioner: questioner,
                 question: question,
+                onPressed: null,
               ),
-                const SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
