@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/models/post.dart';
 
 class PostCard extends StatelessWidget {
   const PostCard({
     super.key,
-    required this.imageUrl,
-    required this.title,
-    required this.authors,
-    required this.views,
+    required this.post,
   });
 
-  final String imageUrl;
-  final String title;
-  final String authors;
-  final int views;
+  final Post post;
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +22,14 @@ class PostCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image.network(
-              imageUrl,
+              post.imageUrl,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
           ),
           ListTile(
             title: Text(
-              title,
+              post.title,
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -44,14 +39,14 @@ class PostCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  authors,
+                  post.authors,
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[600],
                   ),
                 ),
                 Text(
-                  'Views: $views',
+                  'Views: ${post.views}',
                   style: TextStyle(
                     fontSize: 10,
                     color: Colors.grey[600],

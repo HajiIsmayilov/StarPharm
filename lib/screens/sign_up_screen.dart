@@ -21,6 +21,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   static const double _radius = 8.0;
   late String? dropdownValue = 'Male';
 
+  // one must always be true, means selected.
   List<bool> isSelectedGender = [true, false, false];
   List<bool> isSelectedUserRole = [true, false, false];
 
@@ -34,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const JpgImage(
                     url: SignUpScreen._url, width: SignUpScreen._imgWidth),
@@ -51,7 +52,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: const InputDecoration(
                     hintText: SignUpScreenHints.username,
                     labelText: SignUpScreenStrings.username,
-                    border: OutlineInputBorder(),
                   ),
                 ),
                 _space(),
@@ -61,7 +61,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: const InputDecoration(
                     hintText: SignUpScreenHints.email,
                     labelText: SignUpScreenStrings.email,
-                    border: OutlineInputBorder(),
                   ),
                 ),
                 _space(),
@@ -81,7 +80,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: const InputDecoration(
                     hintText: SignUpScreenHints.phone,
                     labelText: SignUpScreenStrings.phone,
-                    border: OutlineInputBorder(),
                   ),
                 ),
                 _space(),
@@ -115,31 +113,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   renderBorder: true,
                   borderColor: Colors.black,
                   borderRadius: BorderRadius.circular(10),
-                  children: const [
-                    FittedBox(
-                      child: SizedBox(
-                        width: 120,
-                        child: Center(
-                            child: Text(SignUpScreenStrings.male,
-                                style: TextStyle(fontSize: 18))),
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width / 3 - 12,
+                      child: const Center(
+                          child: Text(SignUpScreenStrings.male,
+                              style: TextStyle(fontSize: 18))),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width / 3 - 12,
+                      child: const Center(
+                        child: Text(SignUpScreenStrings.female,
+                            style: TextStyle(fontSize: 18)),
                       ),
                     ),
-                    FittedBox(
-                      child: SizedBox(
-                        width: 120,
-                        child: Center(
-                          child: Text(SignUpScreenStrings.female,
-                              style: TextStyle(fontSize: 18)),
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      child: SizedBox(
-                        width: 120,
-                        child: Center(
-                            child: Text(SignUpScreenStrings.other,
-                                style: TextStyle(fontSize: 18))),
-                      ),
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width / 3 - 12,
+                      child: const Center(
+                          child: Text(SignUpScreenStrings.other,
+                              style: TextStyle(fontSize: 18))),
                     ),
                   ],
                   onPressed: (int newIndex) {
@@ -156,31 +148,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   renderBorder: true,
                   borderColor: Colors.black,
                   borderRadius: BorderRadius.circular(10),
-                  children: const [
-                    FittedBox(
-                      child: SizedBox(
-                        width: 120,
-                        child: Center(
-                            child: Text(SignUpScreenStrings.patient,
-                                style: TextStyle(fontSize: 18))),
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width / 3 - 12,
+                      child: const Center(
+                          child: Text(SignUpScreenStrings.patient,
+                              style: TextStyle(fontSize: 18))),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width / 3 - 12,
+                      child: const Center(
+                        child: Text(SignUpScreenStrings.doctor,
+                            style: TextStyle(fontSize: 18)),
                       ),
                     ),
-                    FittedBox(
-                      child: SizedBox(
-                        width: 120,
-                        child: Center(
-                          child: Text(SignUpScreenStrings.doctor,
-                              style: TextStyle(fontSize: 18)),
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      child: SizedBox(
-                        width: 120,
-                        child: Center(
-                            child: Text(SignUpScreenStrings.pharmacist,
-                                style: TextStyle(fontSize: 18))),
-                      ),
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width / 3 - 12,
+                      child: const Center(
+                          child: Text(SignUpScreenStrings.pharmacist,
+                              style: TextStyle(fontSize: 18))),
                     ),
                   ],
                   onPressed: (int newIndex) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:star_pharm/screens/camera2_screen.dart';
 
 class AccountCard extends StatelessWidget {
   final String name;
@@ -158,9 +157,7 @@ class AccountCard extends StatelessWidget {
         SectionCard(
           title: 'Reseptlər',
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const Camera2Screen()),
-            );
+            
           },
         ),
         SectionCard(

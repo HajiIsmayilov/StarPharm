@@ -4,7 +4,15 @@ import '../models/question.dart';
 import '../widgets/custom_rectangle_border_button.dart';
 
 // ignore: must_be_immutable
-class QATab extends StatelessWidget {
+class QATab extends StatefulWidget {
+  static const String _fullname = 'Kazim Kazimli';
+  QATab({super.key});
+
+  @override
+  State<QATab> createState() => _QATabState();
+}
+
+class _QATabState extends State<QATab> {
   final List<Question> questions = [
     Question(
       imageUrl: 'https://biturbo.az/flutter/doc3.jpg',
@@ -36,8 +44,6 @@ class QATab extends StatelessWidget {
   ];
 
   final TextEditingController controller = TextEditingController();
-  static const String _fullname = 'Kazim Kazimli';
-  QATab({super.key});
 
   List<bool> isSelected = [true, false];
 
@@ -101,7 +107,7 @@ class QATab extends StatelessWidget {
 
   Widget _toggleButton(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: MediaQuery.of(context).size.height * 0.0468,
       child: ToggleButtons(
         isSelected: isSelected,
         selectedColor: Colors.white,
@@ -111,26 +117,34 @@ class QATab extends StatelessWidget {
         renderBorder: true,
         borderColor: Colors.black,
         borderRadius: BorderRadius.circular(10),
-        children: const [
+        children: [
           SizedBox(
-            width: 60,
-            child: Center(
+            width: MediaQuery.of(context).size.width * 0.16,
+            child: const Center(
                 child: Text(QATabStrings.answered,
                     style: TextStyle(fontSize: 13))),
           ),
           SizedBox(
-            width: 60,
-            child: Center(
+            width: MediaQuery.of(context).size.width * 0.16,
+            child: const Center(
               child: Text(QATabStrings.nonAnswered,
                   style: TextStyle(fontSize: 13)),
             ),
           ),
         ],
         onPressed: (int newIndex) {
-          //  _selectedRole(newIndex);
+          _selected(newIndex);
         },
       ),
     );
+  }
+
+  void _selected(int newIndex) {
+    setState(() {
+      for (int index = 0; index < isSelected.length; index++) {
+        isSelected[index] = index == newIndex ? true : false;
+      }
+    });
   }
 
   Widget _card(BuildContext context) {
@@ -154,7 +168,7 @@ class QATab extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Text(
-                      _fullname,
+                      QATab._fullname,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),

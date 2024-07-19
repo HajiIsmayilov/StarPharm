@@ -3,19 +3,18 @@ import 'package:star_pharm/widgets/jpg_image.dart';
 
 import '../widgets/custom_rectangle_border_button.dart';
 
-class SingInScreen extends StatefulWidget {
-  const SingInScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
   static const _url = 'assets/images/logo.png';
   static const double _imgWidth = 300;
 
   @override
-  State<SingInScreen> createState() => _SingInScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SingInScreenState extends State<SingInScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
   static bool _obscureText = true;
-  static const double _radius = 8.0;
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +29,16 @@ class _SingInScreenState extends State<SingInScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const JpgImage(
-                      url: SingInScreen._url, width: SingInScreen._imgWidth),
+                      url: SignInScreen._url, width: SignInScreen._imgWidth),
                   _space(),
-                  const Text(
+                  Text(
                     SingInScreenStrings.logIn,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).primaryTextTheme.headlineLarge,
                   ),
                   _space(),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: SingInScreenStrings.email,
-                      border: OutlineInputBorder(),
                     ),
                   ),
                   _space(),
@@ -51,9 +46,6 @@ class _SingInScreenState extends State<SingInScreen> {
                       obscureText: _obscureText,
                       decoration: InputDecoration(
                           labelText: SingInScreenStrings.password,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(_radius),
-                          ),
                           suffixIcon: IconButton(
                             icon: Icon(visibilityData()),
                             onPressed: update,
@@ -76,6 +68,7 @@ class _SingInScreenState extends State<SingInScreen> {
                     ),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(SingInScreenStrings.dontHaveAccount),
                       TextButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:star_pharm/services/post_service.dart';
 import 'dart:convert';
 
 import '../models/category.dart';
@@ -110,7 +111,7 @@ class HomeTab extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 185,
+              height: MediaQuery.of(context).size.height * 0.3448,
               child: FutureBuilder<List<Doctor>>(
                 future: fetchDoctors(),
                 builder: (context, snapshot) {
@@ -142,19 +143,27 @@ class HomeTab extends StatelessWidget {
               ),
             ),
             SizedBox(
-                height: 270,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _posts.length,
-                    itemBuilder: (context, index) => SizedBox(
-                          width: 240,
-                          child: PostCard(
-                            imageUrl: _posts[index].imageUrl,
-                            title: _posts[index].title,
-                            authors: _posts[index].authors,
-                            views: _posts[index].views,
-                          ),
-                        ))),
+              height: MediaQuery.of(context).size.height * 0.3448,
+              child: FutureBuilder<List<Post>?>(
+                future: PostService().fetchPostAsync(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else {
+                    return ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: snapshot.data!
+                            .map((post) => SizedBox(
+                                  width: MediaQuery.of(context).size.width * 0.64,
+                                  child: PostCard(post: post),
+                                ))
+                            .toList());
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),

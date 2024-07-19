@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/camera2_screen.dart';
+import 'package:star_pharm/screens/camera_screen.dart';
 import '../widgets/account2_card.dart';
 
 class AccountTab extends StatelessWidget {
@@ -31,11 +31,12 @@ class AccountTab extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                          builder: (context) => const Camera2Screen()),
+                          builder: (context) => const CameraScreen()),
                     );
                   }),
               CardSection2(
                   label: AccountTabStrings.passwordAdjustment, onTap: () {}),
+              CardSection2(label: AccountTabStrings.logOut, onTap: () {})
             ],
           ),
         ),
@@ -47,4 +48,5 @@ class AccountTab extends StatelessWidget {
 class AccountTabStrings {
   static const String receipts = 'Reseptlər';
   static const String passwordAdjustment = 'Şifrənin tənzimlənməsi';
+  static const String logOut = 'Hesabınızdan çıxın';
 }
