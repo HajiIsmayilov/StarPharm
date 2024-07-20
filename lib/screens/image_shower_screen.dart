@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:star_pharm/widgets/custom_rectangle_border_button.dart';
 
 class ImageShowerScreen extends StatelessWidget {
-  ImageShowerScreen({super.key, required this.imagePath});
+  const ImageShowerScreen({super.key, required this.imagePath});
   final String? imagePath;
 
   @override
@@ -28,7 +28,7 @@ class ImageShowerScreen extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     icon: const Icon(
-                      Icons.keyboard_arrow_left_rounded,
+                      Icons.arrow_back,
                       size: 36,
                     ))),
             Align(

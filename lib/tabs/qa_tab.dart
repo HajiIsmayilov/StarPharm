@@ -6,7 +6,7 @@ import '../widgets/custom_rectangle_border_button.dart';
 // ignore: must_be_immutable
 class QATab extends StatefulWidget {
   static const String _fullname = 'Kazim Kazimli';
-  QATab({super.key});
+  const QATab({super.key});
 
   @override
   State<QATab> createState() => _QATabState();

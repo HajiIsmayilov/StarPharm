@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTab(),
     const SearchTab(),
     const ProductsCategory(),
-    QATab(),
+    const QATab(),
     const AccountTab(),
   ];
 

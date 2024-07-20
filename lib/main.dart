@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:star_pharm/screens/home_screen.dart';
-import 'package:star_pharm/screens/sign_up_screen.dart';
-import 'package:star_pharm/screens/sing_in_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +30,7 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold),
               labelLarge: TextStyle(fontSize: 20),
               labelMedium: TextStyle(fontSize: 16))),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }

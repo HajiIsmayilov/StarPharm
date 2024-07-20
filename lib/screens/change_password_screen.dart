@@ -4,7 +4,7 @@ import '../validations/regexes.dart';
 import '../widgets/custom_rectangle_border_button.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
-  ChangePasswordScreen({super.key});
+  const ChangePasswordScreen({super.key});
 
   @override
   State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();

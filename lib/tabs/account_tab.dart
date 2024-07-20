@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:star_pharm/screens/camera_screen.dart';
 import 'package:star_pharm/screens/change_password_screen.dart';
-import '../widgets/account2_card.dart';
+import 'package:star_pharm/screens/profile_screen.dart';
+import '../widgets/account_card.dart';
 
 class AccountTab extends StatelessWidget {
   const AccountTab({super.key});
@@ -18,7 +19,7 @@ class AccountTab extends StatelessWidget {
           padding: const EdgeInsets.all(12),
           child: Column(
             children: [
-              const Account2Card(
+              AccountCard(
                 fullName: 'Kazim Kazimli',
                 username: '@mr.Kazim',
                 birthdate: '02.02.2020',
@@ -26,8 +27,14 @@ class AccountTab extends StatelessWidget {
                 phone: '0702111111',
                 email: 'KazimKzm@gmail.com',
                 location: 'Azerbaijan',
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (context) => const ProfileScreen()),
+                  );
+                },
               ),
-              CardSection2(
+              CardSection(
                   label: AccountTabStrings.receipts,
                   onTap: () {
                     Navigator.of(context).push(
@@ -35,15 +42,15 @@ class AccountTab extends StatelessWidget {
                           builder: (context) => const CameraScreen()),
                     );
                   }),
-              CardSection2(
+              CardSection(
                   label: AccountTabStrings.passwordAdjustment,
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                          builder: (context) => ChangePasswordScreen()),
+                          builder: (context) => const ChangePasswordScreen()),
                     );
                   }),
-              CardSection2(label: AccountTabStrings.logOut, onTap: () {})
+              CardSection(label: AccountTabStrings.logOut, onTap: () {})
             ],
           ),
         ),

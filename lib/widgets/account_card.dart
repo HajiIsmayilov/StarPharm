@@ -1,199 +1,183 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
-class AccountCard extends StatelessWidget {
-  final String name;
+class AccountCard extends StatefulWidget {
+  final String fullName;
   final String username;
   final String birthdate;
   final String gender;
   final String phone;
   final String email;
   final String location;
+  final VoidCallback? onPressed;
 
-  const AccountCard({super.key, 
-    required this.name,
+  const AccountCard({
+    super.key,
+    required this.fullName,
     required this.username,
     required this.birthdate,
     required this.gender,
     required this.phone,
     required this.email,
     required this.location,
+    required this.onPressed,
   });
 
   @override
+  State<AccountCard> createState() => _AccountCardState();
+}
+
+class _AccountCardState extends State<AccountCard> {
+  late File? file;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    file = null;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 8.0),
-          padding: const EdgeInsets.all(16.0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 5,
-                offset: const Offset(0, 3),
-              ),
-            ],
-          ),
-          child: Column(
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      child: SizedBox(
+        height: 248,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _upSide(context),
+            const Divider(height: 20, thickness: 1),
+            _bottomSide()
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _bottomSide() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 28),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  const CircleAvatar(
-                    backgroundImage:
-                        NetworkImage('https://biturbo.az/flutter/doc1.jpg'),
-                    radius: 30,
-                  ),
-                 const SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        name,
-                        style:const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                      Text(username),
-                    ],
-                  ),
-                 const Spacer(),
-                  IconButton(
-                    icon:const Icon(Icons.edit, color: Colors.blue),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-             const Divider(height: 20, thickness: 1),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                       const Text('Tam ad'),
-                       const SizedBox(height: 5),
-                        Text(name,
-                            style:const TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                      const  Text('Doğum Tarixi'),
-                      const  SizedBox(height: 5),
-                        Text(birthdate,
-                            style:const TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-             const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                      const  Text('Cinsiyyət'),
-                      const  SizedBox(height: 5),
-                        Text(gender,
-                            style:const TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                       const Text('Phone'),
-                       const SizedBox(height: 5),
-                        Text(phone,
-                            style:const TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-             const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                       const Text('Email'),
-                      const  SizedBox(height: 5),
-                        Text(email,
-                            style:const TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                      const  Text('Location'),
-                      const  SizedBox(height: 5),
-                        Text(location,
-                            style: const TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            children: [
+              _cardItem('Tam ad', widget.fullName),
+              _cardItem('Cinsiyyət', widget.gender),
+              _cardItem('Email', widget.email),
             ],
           ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _cardItem('Doğum Tarixi', widget.birthdate),
+              _cardItem('Phone', widget.phone),
+              _cardItem('Location', widget.location),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _upSide(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: InkWell(
+            onTap: () async {
+              FilePickerResult? result = await FilePicker.platform.pickFiles(
+                allowMultiple: false,
+                type: FileType.image,
+                allowedExtensions: ['jpeg', 'jpg', 'png'],
+              );
+
+              String path = result!.paths[0] ?? '';
+
+              // setState(() {
+              //   file = File(path);
+              // });
+
+            },
+            child: CircleAvatar(
+              backgroundImage: _bgImage(file),
+              radius: 30,
+            ),
+          ),
         ),
-        SectionCard(
-          title: 'Reseptlər',
-          onTap: () {
-            
-          },
+        const SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              widget.fullName,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+            Text(widget.username),
+          ],
         ),
-        SectionCard(
-          title: 'Şifrənin tənzimlənməsi',
-          onTap: () {},
+        const Spacer(),
+        IconButton(
+          icon: Icon(Icons.edit, color: Theme.of(context).primaryColor),
+          onPressed: widget.onPressed,
         ),
       ],
     );
   }
+
+  Widget _cardItem(String label, String text) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          textAlign: TextAlign.start,
+          label,
+        ),
+        const SizedBox(height: 4),
+        Text(
+          text,
+          textAlign: TextAlign.start,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
+
+  _bgImage(File? file) {
+    if (file == null) {
+      return const NetworkImage('https://biturbo.az/flutter/doc1.jpg');
+    }
+    return FileImage(file);
+  }
 }
 
-class SectionCard extends StatelessWidget {
-  final String title;
+class CardSection extends StatelessWidget {
+  final String label;
   final VoidCallback onTap;
 
-  const SectionCard({super.key, required this.title, required this.onTap});
+  const CardSection({
+    super.key,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
+    return Card(
       child: ListTile(
-        title: Text(title),
-        trailing: const Icon(Icons.chevron_right),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 6),
+          child: Text(label, style: const TextStyle(fontSize: 18)),
+        ),
+        trailing: const Icon(Icons.chevron_right_sharp),
         onTap: onTap,
       ),
     );

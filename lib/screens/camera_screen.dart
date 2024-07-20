@@ -61,6 +61,19 @@ class _CameraScreenState extends State<CameraScreen> {
           ),
         ),
         Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 28.0),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    size: 36,
+                  )),
+            )),
+        Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
             padding: const EdgeInsets.all(18.0),
@@ -95,6 +108,7 @@ class _CameraScreenState extends State<CameraScreen> {
       //   ),
       // );
 
+      // ignore: use_build_context_synchronously
       Navigator.of(context).push(
         MaterialPageRoute(
             builder: (context) => ImageShowerScreen(imagePath: file.path)),
