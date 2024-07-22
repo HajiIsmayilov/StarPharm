@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/shared/shared_strings.dart';
 
 // ignore: must_be_immutable
 class QaScreen extends StatelessWidget {
@@ -29,8 +30,8 @@ class QaScreen extends StatelessWidget {
             child: TextFormField(
               controller: controller,
               decoration: InputDecoration(
-                  hintText: "Ask your question",
-                  labelText: "Ask",
+                  hintText: SharedHints.askYourQuestion,
+                  labelText: SharedStrings.ask,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0))),
               minLines: 1,

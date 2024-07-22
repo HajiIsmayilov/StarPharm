@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/shared/shared_padding.dart';
 import 'package:star_pharm/widgets/custom_network_image.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -20,7 +21,7 @@ class CategoryCard extends StatelessWidget {
       elevation: 4,
       color: Colors.white,
       child: Container(
-        padding: CategoryCardPaddings.paddingAll,
+        padding: SharedPadding().paddingAll,
         child: Column(
           children: [
             CustomNetworkImage(url: imageUrl),
@@ -38,8 +39,4 @@ class CategoryCard extends StatelessWidget {
   }
 
   SizedBox _space() => const SizedBox(height: 6);
-}
-
-class CategoryCardPaddings {
-  static const EdgeInsets paddingAll = EdgeInsets.all(12);
 }

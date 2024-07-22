@@ -1,12 +1,28 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:star_pharm/screens/camera_screen.dart';
-import 'package:star_pharm/screens/change_password_screen.dart';
 import 'package:star_pharm/screens/profile_screen.dart';
+import '../shared/shared_strings.dart';
 import '../widgets/account_card.dart';
 
-class AccountTab extends StatelessWidget {
+class AccountTab extends StatefulWidget {
   const AccountTab({super.key});
+
+  @override
+  State<AccountTab> createState() => _AccountTabState();
+}
+
+class _AccountTabState extends State<AccountTab> {
   final String username = 'Kazim Kazimli';
+  late File? file;
+
+  @override
+  void initState() {
+    super.initState();
+    file = null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +51,7 @@ class AccountTab extends StatelessWidget {
                 },
               ),
               CardSection(
-                  label: AccountTabStrings.receipts,
+                  label: SharedStrings.receipts,
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -43,24 +59,30 @@ class AccountTab extends StatelessWidget {
                     );
                   }),
               CardSection(
-                  label: AccountTabStrings.passwordAdjustment,
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => const ChangePasswordScreen()),
-                    );
+                  label: SharedStrings.passwordAdjustment,
+                  onTap: () async {
+                    final pickedFile = await ImagePicker()
+                        .pickImage(source: ImageSource.camera);
+
+//Send
+                    setState(() {
+                      if (pickedFile != null) {
+                        // file = File(pickedFile.path);
+                        // Navigator.of(context).push(
+                        //   MaterialPageRoute(
+                        //       builder: (context) => ImageShowerScreen(
+                        //           imagePath: pickedFile.path)),
+                        // );
+                      } else {
+                        print('No image selected');
+                      }
+                    });
                   }),
-              CardSection(label: AccountTabStrings.logOut, onTap: () {})
+              CardSection(label: SharedStrings.logOut, onTap: () {})
             ],
           ),
         ),
       ),
     );
   }
-}
-
-class AccountTabStrings {
-  static const String receipts = 'Reseptlər';
-  static const String passwordAdjustment = 'Şifrənin tənzimlənməsi';
-  static const String logOut = 'Hesabınızdan çıxın';
 }

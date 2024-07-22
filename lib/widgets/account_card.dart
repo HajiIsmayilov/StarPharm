@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AccountCard extends StatefulWidget {
   final String fullName;
@@ -33,9 +33,7 @@ class _AccountCardState extends State<AccountCard> {
   late File? file;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     file = null;
   }
 
@@ -92,20 +90,7 @@ class _AccountCardState extends State<AccountCard> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: InkWell(
-            onTap: () async {
-              FilePickerResult? result = await FilePicker.platform.pickFiles(
-                allowMultiple: false,
-                type: FileType.image,
-                allowedExtensions: ['jpeg', 'jpg', 'png'],
-              );
-
-              String path = result!.paths[0] ?? '';
-
-              // setState(() {
-              //   file = File(path);
-              // });
-
-            },
+            onTap: getImage,
             child: CircleAvatar(
               backgroundImage: _bgImage(file),
               radius: 30,
@@ -125,9 +110,12 @@ class _AccountCardState extends State<AccountCard> {
           ],
         ),
         const Spacer(),
-        IconButton(
-          icon: Icon(Icons.edit, color: Theme.of(context).primaryColor),
-          onPressed: widget.onPressed,
+        Padding(
+          padding: const EdgeInsets.only(right: 12),
+          child: IconButton(
+            icon: Icon(Icons.edit, color: Theme.of(context).primaryColor),
+            onPressed: widget.onPressed,
+          ),
         ),
       ],
     );
@@ -149,6 +137,19 @@ class _AccountCardState extends State<AccountCard> {
         ),
       ],
     );
+  }
+
+  Future getImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery,);
+    //File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        file = File(pickedFile.path);
+      } else {
+        print('No image selected');
+      }
+    });
   }
 
   _bgImage(File? file) {

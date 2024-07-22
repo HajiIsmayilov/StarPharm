@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:star_pharm/widgets/qa_card.dart';
 import '../models/question.dart';
+import '../shared/shared_strings.dart';
 import '../widgets/custom_rectangle_border_button.dart';
 
 // ignore: must_be_immutable
@@ -53,7 +54,7 @@ class _QATabState extends State<QATab> {
       appBar: AppBar(
         title: const Padding(
           padding: EdgeInsets.only(left: 8.0),
-          child: Text(QATabStrings.questions),
+          child: Text(SharedStrings.questions),
         ),
         actions: [
           _toggleButton(context),
@@ -83,7 +84,7 @@ class _QATabState extends State<QATab> {
               child: TextField(
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
-                  hintText: QATabStrings.askQuestionLabel,
+                  hintText: SharedStrings.askQuestionLabel,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -126,13 +127,13 @@ class _QATabState extends State<QATab> {
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.16,
             child: const Center(
-                child: Text(QATabStrings.answered,
+                child: Text(SharedStrings.answered,
                     style: TextStyle(fontSize: 13))),
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.16,
             child: const Center(
-              child: Text(QATabStrings.nonAnswered,
+              child: Text(SharedStrings.nonAnswered,
                   style: TextStyle(fontSize: 13)),
             ),
           ),
@@ -191,8 +192,8 @@ class _QATabState extends State<QATab> {
                         controller: controller,
                         autofocus: true,
                         decoration: InputDecoration(
-                            hintText: QATabStrings.askQuestion,
-                            labelText: QATabStrings.askQuestionLabel,
+                            hintText: SharedStrings.askQuestion,
+                            labelText: SharedStrings.askQuestionLabel,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8.0))),
                         minLines: 6,
@@ -203,7 +204,7 @@ class _QATabState extends State<QATab> {
                       SizedBox(
                         width: double.infinity,
                         child: CustomRectangleBorderButton(
-                          title: QATabStrings.send,
+                          title: SharedStrings.send,
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -219,14 +220,4 @@ class _QATabState extends State<QATab> {
       ),
     );
   }
-}
-
-class QATabStrings {
-  static const String questions = 'Suallar';
-  static const String search = 'Axtarış';
-  static const String answered = 'Cavablı';
-  static const String nonAnswered = 'Cavabsız';
-  static const String askQuestion = 'Sualınızı verin';
-  static const String askQuestionLabel = 'Sual';
-  static const String send = 'Göndər';
 }

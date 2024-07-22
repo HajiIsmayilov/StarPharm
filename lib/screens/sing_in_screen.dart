@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/shared/shared_padding.dart';
 import 'package:star_pharm/widgets/jpg_image.dart';
 
+import '../shared/shared_strings.dart';
 import '../widgets/custom_rectangle_border_button.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -21,7 +23,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: SingInScreenPaddings().horizontalPadding,
+          padding: SharedPadding().horizontalPadding,
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
@@ -32,20 +34,20 @@ class _SignInScreenState extends State<SignInScreen> {
                       url: SignInScreen._url, width: SignInScreen._imgWidth),
                   _space(),
                   Text(
-                    SingInScreenStrings.logIn,
+                    SharedStrings.logIn,
                     style: Theme.of(context).primaryTextTheme.headlineLarge,
                   ),
                   _space(),
                   TextFormField(
                     decoration: const InputDecoration(
-                      labelText: SingInScreenStrings.email,
+                      labelText: SharedStrings.email,
                     ),
                   ),
                   _space(),
                   TextFormField(
                       obscureText: _obscureText,
                       decoration: InputDecoration(
-                          labelText: SingInScreenStrings.password,
+                          labelText: SharedStrings.password,
                           suffixIcon: IconButton(
                             icon: Icon(visibilityData()),
                             onPressed: update,
@@ -55,7 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: TextButton(
                       onPressed: () {},
                       child: const Text(
-                        SingInScreenStrings.forgotPassword,
+                        SharedStrings.forgotPassword,
                         style: TextStyle(color: Colors.teal),
                       ),
                     ),
@@ -63,17 +65,17 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: CustomRectangleBorderButton(
-                      title: SingInScreenStrings.logIn,
+                      title: SharedStrings.logIn,
                       onPressed: () {},
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(SingInScreenStrings.dontHaveAccount),
+                      const Text(SharedStrings.dontHaveAccount),
                       TextButton(
                         onPressed: () {},
-                        child: const Text(SingInScreenStrings.signUp),
+                        child: const Text(SharedStrings.signUp),
                       )
                     ],
                   )
@@ -99,16 +101,3 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 }
 
-class SingInScreenStrings {
-  static const String logIn = 'Log in';
-  static const String signUp = 'Sign up';
-  static const String email = 'Email';
-  static const String password = 'Password';
-  static const String forgotPassword = 'Forgot Password?';
-  static const String dontHaveAccount = 'Don\'t have an account?';
-}
-
-class SingInScreenPaddings {
-  final EdgeInsets horizontalPadding =
-      const EdgeInsets.symmetric(horizontal: 12);
-}

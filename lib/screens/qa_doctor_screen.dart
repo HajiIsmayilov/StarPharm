@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/shared/shared_strings.dart';
 
 import '../widgets/custom_rectangle_border_button.dart';
 import '../widgets/qa_card.dart';
@@ -17,7 +18,7 @@ class QaDoctorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Doctor\'s Answer'),
+        title: const Text(SharedStrings.doctorAnswer),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -38,8 +39,8 @@ class QaDoctorScreen extends StatelessWidget {
               TextFormField(
                 controller: controller,
                 decoration: InputDecoration(
-                    hintText: "Ask your question",
-                    labelText: "Ask",
+                    hintText: SharedHints.askYourQuestion,
+                    labelText: SharedStrings.ask,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0))),
                 minLines: 6,
@@ -52,7 +53,7 @@ class QaDoctorScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: CustomRectangleBorderButton(
-                  title: 'Send',
+                  title: SharedStrings.send,
                   onPressed: () {
                     Navigator.pop(context);
                   },

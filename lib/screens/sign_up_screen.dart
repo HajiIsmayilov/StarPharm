@@ -1,8 +1,10 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:star_pharm/shared/shared_maskes.dart';
+import 'package:star_pharm/shared/shared_padding.dart';
 import 'package:star_pharm/widgets/custom_rectangle_border_button.dart';
 
+import '../shared/shared_strings.dart';
 import '../validations/regexes.dart';
 import '../widgets/jpg_image.dart';
 
@@ -29,7 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: SignUpScreenPaddings().horizontalPadding,
+        padding: SharedPadding().horizontalPadding,
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -40,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const JpgImage(
                     url: SignUpScreen._url, width: SignUpScreen._imgWidth),
                 const Text(
-                  SignUpScreenStrings.signUp,
+                  SharedStrings.signUp,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -50,8 +52,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 TextFormField(
                   validator: ValidationRules().userNameValidation,
                   decoration: const InputDecoration(
-                    hintText: SignUpScreenHints.username,
-                    labelText: SignUpScreenStrings.username,
+                    hintText: SharedHints.username,
+                    labelText: SharedStrings.username,
                   ),
                 ),
                 _space(),
@@ -59,27 +61,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.emailAddress,
                   validator: ValidationRules().emailValidation,
                   decoration: const InputDecoration(
-                    hintText: SignUpScreenHints.email,
-                    labelText: SignUpScreenStrings.email,
+                    hintText: SharedHints.email,
+                    labelText: SharedStrings.email,
                   ),
                 ),
                 _space(),
                 TextFormField(
                   keyboardType: TextInputType.datetime,
                   decoration: const InputDecoration(
-                    hintText: SignUpScreenHints.birthdate,
-                    labelText: SignUpScreenStrings.birthdate,
+                    hintText: SharedHints.birthdate,
+                    labelText: SharedStrings.birthdate,
                     border: OutlineInputBorder(),
                   ),
-                  inputFormatters: [SignUpScreenMaskes().birthdayMask],
+                  inputFormatters: [SharedMaskes().birthdayMask],
                 ),
                 _space(),
                 TextFormField(
                   keyboardType: TextInputType.phone,
-                  inputFormatters: [SignUpScreenMaskes().phoneMask],
+                  inputFormatters: [SharedMaskes().phoneMask],
                   decoration: const InputDecoration(
-                    hintText: SignUpScreenHints.phone,
-                    labelText: SignUpScreenStrings.phone,
+                    hintText: SharedHints.phone,
+                    labelText: SharedStrings.phone,
                   ),
                 ),
                 _space(),
@@ -117,20 +119,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                          child: Text(SignUpScreenStrings.male,
+                          child: Text(SharedStrings.male,
                               style: TextStyle(fontSize: 18))),
                     ),
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                        child: Text(SignUpScreenStrings.female,
+                        child: Text(SharedStrings.female,
                             style: TextStyle(fontSize: 18)),
                       ),
                     ),
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                          child: Text(SignUpScreenStrings.other,
+                          child: Text(SharedStrings.other,
                               style: TextStyle(fontSize: 18))),
                     ),
                   ],
@@ -152,20 +154,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                          child: Text(SignUpScreenStrings.patient,
+                          child: Text(SharedStrings.patient,
                               style: TextStyle(fontSize: 18))),
                     ),
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                        child: Text(SignUpScreenStrings.doctor,
+                        child: Text(SharedStrings.doctor,
                             style: TextStyle(fontSize: 18)),
                       ),
                     ),
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                          child: Text(SignUpScreenStrings.pharmacist,
+                          child: Text(SharedStrings.pharmacist,
                               style: TextStyle(fontSize: 18))),
                     ),
                   ],
@@ -178,7 +180,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     obscureText: _obscureText,
                     validator: ValidationRules().passwordValidation,
                     decoration: InputDecoration(
-                        labelText: SignUpScreenStrings.password,
+                        labelText: SharedStrings.password,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(_radius),
                         ),
@@ -190,7 +192,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 TextFormField(
                     obscureText: _obscureText,
                     decoration: InputDecoration(
-                        labelText: SignUpScreenStrings.confirmPassword,
+                        labelText: SharedStrings.confirmPassword,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(_radius),
                         ),
@@ -202,7 +204,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: CustomRectangleBorderButton(
-                    title: SignUpScreenStrings.signUp,
+                    title: SharedStrings.signUp,
                     onPressed: () {
                       _validate(context);
                     },
@@ -212,13 +214,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      SignUpScreenStrings.haveAccount,
+                      SharedStrings.haveAccount,
                       style: TextStyle(fontSize: 16),
                     ),
                     TextButton(
                       onPressed: () {},
                       child: Text(
-                        SignUpScreenStrings.logIn,
+                        SharedStrings.logIn,
                         style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 16),
@@ -285,45 +287,4 @@ class _SignUpScreenState extends State<SignUpScreen> {
       _obscureText = !_obscureText;
     });
   }
-}
-
-class SignUpScreenStrings {
-  static const String logIn = 'Log in';
-  static const String signUp = 'Sign up';
-  static const String username = 'User Name';
-  static const String birthdate = 'Birthdate';
-  static const String email = 'Email';
-  static const String phone = 'Mobile Number';
-  static const String password = 'Password';
-  static const String confirmPassword = 'Confirm Password';
-  static const String haveAccount = 'Already have an account?';
-  static const String male = 'Kişi';
-  static const String female = 'Qadın';
-  static const String other = 'Digər';
-  static const String patient = 'Xəstə';
-  static const String doctor = 'Həkim';
-  static const String pharmacist = 'Əczaçı';
-}
-
-class SignUpScreenMaskes {
-  final phoneMask = MaskTextInputFormatter(
-      mask: '(###) ###-##-##',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
-  final birthdayMask = MaskTextInputFormatter(
-      mask: '##/##/####',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
-}
-
-class SignUpScreenHints {
-  static const String username = 'Kerim Kerimli';
-  static const String email = 'kerimkrm@gmail.com';
-  static const String birthdate = '07/07/2007';
-  static const String phone = '(090) 111-11-11';
-}
-
-class SignUpScreenPaddings {
-  final EdgeInsets horizontalPadding =
-      const EdgeInsets.symmetric(horizontal: 12);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/shared/shared_strings.dart';
 
 import '../validations/regexes.dart';
 import '../widgets/custom_rectangle_border_button.dart';
@@ -28,7 +29,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Change Password',
+                  SharedStrings.changePassword,
                   style: Theme.of(context).primaryTextTheme.headlineLarge,
                 ),
                 _space(),
@@ -36,7 +37,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     obscureText: _obscureText,
                     validator: ValidationRules().passwordValidation,
                     decoration: InputDecoration(
-                        labelText: 'Current Password',
+                        labelText: SharedStrings.currentPassword,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -49,7 +50,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     obscureText: _obscureText,
                     validator: ValidationRules().passwordValidation,
                     decoration: InputDecoration(
-                        labelText: 'New Password',
+                        labelText: SharedStrings.password,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -62,7 +63,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     obscureText: _obscureText,
                     validator: ValidationRules().passwordValidation,
                     decoration: InputDecoration(
-                        labelText: 'Confirm Password',
+                        labelText: SharedStrings.confirmPassword,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -74,7 +75,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: CustomRectangleBorderButton(
-                    title: 'Save',
+                    title: SharedStrings.save,
                     onPressed: () {},
                   ),
                 ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import '../shared/shared_strings.dart';
 import '../tabs/home_tab.dart';
 import '../tabs/search_tab.dart';
-import '../tabs/products/products_category.dart';
+import '../tabs/products_category.dart';
 import '../tabs/qa_tab.dart';
 import '../tabs/account_tab.dart';
 
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   static final List<Widget> _widgetOptions = [
     HomeTab(),
     const SearchTab(),
-    const ProductsCategory(),
+    ProductsCategory(),
     const QATab(),
     const AccountTab(),
   ];
@@ -61,23 +62,23 @@ class _HomeScreenState extends State<HomeScreen> {
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Əsas',
+          label: SharedStrings.main,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.search),
-          label: 'Axtarış',
+          label: SharedStrings.search,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.shopping_bag),
-          label: 'Məhsullar',
+          label: SharedStrings.products,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.question_answer),
-          label: 'Sual-Cavab',
+          label: SharedStrings.questionAnswer,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.account_circle),
-          label: 'Hesab',
+          label: SharedStrings.account,
         ),
       ],
       currentIndex: _selectedIndex,

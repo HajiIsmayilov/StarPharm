@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import '../models/category.dart';
 import '../models/post.dart';
+import '../shared/shared_strings.dart';
 import '../widgets/doctor_card.dart';
 import '../widgets/category_cart.dart';
 import '../widgets/post_cart.dart';
@@ -37,22 +38,22 @@ class HomeTab extends StatelessWidget {
         title: 'Məhsullar', imageUrl: 'https://biturbo.az/flutter/drugs.png')
   ];
 
-  final List<Post> _posts = [
-    Post(
-      title: 'Allergik rinitin nədir və əlamətləri hansılardır?',
-      authors: 'MBBS, BCS',
-      views: 1250,
-      imageUrl:
-          'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
-    ),
-    Post(
-      title: 'Qida allergiyasının ən effektiv müalicəsi',
-      authors: 'MBBS, BCS',
-      views: 1250,
-      imageUrl:
-          'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
-    )
-  ];
+  // final List<Post> _posts = [
+  //   Post(
+  //     title: 'Allergik rinitin nədir və əlamətləri hansılardır?',
+  //     authors: 'MBBS, BCS',
+  //     views: 1250,
+  //     imageUrl:
+  //         'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
+  //   ),
+  //   Post(
+  //     title: 'Qida allergiyasının ən effektiv müalicəsi',
+  //     authors: 'MBBS, BCS',
+  //     views: 1250,
+  //     imageUrl:
+  //         'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
+  //   )
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class HomeTab extends StatelessWidget {
           icon: const Icon(Icons.account_circle),
           onPressed: () {},
         ),
-        title: const Text('${HomeTabStrings.welcome} $_username'),
+        title: const Text('${SharedStrings.welcome} $_username'),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
@@ -80,7 +81,7 @@ class HomeTab extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
-                  hintText: HomeTabStrings.searchKeyHint,
+                  hintText: SharedStrings.searchKeyHint,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -106,7 +107,7 @@ class HomeTab extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
-                HomeTabStrings.peadiatrs,
+                SharedStrings.peadiatrs,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
@@ -138,7 +139,7 @@ class HomeTab extends StatelessWidget {
               margin: const EdgeInsets.all(8.0),
               padding: const EdgeInsets.all(8.0),
               child: const Text(
-                HomeTabStrings.newPosts,
+                SharedStrings.newPosts,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
@@ -169,11 +170,4 @@ class HomeTab extends StatelessWidget {
       ),
     );
   }
-}
-
-class HomeTabStrings {
-  static const String welcome = 'Xoş gəlmisiniz, ';
-  static const String searchKeyHint = 'Axtarış üçün açar sözü daxil edin..';
-  static const String peadiatrs = 'Pediatrlar';
-  static const String newPosts = 'Yeni paylaşımlar';
 }

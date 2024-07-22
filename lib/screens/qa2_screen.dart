@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../shared/shared_strings.dart';
 import '../widgets/custom_rectangle_border_button.dart';
 
 class Qa2Screen extends StatelessWidget {
@@ -25,15 +26,15 @@ class Qa2Screen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         CircleAvatar(
-                          backgroundImage:
-                              NetworkImage('https://biturbo.az/flutter/doc1.jpg'),
+                          backgroundImage: NetworkImage(
+                              'https://biturbo.az/flutter/doc1.jpg'),
                           radius: 30,
                         ),
                         SizedBox(width: 10),
                         Text(
                           _fullname,
-                          style:
-                              TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                       ],
                     ),
@@ -48,8 +49,8 @@ class Qa2Screen extends StatelessWidget {
                           TextFormField(
                             controller: controller,
                             decoration: InputDecoration(
-                                hintText: "Ask your question",
-                                labelText: "Ask",
+                                hintText: SharedHints.askYourQuestion,
+                                labelText: SharedStrings.ask,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(8.0))),
                             minLines: 6,
@@ -60,7 +61,7 @@ class Qa2Screen extends StatelessWidget {
                           SizedBox(
                             width: double.infinity,
                             child: CustomRectangleBorderButton(
-                              title: 'Send',
+                              title: SharedStrings.send,
                               onPressed: () {},
                             ),
                           )

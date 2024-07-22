@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:star_pharm/widgets/custom_rectangle_border_button.dart';
 
+import '../shared/shared_strings.dart';
+
 class ImageShowerScreen extends StatelessWidget {
   const ImageShowerScreen({super.key, required this.imagePath});
   final String? imagePath;
@@ -38,7 +40,7 @@ class ImageShowerScreen extends StatelessWidget {
                 child: SizedBox(
                   width: double.infinity,
                   child: CustomRectangleBorderButton(
-                    title: 'Send',
+                    title: SharedStrings.send,
                     onPressed: () {
                       Navigator.pop(context);
                     },

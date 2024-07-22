@@ -1,7 +1,8 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
+import '../shared/shared_maskes.dart';
+import '../shared/shared_strings.dart';
 import '../validations/regexes.dart';
 import '../widgets/custom_rectangle_border_button.dart';
 
@@ -49,14 +50,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 TextFormField(
                   validator: ValidationRules().userNameValidation,
                   decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: Theme.of(context).primaryColor,
-                    )),
-                    hintText: ProfileScreenHints.username,
-                    labelText: ProfileScreenStrings.username,
-                    labelStyle: TextStyle(color: Theme.of(context).primaryColor)
-                  ),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Theme.of(context).primaryColor,
+                      )),
+                      hintText: SharedHints.username,
+                      labelText: SharedStrings.username,
+                      labelStyle:
+                          TextStyle(color: Theme.of(context).primaryColor)),
                   initialValue: username,
                 ),
                 _space(),
@@ -64,43 +65,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   keyboardType: TextInputType.emailAddress,
                   validator: ValidationRules().emailValidation,
                   decoration: InputDecoration(
-                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: Theme.of(context).primaryColor,
-                    )),
-                    hintText: ProfileScreenHints.email,
-                    labelText: ProfileScreenStrings.email,
-                    labelStyle: TextStyle(color: Theme.of(context).primaryColor)
-                  ),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Theme.of(context).primaryColor,
+                      )),
+                      hintText: SharedHints.email,
+                      labelText: SharedStrings.email,
+                      labelStyle:
+                          TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 _space(),
                 TextFormField(
                   keyboardType: TextInputType.datetime,
-                  decoration:  InputDecoration(
-                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: Theme.of(context).primaryColor,
-                    )),
-                    hintText: ProfileScreenHints.birthdate,
-                    labelText: ProfileScreenStrings.birthdate,
-                    border: const OutlineInputBorder(),
-                    labelStyle: TextStyle(color: Theme.of(context).primaryColor)
-                  ),
-                  inputFormatters: [SignUpScreenMaskes().birthdayMask],
+                  decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Theme.of(context).primaryColor,
+                      )),
+                      hintText: SharedHints.birthdate,
+                      labelText: SharedStrings.birthdate,
+                      border: const OutlineInputBorder(),
+                      labelStyle:
+                          TextStyle(color: Theme.of(context).primaryColor)),
+                  inputFormatters: [SharedMaskes().birthdayMask],
                 ),
                 _space(),
                 TextFormField(
                   keyboardType: TextInputType.phone,
-                  inputFormatters: [SignUpScreenMaskes().phoneMask],
-                  decoration:  InputDecoration(
-                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: Theme.of(context).primaryColor,
-                    )),
-                    hintText: ProfileScreenHints.phone,
-                    labelText: ProfileScreenStrings.phone,
-                    labelStyle: TextStyle(color: Theme.of(context).primaryColor)
-                  ),
+                  inputFormatters: [SharedMaskes().phoneMask],
+                  decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Theme.of(context).primaryColor,
+                      )),
+                      hintText: SharedHints.phone,
+                      labelText: SharedStrings.phone,
+                      labelStyle:
+                          TextStyle(color: Theme.of(context).primaryColor)),
                 ),
                 _space(),
                 Container(
@@ -137,20 +138,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                          child: Text(ProfileScreenStrings.male,
+                          child: Text(SharedStrings.male,
                               style: TextStyle(fontSize: 18))),
                     ),
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                        child: Text(ProfileScreenStrings.female,
+                        child: Text(SharedStrings.female,
                             style: TextStyle(fontSize: 18)),
                       ),
                     ),
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                          child: Text(ProfileScreenStrings.other,
+                          child: Text(SharedStrings.other,
                               style: TextStyle(fontSize: 18))),
                     ),
                   ],
@@ -172,20 +173,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                          child: Text(ProfileScreenStrings.patient,
+                          child: Text(SharedStrings.patient,
                               style: TextStyle(fontSize: 18))),
                     ),
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                        child: Text(ProfileScreenStrings.doctor,
+                        child: Text(SharedStrings.doctor,
                             style: TextStyle(fontSize: 18)),
                       ),
                     ),
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 3 - 12,
                       child: const Center(
-                          child: Text(ProfileScreenStrings.pharmacist,
+                          child: Text(SharedStrings.pharmacist,
                               style: TextStyle(fontSize: 18))),
                     ),
                   ],
@@ -197,7 +198,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: CustomRectangleBorderButton(
-                    title: 'Save',
+                    title: SharedStrings.save,
                     onPressed: () {},
                   ),
                 ),
@@ -234,40 +235,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
       }
     });
   }
-}
-
-class ProfileScreenStrings {
-  static const String logIn = 'Log in';
-  static const String signUp = 'Sign up';
-  static const String username = 'User Name';
-  static const String birthdate = 'Birthdate';
-  static const String email = 'Email';
-  static const String phone = 'Mobile Number';
-  static const String password = 'Password';
-  static const String confirmPassword = 'Confirm Password';
-  static const String haveAccount = 'Already have an account?';
-  static const String male = 'Kişi';
-  static const String female = 'Qadın';
-  static const String other = 'Digər';
-  static const String patient = 'Xəstə';
-  static const String doctor = 'Həkim';
-  static const String pharmacist = 'Əczaçı';
-}
-
-class ProfileScreenHints {
-  static const String username = 'Kerim Kerimli';
-  static const String email = 'kerimkrm@gmail.com';
-  static const String birthdate = '07/07/2007';
-  static const String phone = '(090) 111-11-11';
-}
-
-class SignUpScreenMaskes {
-  final phoneMask = MaskTextInputFormatter(
-      mask: '(###) ###-##-##',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
-  final birthdayMask = MaskTextInputFormatter(
-      mask: '##/##/####',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
 }

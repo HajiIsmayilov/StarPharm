@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/shared/shared_strings.dart';
 //import 'package:star_pharm/screens/sign_up_screen.dart';
 
 import '../validations/regexes.dart';
@@ -24,7 +25,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               TextFormField(
                 validator: ValidationRules().emailValidation,
                 decoration: const InputDecoration(
-                  labelText: 'Email',
+                  labelText: SharedStrings.email,
                   border: OutlineInputBorder(),
                 ),
               )
