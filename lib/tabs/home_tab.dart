@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:star_pharm/screens/notifications_screen.dart';
 import 'package:star_pharm/services/post_service.dart';
 import 'dart:convert';
 
@@ -64,11 +65,18 @@ class HomeTab extends StatelessWidget {
           icon: const Icon(Icons.account_circle),
           onPressed: () {},
         ),
-        title: const Text('${SharedStrings.welcome} $_username'),
+        title: Text(
+          '${SharedStrings.welcome} $_username',
+          style: Theme.of(context).primaryTextTheme.headlineLarge,
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => NotificationsScreen()),
+              );
+            },
           ),
         ],
       ),
@@ -80,11 +88,10 @@ class HomeTab extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
+                  border: Theme.of(context).inputDecorationTheme.border,
+                  focusedBorder: Theme.of(context).inputDecorationTheme.border,
                   prefixIcon: const Icon(Icons.search),
                   hintText: SharedStrings.searchKeyHint,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
                 ),
               ),
             ),
@@ -157,7 +164,8 @@ class HomeTab extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         children: snapshot.data!
                             .map((post) => SizedBox(
-                                  width: MediaQuery.of(context).size.width * 0.64,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.64,
                                   child: PostCard(post: post),
                                 ))
                             .toList());

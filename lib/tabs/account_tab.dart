@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:star_pharm/screens/camera_screen.dart';
+import 'package:star_pharm/screens/change_password_screen.dart';
 import 'package:star_pharm/screens/profile_screen.dart';
 import '../shared/shared_strings.dart';
 import '../widgets/account_card.dart';
@@ -28,7 +29,10 @@ class _AccountTabState extends State<AccountTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(username),
+       title: Text(
+          SharedStrings.account,
+          style: Theme.of(context).primaryTextTheme.headlineLarge,
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -75,7 +79,7 @@ class _AccountTabState extends State<AccountTab> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                          builder: (context) => const ProfileScreen()),
+                          builder: (context) => const ChangePasswordScreen()),
                     );
                   }),
               CardSection(label: SharedStrings.logOut, onTap: () {})

@@ -1,5 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:grock/grock.dart';
+import 'package:star_pharm/cache/notification_cache.dart';
+import 'package:uuid/uuid.dart';
+import '../models/notification.dart';
 
 class FirebaseNotificationService {
   late final FirebaseMessaging messaging;
@@ -12,13 +16,19 @@ class FirebaseNotificationService {
     );
   }
 
+  static Future<void> backgroundMessage(RemoteMessage message) async {
+    await Firebase.initializeApp();
+  }
+
   void connectNotification() async {
+    NotificationCache notificationCache = NotificationCache();
     await Firebase.initializeApp(
+
       options: const FirebaseOptions(
-        apiKey: 'AIzaSyAY1pZhlIhPUBZedCxwuEKaWQaTJGMj6nQ',
-        appId: '1:309546709450:android:1c95a8df7b92ce2b589f33',
-        messagingSenderId: '309546709450',
-        projectId: 'myapp-d554c',
+        apiKey: 'AIzaSyCIjSMI2J2YubSNI1sy-uHoKuh54rfdV7E',
+        appId: '1:188358117907:android:3d3faa7bf8151fcecb0de6',
+        messagingSenderId: '188358117907',
+        projectId: 'starpharm-ca3e5',
       ),
     );
     messaging = FirebaseMessaging.instance;
@@ -27,9 +37,21 @@ class FirebaseNotificationService {
       sound: true,
       badge: true,
     );
+    var token = await FirebaseMessaging.instance.getToken();
+    print(token);
     settingNotification();
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
-      print(event.notification?.title);
+      Grock.snackBar(
+          title: "${event.notification?.title}",
+          description: "${event.notification?.body}");
+
+      NotificationModel notification = NotificationModel(
+          uuid: const Uuid().v4(),
+          title: event.notification?.title ?? 'null',
+          text: event.notification?.body ?? 'null',
+          imageUrl: 'null');
+
+      notificationCache.add(notification);
     });
   }
 }

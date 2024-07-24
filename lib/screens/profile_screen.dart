@@ -33,6 +33,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          SharedStrings.editProfile,
+          style: Theme.of(context).primaryTextTheme.headlineLarge,
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: SharedPadding().horizontalPadding,
@@ -41,13 +47,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      SharedStrings.editProfile,
-                      style: Theme.of(context).primaryTextTheme.headlineLarge,
-                    ),
-                  ),
                   _space(),
                   _CustomTextFormField(
                     initialValue: username,

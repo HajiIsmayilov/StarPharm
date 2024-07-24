@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:star_pharm/models/category.dart';
+import 'package:star_pharm/tabs/home_tab.dart';
+import 'package:star_pharm/widgets/product_cart.dart';
 import '../shared/shared_strings.dart';
 import '../widgets/category_cart.dart';
 
@@ -34,7 +36,10 @@ class ProductsCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(SharedStrings.products),
+        title: Text(
+          SharedStrings.products,
+          style: Theme.of(context).primaryTextTheme.headlineLarge,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -45,23 +50,136 @@ class ProductsCategory extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
+                  border: Theme.of(context).inputDecorationTheme.border,
+                  focusedBorder: Theme.of(context).inputDecorationTheme.border,
                   prefixIcon: const Icon(Icons.search),
                   hintText: SharedStrings.searchProduct,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
                 ),
               ),
             ),
             Expanded(
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemBuilder: (BuildContext context, int index) =>
-                      CategoryCard(
-                        imageUrl: _products[index].imageUrl,
-                        label: _products[index].title,
-                      )),
+              child: GridView.count(
+                padding: const EdgeInsets.all(8.0),
+                crossAxisCount: 2,
+                childAspectRatio: 1.5,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeTab()),
+                      );
+                    },
+                    child: const Expanded(
+                      child: ProductCart(
+                        imageUrl: 'https://biturbo.az/flutter/gynecology.png',
+                        label: 'Ginekoloji',
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeTab()),
+                      );
+                    },
+                    child: const Expanded(
+                      child: ProductCart(
+                        imageUrl:
+                            'https://biturbo.az/flutter/gastroenterology.png',
+                        label: 'Mədə-bağırsaq',
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeTab()),
+                      );
+                    },
+                    child: const Expanded(
+                      child: ProductCart(
+                        imageUrl: 'https://biturbo.az/flutter/pediatrics.png',
+                        label: 'Uşaqlar',
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeTab()),
+                      );
+                    },
+                    child: const Expanded(
+                      child: ProductCart(
+                        imageUrl: 'https://biturbo.az/flutter/urology.png',
+                        label: 'Urologiya',
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeTab()),
+                      );
+                    },
+                    child: const Expanded(
+                      child: ProductCart(
+                        imageUrl: 'https://biturbo.az/flutter/sexology.png',
+                        label: 'Cinsi',
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeTab()),
+                      );
+                    },
+                    child: const Expanded(
+                      child: ProductCart(
+                        imageUrl: 'https://biturbo.az/flutter/general.png',
+                        label: 'Ümumi',
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeTab()),
+                      );
+                    },
+                    child: const Expanded(
+                      child: ProductCart(
+                        imageUrl: 'https://biturbo.az/flutter/dermatology.png',
+                        label: 'Dermatoloji',
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeTab()),
+                      );
+                    },
+                    child: const Expanded(
+                      child: ProductCart(
+                        imageUrl: 'https://biturbo.az/flutter/psychology.png',
+                        label: 'Psixoloji',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             )
           ],
         ),

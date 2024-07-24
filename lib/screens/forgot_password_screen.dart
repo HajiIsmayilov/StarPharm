@@ -28,10 +28,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         child: Form(
           key: _formKey,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const JpgImage(url: _url, width: _imgWidth),
               const SizedBox(height: 10),
-              const Text('Emailinizi daxil edin'),
+              const Text('Parolunuzu unutmusunuzsa, e-poçt ünvanınızı daxil edin', style: TextStyle(fontSize: 16),),
               const SizedBox(height: 10),
               TextFormField(
                 validator: ValidationRules().emailValidation,
@@ -157,13 +158,20 @@ class CodeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 220,
       child: Card(
         child: Padding(
           padding: SharedPadding().horizontalPadding,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Text(
+                'Zəhmət olmasa, e-poçtunuza gələn parolu daxil edin',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(
+                height: 12,
+              ),
               TextFormField(
                 decoration: InputDecoration(
                   border: Theme.of(context).inputDecorationTheme.border,
@@ -210,7 +218,7 @@ class _PasswordCardState extends State<PasswordCard> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 258,
       child: Card(
         child: Padding(
           padding: SharedPadding().horizontalPadding,
@@ -218,9 +226,10 @@ class _PasswordCardState extends State<PasswordCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Yeni sifrenizi daxil edin',
-                style: TextStyle(color: Colors.black),
+                'Zəhmət olmasa yeni parolunuzu daxil edin',
+                style: TextStyle(color: Colors.black, fontSize: 16),
               ),
+              const SizedBox(height: 12),
               TextFormField(
                   obscureText: _obscureText,
                   validator: ValidationRules().passwordValidation,

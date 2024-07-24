@@ -54,9 +54,12 @@ class _QATabState extends State<QATab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.only(left: 8.0),
-          child: Text(SharedStrings.questions),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            SharedStrings.questions,
+            style: Theme.of(context).primaryTextTheme.headlineLarge,
+          ),
         ),
         actions: [
           _toggleButton(context),
@@ -85,11 +88,10 @@ class _QATabState extends State<QATab> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
+                  border: Theme.of(context).inputDecorationTheme.border,
+                  focusedBorder: Theme.of(context).inputDecorationTheme.border,
                   prefixIcon: const Icon(Icons.search),
                   hintText: SharedStrings.askQuestionLabel,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
                 ),
               ),
             ),
@@ -104,7 +106,8 @@ class _QATabState extends State<QATab> {
                     question: questions[index].question,
                     onPressed: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => QaDoctorScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => QaDoctorScreen()),
                       );
                     },
                   ),
@@ -198,10 +201,12 @@ class _QATabState extends State<QATab> {
                         controller: controller,
                         autofocus: true,
                         decoration: InputDecoration(
-                            hintText: SharedStrings.askQuestion,
-                            labelText: SharedStrings.askQuestionLabel,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8.0))),
+                          border: Theme.of(context).inputDecorationTheme.border,
+                          focusedBorder:
+                              Theme.of(context).inputDecorationTheme.border,
+                          hintText: SharedStrings.askQuestion,
+                          labelText: SharedStrings.askQuestionLabel,
+                        ),
                         minLines: 6,
                         maxLines: 6,
                         keyboardType: TextInputType.multiline,

@@ -1,19 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:star_pharm/shared/shared_padding.dart';
+import 'package:flutter/widgets.dart';
 import 'package:star_pharm/widgets/custom_network_image.dart';
 
-class CategoryCard extends StatelessWidget {
+import '../shared/shared_padding.dart';
+
+class ProductCart extends StatelessWidget {
+  const ProductCart({super.key, required this.imageUrl, required this.label});
+  static const double _fontSize = 14.0;
   final String imageUrl;
   final String label;
-
-  //static const double _width = 40.0;
-  static const double _fontSize = 14.0;
-
-  const CategoryCard({
-    super.key,
-    required this.imageUrl,
-    required this.label,
-  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +19,8 @@ class CategoryCard extends StatelessWidget {
       child: Container(
         padding: SharedPadding().paddingAll,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomNetworkImage(url: imageUrl),
             const SizedBox(height: 6),

@@ -18,7 +18,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          SharedStrings.changePassword,
+          style: Theme.of(context).primaryTextTheme.headlineLarge,
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -28,10 +33,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  SharedStrings.changePassword,
-                  style: Theme.of(context).primaryTextTheme.headlineLarge,
-                ),
                 _space(),
                 TextFormField(
                     obscureText: _obscureText,

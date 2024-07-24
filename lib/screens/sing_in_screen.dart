@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:star_pharm/screens/forgot_password_screen.dart';
+import 'package:star_pharm/screens/home_screen.dart';
 import 'package:star_pharm/screens/sign_up_screen.dart';
 import 'package:star_pharm/shared/shared_padding.dart';
 import 'package:star_pharm/widgets/jpg_image.dart';
@@ -41,7 +42,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   _space(),
                   TextFormField(
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
+                      border: Theme.of(context).inputDecorationTheme.border,
+                      focusedBorder:
+                          Theme.of(context).inputDecorationTheme.border,
+                      hintText: SharedHints.email,
                       labelText: SharedStrings.email,
                     ),
                   ),
@@ -50,6 +55,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       obscureText: _obscureText,
                       decoration: InputDecoration(
                           labelText: SharedStrings.password,
+                          border: Theme.of(context).inputDecorationTheme.border,
+                          focusedBorder:
+                              Theme.of(context).inputDecorationTheme.border,
                           suffixIcon: IconButton(
                             icon: Icon(visibilityData()),
                             onPressed: update,
@@ -73,7 +81,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     width: double.infinity,
                     child: CustomRectangleBorderButton(
                       title: SharedStrings.logIn,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()),
+                        );
+                      },
                     ),
                   ),
                   Row(

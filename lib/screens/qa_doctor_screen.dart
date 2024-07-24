@@ -17,7 +17,6 @@ class QaDoctorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -48,10 +47,12 @@ class QaDoctorScreen extends StatelessWidget {
                 TextFormField(
                   controller: controller,
                   decoration: InputDecoration(
-                      hintText: SharedHints.answerQuestions,
-                      labelText: SharedStrings.answer,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0))),
+                    hintText: SharedHints.answerQuestions,
+                    labelText: SharedStrings.answer,
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.border,
+                  ),
                   minLines: 6,
                   maxLines: 6,
                   keyboardType: TextInputType.multiline,
