@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "188358117907",
+    "project_id": "starpharm-ca3e5",
+    "storage_bucket": "starpharm-ca3e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188358117907:android:3d3faa7bf8151fcecb0de6",
+        "android_client_info": {
+          "package_name": "malikoglu.starpharm.star_pharm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIjSMI2J2YubSNI1sy-uHoKuh54rfdV7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

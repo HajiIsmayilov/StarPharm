@@ -52,14 +52,6 @@ class _AccountTabState extends State<AccountTab> {
               ),
               CardSection(
                   label: SharedStrings.receipts,
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => const CameraScreen()),
-                    );
-                  }),
-              CardSection(
-                  label: SharedStrings.passwordAdjustment,
                   onTap: () async {
                     final pickedFile = await ImagePicker()
                         .pickImage(source: ImageSource.camera);
@@ -77,6 +69,14 @@ class _AccountTabState extends State<AccountTab> {
                         print('No image selected');
                       }
                     });
+                  }),
+              CardSection(
+                  label: SharedStrings.passwordAdjustment,
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => const ProfileScreen()),
+                    );
                   }),
               CardSection(label: SharedStrings.logOut, onTap: () {})
             ],

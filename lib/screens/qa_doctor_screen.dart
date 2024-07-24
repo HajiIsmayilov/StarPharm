@@ -17,49 +17,59 @@ class QaDoctorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(SharedStrings.doctorAnswer),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              QuestionCard(
-                imageUrl: imageUrl,
-                questioner: questioner,
-                question: question,
-                onPressed: null,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: controller,
-                decoration: InputDecoration(
-                    hintText: SharedHints.askYourQuestion,
-                    labelText: SharedStrings.ask,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0))),
-                minLines: 6,
-                maxLines: 6,
-                keyboardType: TextInputType.multiline,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: CustomRectangleBorderButton(
-                  title: SharedStrings.send,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+    
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    SharedStrings.doctorAnswer,
+                    style: Theme.of(context).primaryTextTheme.headlineLarge,
+                  ),
                 ),
-              )
-            ],
+                const SizedBox(
+                  height: 10,
+                ),
+                QuestionCard(
+                  imageUrl: imageUrl,
+                  questioner: questioner,
+                  question: question,
+                  onPressed: null,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: controller,
+                  decoration: InputDecoration(
+                      hintText: SharedHints.answerQuestions,
+                      labelText: SharedStrings.answer,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0))),
+                  minLines: 6,
+                  maxLines: 6,
+                  keyboardType: TextInputType.multiline,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: CustomRectangleBorderButton(
+                    title: SharedStrings.send,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

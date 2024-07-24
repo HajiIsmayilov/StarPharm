@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/services/firebase_notification_service.dart';
 import '../shared/shared_strings.dart';
 import '../tabs/home_tab.dart';
 import '../tabs/search_tab.dart';
@@ -10,11 +11,11 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _service = FirebaseNotificationService();
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = [
@@ -29,6 +30,12 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _service.connectNotification();
   }
 
   @override

@@ -5,8 +5,14 @@ class SharedMaskes {
       mask: '(###) ###-##-##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
+
   final birthdayMask = MaskTextInputFormatter(
       mask: '##/##/####',
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy);
+
+  final codeMask = MaskTextInputFormatter(
+      mask: '###-###',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
 }

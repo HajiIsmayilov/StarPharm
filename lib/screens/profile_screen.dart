@@ -1,6 +1,8 @@
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 
+import '../shared/shared_padding.dart';
 import '../shared/shared_maskes.dart';
 import '../shared/shared_strings.dart';
 import '../validations/regexes.dart';
@@ -18,9 +20,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final _formKey = GlobalKey<FormState>();
   String fullName = 'Malikoğlu Anar';
   String username = '@mrAnar';
-  String birthDate = '11 Yanvar 2024';
+  String birthDate = '07/07/2007';
   String gender = 'Kişi';
-  String phone = '018868**37';
+  String phone = '(099) 111-11-11';
   String email = 'singh@gmail.com';
   String location = 'India';
 
@@ -31,178 +33,101 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Edit Profile',
-                    style: Theme.of(context).primaryTextTheme.headlineLarge,
+      body: SafeArea(
+        child: Padding(
+          padding: SharedPadding().horizontalPadding,
+          child: Form(
+            key: _formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      SharedStrings.editProfile,
+                      style: Theme.of(context).primaryTextTheme.headlineLarge,
+                    ),
                   ),
-                ),
-                _space(),
-                TextFormField(
-                  validator: ValidationRules().userNameValidation,
-                  decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                        color: Theme.of(context).primaryColor,
-                      )),
-                      hintText: SharedHints.username,
-                      labelText: SharedStrings.username,
-                      labelStyle:
-                          TextStyle(color: Theme.of(context).primaryColor)),
-                  initialValue: username,
-                ),
-                _space(),
-                TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  validator: ValidationRules().emailValidation,
-                  decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                        color: Theme.of(context).primaryColor,
-                      )),
-                      hintText: SharedHints.email,
-                      labelText: SharedStrings.email,
-                      labelStyle:
-                          TextStyle(color: Theme.of(context).primaryColor)),
-                ),
-                _space(),
-                TextFormField(
-                  keyboardType: TextInputType.datetime,
-                  decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                        color: Theme.of(context).primaryColor,
-                      )),
-                      hintText: SharedHints.birthdate,
-                      labelText: SharedStrings.birthdate,
-                      border: const OutlineInputBorder(),
-                      labelStyle:
-                          TextStyle(color: Theme.of(context).primaryColor)),
-                  inputFormatters: [SharedMaskes().birthdayMask],
-                ),
-                _space(),
-                TextFormField(
-                  keyboardType: TextInputType.phone,
-                  inputFormatters: [SharedMaskes().phoneMask],
-                  decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                        color: Theme.of(context).primaryColor,
-                      )),
-                      hintText: SharedHints.phone,
-                      labelText: SharedStrings.phone,
-                      labelStyle:
-                          TextStyle(color: Theme.of(context).primaryColor)),
-                ),
-                _space(),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius:
-                        const BorderRadius.all(Radius.circular(_radius)),
+                  _space(),
+                  _CustomTextFormField(
+                    initialValue: username,
+                    hint: SharedHints.username,
+                    label: SharedStrings.username,
+                    inputType: TextInputType.name,
+                    validation: ValidationRules().userNameValidation,
                   ),
-                  width: double.infinity,
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      CountryCodePicker(
-                        textStyle: TextStyle(fontSize: 18, color: Colors.black),
-                        initialSelection: 'AZ',
-                        showOnlyCountryWhenClosed: true,
-                        showCountryOnly: true,
-                        flagWidth: 48,
-                      ),
-                    ],
+                  _space(),
+                  _CustomTextFormField(
+                    initialValue: email,
+                    hint: SharedHints.email,
+                    label: SharedStrings.email,
+                    inputType: TextInputType.emailAddress,
+                    validation: ValidationRules().emailValidation,
                   ),
-                ),
-                _space(),
-                ToggleButtons(
-                  isSelected: isSelectedGender,
-                  selectedColor: Colors.white,
-                  color: Colors.black,
-                  fillColor: Theme.of(context).primaryColor,
-                  textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                  renderBorder: true,
-                  borderColor: Colors.black,
-                  borderRadius: BorderRadius.circular(10),
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                          child: Text(SharedStrings.male,
-                              style: TextStyle(fontSize: 18))),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                        child: Text(SharedStrings.female,
-                            style: TextStyle(fontSize: 18)),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                          child: Text(SharedStrings.other,
-                              style: TextStyle(fontSize: 18))),
-                    ),
-                  ],
-                  onPressed: (int newIndex) {
-                    _selectGender(newIndex);
-                  },
-                ),
-                _space(),
-                ToggleButtons(
-                  isSelected: isSelectedUserRole,
-                  selectedColor: Colors.white,
-                  color: Colors.black,
-                  fillColor: Theme.of(context).primaryColor,
-                  textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                  renderBorder: true,
-                  borderColor: Colors.black,
-                  borderRadius: BorderRadius.circular(10),
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                          child: Text(SharedStrings.patient,
-                              style: TextStyle(fontSize: 18))),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                        child: Text(SharedStrings.doctor,
-                            style: TextStyle(fontSize: 18)),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                          child: Text(SharedStrings.pharmacist,
-                              style: TextStyle(fontSize: 18))),
-                    ),
-                  ],
-                  onPressed: (int newIndex) {
-                    _selectedRole(newIndex);
-                  },
-                ),
-                _space(),
-                SizedBox(
-                  width: double.infinity,
-                  child: CustomRectangleBorderButton(
-                    title: SharedStrings.save,
-                    onPressed: () {},
+                  _space(),
+                  _CustomTextFormField(
+                    hint: SharedHints.birthdate,
+                    label: SharedStrings.birthdate,
+                    initialValue: birthDate,
+                    inputType: TextInputType.datetime,
+                    formatter: SharedMaskes().birthdayMask,
                   ),
-                ),
-              ],
+                  _space(),
+                  _CustomTextFormField(
+                    hint: SharedHints.phone,
+                    label: SharedStrings.phone,
+                    initialValue: phone,
+                    inputType: TextInputType.phone,
+                    formatter: SharedMaskes().phoneMask,
+                  ),
+                  _space(),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(_radius)),
+                    ),
+                    width: double.infinity,
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CountryCodePicker(
+                          textStyle:
+                              TextStyle(fontSize: 18, color: Colors.black),
+                          initialSelection: 'AZ',
+                          showOnlyCountryWhenClosed: true,
+                          showCountryOnly: true,
+                          flagWidth: 48,
+                        ),
+                      ],
+                    ),
+                  ),
+                  _space(),
+                  _CustomToggleButton3Options(
+                    firstOption: SharedStrings.male,
+                    secondOption: SharedStrings.female,
+                    thirdOption: SharedStrings.other,
+                    isSelected: isSelectedGender,
+                    func: _selectGender,
+                  ),
+                  _space(),
+                  _CustomToggleButton3Options(
+                    firstOption: SharedStrings.patient,
+                    secondOption: SharedStrings.doctor,
+                    thirdOption: SharedStrings.pharmacist,
+                    func: _selectedRole,
+                    isSelected: isSelectedUserRole,
+                  ),
+                  _space(),
+                  SizedBox(
+                    width: double.infinity,
+                    child: CustomRectangleBorderButton(
+                      title: SharedStrings.save,
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -234,5 +159,106 @@ class _ProfileScreenState extends State<ProfileScreen> {
         }
       }
     });
+  }
+}
+
+// ignore: must_be_immutable
+class _CustomTextFormField extends StatelessWidget {
+  final String? Function(String?)? validation;
+  MaskTextInputFormatter? formatter;
+  final String hint;
+  final String label;
+  final TextInputType inputType;
+  final String initialValue;
+
+  _CustomTextFormField(
+      {required this.hint,
+      required this.label,
+      required this.initialValue,
+      required this.inputType,
+      this.validation,
+      this.formatter});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      validator: validation,
+      decoration: InputDecoration(
+        border: Theme.of(context).inputDecorationTheme.border,
+        focusedBorder: Theme.of(context).inputDecorationTheme.border,
+        hintText: hint,
+        labelText: label,
+      ),
+      inputFormatters: formatter != null ? [formatter!] : null,
+      keyboardType: inputType,
+      initialValue: initialValue,
+    );
+  }
+}
+
+class _CustomToggleButton3Options extends StatelessWidget {
+  final List<bool> isSelected;
+  final String firstOption;
+  final String secondOption;
+  final String thirdOption;
+  final Function(int value) func;
+
+  const _CustomToggleButton3Options({
+    required this.isSelected,
+    required this.firstOption,
+    required this.secondOption,
+    required this.thirdOption,
+    required this.func,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ToggleButtons(
+      isSelected: isSelected,
+      selectedColor: Colors.white,
+      color: Colors.black,
+      fillColor: Theme.of(context).primaryColor,
+      textStyle: const TextStyle(fontWeight: FontWeight.bold),
+      renderBorder: true,
+      borderColor: Colors.black,
+      borderRadius: BorderRadius.circular(10),
+      onPressed: func,
+      children: [
+        SizedBox(
+          width: MediaQuery.sizeOf(context).width / 3 - 12,
+          child: Center(
+              child: Text(
+            firstOption,
+            style: TextStyle(
+              fontSize:
+                  Theme.of(context).primaryTextTheme.titleMedium?.fontSize,
+            ),
+          )),
+        ),
+        SizedBox(
+          width: MediaQuery.sizeOf(context).width / 3 - 12,
+          child: Center(
+            child: Text(
+              secondOption,
+              style: TextStyle(
+                fontSize:
+                    Theme.of(context).primaryTextTheme.titleMedium?.fontSize,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: MediaQuery.sizeOf(context).width / 3 - 12,
+          child: Center(
+              child: Text(
+            thirdOption,
+            style: TextStyle(
+              fontSize:
+                  Theme.of(context).primaryTextTheme.titleMedium?.fontSize,
+            ),
+          )),
+        ),
+      ],
+    );
   }
 }

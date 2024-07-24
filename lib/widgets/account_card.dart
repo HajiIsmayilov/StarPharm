@@ -113,7 +113,7 @@ class _AccountCardState extends State<AccountCard> {
         Padding(
           padding: const EdgeInsets.only(right: 12),
           child: IconButton(
-            icon: Icon(Icons.edit, color: Theme.of(context).primaryColor),
+            icon: const Icon(Icons.edit),
             onPressed: widget.onPressed,
           ),
         ),
@@ -140,8 +140,9 @@ class _AccountCardState extends State<AccountCard> {
   }
 
   Future getImage() async {
-    final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery,);
+    final pickedFile = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
     //File image = await ImagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {

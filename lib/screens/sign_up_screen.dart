@@ -1,12 +1,14 @@
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:star_pharm/shared/shared_maskes.dart';
-import 'package:star_pharm/shared/shared_padding.dart';
-import 'package:star_pharm/widgets/custom_rectangle_border_button.dart';
 
+import 'sing_in_screen.dart';
+import '../shared/shared_maskes.dart';
+import '../shared/shared_padding.dart';
 import '../shared/shared_strings.dart';
 import '../validations/regexes.dart';
 import '../widgets/jpg_image.dart';
+import "../widgets/custom_rectangle_border_button.dart";
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -23,7 +25,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   static const double _radius = 8.0;
   late String? dropdownValue = 'Male';
 
-  // one must always be true, means selected.
   List<bool> isSelectedGender = [true, false, false];
   List<bool> isSelectedUserRole = [true, false, false];
 
@@ -49,40 +50,64 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 _space(),
-                TextFormField(
-                  validator: ValidationRules().userNameValidation,
-                  decoration: const InputDecoration(
-                    hintText: SharedHints.username,
-                    labelText: SharedStrings.username,
-                  ),
+                // TextFormField(
+                //   validator: ValidationRules().userNameValidation,
+                //   decoration: const InputDecoration(
+                //     hintText: SharedHints.username,
+                //     labelText: SharedStrings.username,
+                //   ),
+                // ),
+                _CustomTextFormField(
+                  hint: SharedHints.username,
+                  label: SharedStrings.username,
+                  inputType: TextInputType.name,
+                  validation: ValidationRules().userNameValidation,
                 ),
                 _space(),
-                TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  validator: ValidationRules().emailValidation,
-                  decoration: const InputDecoration(
-                    hintText: SharedHints.email,
-                    labelText: SharedStrings.email,
-                  ),
+                // TextFormField(
+                //   keyboardType: TextInputType.emailAddress,
+                //   validator: ValidationRules().emailValidation,
+                //   decoration: const InputDecoration(
+                //     hintText: SharedHints.email,
+                //     labelText: SharedStrings.email,
+                //   ),
+                // ),
+                _CustomTextFormField(
+                  hint: SharedHints.email,
+                  label: SharedStrings.email,
+                  inputType: TextInputType.emailAddress,
+                  validation: ValidationRules().emailValidation,
                 ),
                 _space(),
-                TextFormField(
-                  keyboardType: TextInputType.datetime,
-                  decoration: const InputDecoration(
-                    hintText: SharedHints.birthdate,
-                    labelText: SharedStrings.birthdate,
-                    border: OutlineInputBorder(),
-                  ),
-                  inputFormatters: [SharedMaskes().birthdayMask],
+                // TextFormField(
+                //   keyboardType: TextInputType.datetime,
+                //   decoration: const InputDecoration(
+                //     hintText: SharedHints.birthdate,
+                //     labelText: SharedStrings.birthdate,
+                //     border: OutlineInputBorder(),
+                //   ),
+                //   inputFormatters: [SharedMaskes().birthdayMask],
+                // ),
+                _CustomTextFormField(
+                  hint: SharedHints.birthdate,
+                  label: SharedStrings.birthdate,
+                  inputType: TextInputType.datetime,
+                  formatter: SharedMaskes().birthdayMask,
                 ),
                 _space(),
-                TextFormField(
-                  keyboardType: TextInputType.phone,
-                  inputFormatters: [SharedMaskes().phoneMask],
-                  decoration: const InputDecoration(
-                    hintText: SharedHints.phone,
-                    labelText: SharedStrings.phone,
-                  ),
+                // TextFormField(
+                //   keyboardType: TextInputType.phone,
+                //   inputFormatters: [SharedMaskes().phoneMask],
+                //   decoration: const InputDecoration(
+                //     hintText: SharedHints.phone,
+                //     labelText: SharedStrings.phone,
+                //   ),
+                // ),
+                _CustomTextFormField(
+                  hint: SharedHints.phone,
+                  label: SharedStrings.phone,
+                  inputType: TextInputType.phone,
+                  formatter: SharedMaskes().phoneMask,
                 ),
                 _space(),
                 Container(
@@ -106,74 +131,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 _space(),
-                ToggleButtons(
+                _CustomToggleButton3Options(
+                  firstOption: SharedStrings.male,
+                  secondOption: SharedStrings.female,
+                  thirdOption: SharedStrings.other,
                   isSelected: isSelectedGender,
-                  selectedColor: Colors.white,
-                  color: Colors.black,
-                  fillColor: Theme.of(context).primaryColor,
-                  textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                  renderBorder: true,
-                  borderColor: Colors.black,
-                  borderRadius: BorderRadius.circular(10),
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                          child: Text(SharedStrings.male,
-                              style: TextStyle(fontSize: 18))),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                        child: Text(SharedStrings.female,
-                            style: TextStyle(fontSize: 18)),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                          child: Text(SharedStrings.other,
-                              style: TextStyle(fontSize: 18))),
-                    ),
-                  ],
-                  onPressed: (int newIndex) {
-                    _selectGender(newIndex);
-                  },
+                  func: _selectGender,
                 ),
                 _space(),
-                ToggleButtons(
+                _CustomToggleButton3Options(
+                  firstOption: SharedStrings.patient,
+                  secondOption: SharedStrings.doctor,
+                  thirdOption: SharedStrings.pharmacist,
+                  func: _selectedRole,
                   isSelected: isSelectedUserRole,
-                  selectedColor: Colors.white,
-                  color: Colors.black,
-                  fillColor: Theme.of(context).primaryColor,
-                  textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                  renderBorder: true,
-                  borderColor: Colors.black,
-                  borderRadius: BorderRadius.circular(10),
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                          child: Text(SharedStrings.patient,
-                              style: TextStyle(fontSize: 18))),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                        child: Text(SharedStrings.doctor,
-                            style: TextStyle(fontSize: 18)),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 3 - 12,
-                      child: const Center(
-                          child: Text(SharedStrings.pharmacist,
-                              style: TextStyle(fontSize: 18))),
-                    ),
-                  ],
-                  onPressed: (int newIndex) {
-                    _selectedRole(newIndex);
-                  },
                 ),
                 _space(),
                 TextFormField(
@@ -213,17 +184,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       SharedStrings.haveAccount,
-                      style: TextStyle(fontSize: 16),
+                      style: Theme.of(context).primaryTextTheme.labelSmall,
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const SignInScreen()),
+                        );
+                      },
                       child: Text(
                         SharedStrings.logIn,
-                        style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontSize: 16),
+                        style: Theme.of(context).primaryTextTheme.titleSmall,
                       ),
                     ),
                   ],
@@ -286,5 +260,103 @@ class _SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+}
+
+// ignore: must_be_immutable
+class _CustomTextFormField extends StatelessWidget {
+  final String? Function(String?)? validation;
+  MaskTextInputFormatter? formatter;
+  final String hint;
+  final String label;
+  final TextInputType inputType;
+
+  _CustomTextFormField(
+      {required this.hint,
+      required this.label,
+      required this.inputType,
+      this.validation,
+      this.formatter});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      validator: validation,
+      decoration: InputDecoration(
+        border: Theme.of(context).inputDecorationTheme.border,
+        focusedBorder: Theme.of(context).inputDecorationTheme.border,
+        hintText: hint,
+        labelText: label,
+      ),
+      inputFormatters: formatter != null ? [formatter!] : null,
+      keyboardType: inputType,
+    );
+  }
+}
+
+class _CustomToggleButton3Options extends StatelessWidget {
+  final List<bool> isSelected;
+  final String firstOption;
+  final String secondOption;
+  final String thirdOption;
+  final Function(int value) func;
+
+  const _CustomToggleButton3Options({
+    required this.isSelected,
+    required this.firstOption,
+    required this.secondOption,
+    required this.thirdOption,
+    required this.func,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ToggleButtons(
+      isSelected: isSelected,
+      selectedColor: Colors.white,
+      color: Colors.black,
+      fillColor: Theme.of(context).primaryColor,
+      textStyle: const TextStyle(fontWeight: FontWeight.bold),
+      renderBorder: true,
+      borderColor: Colors.black,
+      borderRadius: BorderRadius.circular(10),
+      onPressed: func,
+      children: [
+        SizedBox(
+          width: MediaQuery.sizeOf(context).width / 3 - 12,
+          child: Center(
+              child: Text(
+            firstOption,
+            style: TextStyle(
+              fontSize:
+                  Theme.of(context).primaryTextTheme.titleMedium?.fontSize,
+            ),
+          )),
+        ),
+        SizedBox(
+          width: MediaQuery.sizeOf(context).width / 3 - 12,
+          child: Center(
+            child: Text(
+              secondOption,
+              style: TextStyle(
+                fontSize:
+                    Theme.of(context).primaryTextTheme.titleMedium?.fontSize,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: MediaQuery.sizeOf(context).width / 3 - 12,
+          child: Center(
+              child: Text(
+            thirdOption,
+            style: TextStyle(
+              fontSize:
+                  Theme.of(context).primaryTextTheme.titleMedium?.fontSize,
+            ),
+          )),
+        ),
+      ],
+    );
   }
 }

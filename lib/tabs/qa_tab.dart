@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/screens/qa2_screen.dart';
+import 'package:star_pharm/screens/qa_doctor_screen.dart';
 import 'package:star_pharm/widgets/qa_card.dart';
 import '../models/question.dart';
 import '../shared/shared_strings.dart';
@@ -100,7 +102,11 @@ class _QATabState extends State<QATab> {
                     imageUrl: questions[index].imageUrl,
                     questioner: questions[index].questioner,
                     question: questions[index].question,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => QaDoctorScreen()),
+                      );
+                    },
                   ),
                 ),
               ),

@@ -1,26 +1,27 @@
 class SharedStrings {
-  static const String logIn = 'Log in';
-  static const String signUp = 'Sign up';
+  static const String logIn = 'Daxil ol';
+  static const String signUp = 'Qeydiyyatdan keçmək';
   static const String email = 'Email';
-  static const String changePassword = 'Change Password';
-  static const String currentPassword = 'Current password';
-  static const String password = 'New password';
-  static const String forgotPassword = 'Forgot Password?';
-  static const String dontHaveAccount = 'Don\'t have an account?';
-  static const String username = 'User Name';
-  static const String birthdate = 'Birthdate';
-  static const String phone = 'Mobile Number';
-  static const String confirmPassword = 'Confirm Password';
-  static const String haveAccount = 'Already have an account?';
+  static const String changePassword = 'Parolun dəyişdirilməsi';
+  static const String currentPassword = 'Hazırkı şifrə';
+  static const String password = 'Yeni şifrə';
+  static const String forgotPassword = 'Şifrəni unutmusunuz?';
+  static const String dontHaveAccount = 'Hesabınız yoxdur?';
+  static const String username = 'İstifadəçi adı';
+  static const String birthdate = 'Doğum tarixi';
+  static const String phone = 'Mobil nömrə';
+  static const String confirmPassword = 'Şifrəni təsdiqləyin';
+  static const String haveAccount = 'Artıq bir hesabınız var mı?';
   static const String male = 'Kişi';
   static const String female = 'Qadın';
   static const String other = 'Digər';
   static const String patient = 'Xəstə';
   static const String doctor = 'Həkim';
   static const String pharmacist = 'Əczaçı';
-  static const String ask = 'Ask';
-  static const String save = 'Save';
-  static const String doctorAnswer = 'Doctor\'s Answer';
+  static const String ask = 'Soruş';
+  static const String answer = 'Cavabla';
+  static const String save = 'Yadda saxla';
+  static const String doctorAnswer = 'Həkimin Cavabı';
   static const String receipts = 'Reseptlər';
   static const String passwordAdjustment = 'Şifrənin tənzimlənməsi';
   static const String logOut = 'Hesabınızdan çıxın';
@@ -32,7 +33,7 @@ class SharedStrings {
   static const String search = 'Axtarış';
   static const String answered = 'Cavablı';
   static const String nonAnswered = 'Cavabsız';
-  static const String askQuestion = 'Sualınızı verin';
+  static const String askQuestion = 'Sualınızı yazın';
   static const String askQuestionLabel = 'Sual';
   static const String send = 'Göndər';
   static const String products = 'Məhsullar';
@@ -40,6 +41,7 @@ class SharedStrings {
   static const String main = 'Əsas';
   static const String questionAnswer = 'Sual-Cavab';
   static const String account = 'Hesab';
+  static const String editProfile = 'Profilinizi redaktə edin';
 }
 
 class SharedHints {
@@ -47,5 +49,6 @@ class SharedHints {
   static const String email = 'kerimkrm@gmail.com';
   static const String birthdate = '07/07/2007';
   static const String phone = '(090) 111-11-11';
-  static const String askYourQuestion = "Ask your question";
+  static const String askYourQuestion = 'Sualınızı yazın';
+  static const String answerQuestions = 'Suala cavab verin';
 }

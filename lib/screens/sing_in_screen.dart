@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:star_pharm/screens/forgot_password_screen.dart';
+import 'package:star_pharm/screens/sign_up_screen.dart';
 import 'package:star_pharm/shared/shared_padding.dart';
 import 'package:star_pharm/widgets/jpg_image.dart';
 
@@ -55,7 +57,12 @@ class _SignInScreenState extends State<SignInScreen> {
                   Align(
                     alignment: Alignment.topRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => ForgotPasswordScreen()),
+                        );
+                      },
                       child: const Text(
                         SharedStrings.forgotPassword,
                         style: TextStyle(color: Colors.teal),
@@ -72,10 +79,21 @@ class _SignInScreenState extends State<SignInScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(SharedStrings.dontHaveAccount),
+                      Text(
+                        SharedStrings.dontHaveAccount,
+                        style: Theme.of(context).primaryTextTheme.labelSmall,
+                      ),
                       TextButton(
-                        onPressed: () {},
-                        child: const Text(SharedStrings.signUp),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpScreen()),
+                          );
+                        },
+                        child: Text(
+                          SharedStrings.signUp,
+                          style: Theme.of(context).primaryTextTheme.titleSmall,
+                        ),
                       )
                     ],
                   )
@@ -100,4 +118,3 @@ class _SignInScreenState extends State<SignInScreen> {
     });
   }
 }
-
