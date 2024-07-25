@@ -3,7 +3,6 @@ import 'package:star_pharm/models/category.dart';
 import 'package:star_pharm/tabs/home_tab.dart';
 import 'package:star_pharm/widgets/product_cart.dart';
 import '../shared/shared_strings.dart';
-import '../widgets/category_cart.dart';
 
 class ProductsCategory extends StatelessWidget {
   ProductsCategory({super.key});

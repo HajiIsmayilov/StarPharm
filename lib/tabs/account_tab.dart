@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:star_pharm/screens/camera_screen.dart';
 import 'package:star_pharm/screens/change_password_screen.dart';
 import 'package:star_pharm/screens/profile_screen.dart';
 import '../shared/shared_strings.dart';

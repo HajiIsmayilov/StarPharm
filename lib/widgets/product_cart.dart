@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:star_pharm/widgets/custom_network_image.dart';
 
 import '../shared/shared_padding.dart';

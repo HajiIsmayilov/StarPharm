@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:grock/grock.dart';
 import 'package:star_pharm/cache/notification_cache.dart';
 import 'package:uuid/uuid.dart';
