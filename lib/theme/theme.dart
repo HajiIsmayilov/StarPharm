@@ -14,7 +14,7 @@ class AppTheme {
         headlineLarge: TextStyle(
             fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold),
         labelLarge: TextStyle(fontSize: 20),
-        labelMedium: TextStyle(fontSize: 16),
+        labelMedium: TextStyle(fontSize: 16, color: Colors.black),
         labelSmall: TextStyle(fontSize: 12, color: Colors.black),
         titleMedium: TextStyle(fontSize: 18),
         titleSmall: TextStyle(fontSize: 12, color: Colors.teal),

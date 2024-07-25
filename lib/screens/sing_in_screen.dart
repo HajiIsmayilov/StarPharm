@@ -24,93 +24,95 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: SharedPadding().horizontalPadding,
-          child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const JpgImage(
-                      url: SignInScreen._url, width: SignInScreen._imgWidth),
-                  _space(),
-                  Text(
-                    SharedStrings.logIn,
-                    style: Theme.of(context).primaryTextTheme.headlineLarge,
-                  ),
-                  _space(),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      border: Theme.of(context).inputDecorationTheme.border,
-                      focusedBorder:
-                          Theme.of(context).inputDecorationTheme.border,
-                      hintText: SharedHints.email,
-                      labelText: SharedStrings.email,
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: SharedPadding().horizontalPadding,
+            child: SingleChildScrollView(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const JpgImage(
+                        url: SignInScreen._url, width: SignInScreen._imgWidth),
+                    _space(),
+                    Text(
+                      SharedStrings.logIn,
+                      style: Theme.of(context).primaryTextTheme.headlineLarge,
                     ),
-                  ),
-                  _space(),
-                  TextFormField(
-                      obscureText: _obscureText,
+                    _space(),
+                    TextFormField(
                       decoration: InputDecoration(
-                          labelText: SharedStrings.password,
-                          border: Theme.of(context).inputDecorationTheme.border,
-                          focusedBorder:
-                              Theme.of(context).inputDecorationTheme.border,
-                          suffixIcon: IconButton(
-                            icon: Icon(visibilityData()),
-                            onPressed: update,
-                          ))),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => ForgotPasswordScreen()),
-                        );
-                      },
-                      child: const Text(
-                        SharedStrings.forgotPassword,
-                        style: TextStyle(color: Colors.teal),
+                        border: Theme.of(context).inputDecorationTheme.border,
+                        focusedBorder:
+                            Theme.of(context).inputDecorationTheme.border,
+                        hintText: SharedHints.email,
+                        labelText: SharedStrings.email,
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: CustomRectangleBorderButton(
-                      title: SharedStrings.logIn,
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()),
-                        );
-                      },
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        SharedStrings.dontHaveAccount,
-                        style: Theme.of(context).primaryTextTheme.labelSmall,
-                      ),
-                      TextButton(
+                    _space(),
+                    TextFormField(
+                        obscureText: _obscureText,
+                        decoration: InputDecoration(
+                            labelText: SharedStrings.password,
+                            border: Theme.of(context).inputDecorationTheme.border,
+                            focusedBorder:
+                                Theme.of(context).inputDecorationTheme.border,
+                            suffixIcon: IconButton(
+                              icon: Icon(visibilityData()),
+                              onPressed: update,
+                            ))),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: TextButton(
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                                builder: (context) => const SignUpScreen()),
+                                builder: (context) => ForgotPasswordScreen()),
                           );
                         },
-                        child: Text(
-                          SharedStrings.signUp,
-                          style: Theme.of(context).primaryTextTheme.titleSmall,
+                        child: const Text(
+                          SharedStrings.forgotPassword,
+                          style: TextStyle(color: Colors.teal),
                         ),
-                      )
-                    ],
-                  )
-                ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: CustomRectangleBorderButton(
+                        title: SharedStrings.logIn,
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()),
+                          );
+                        },
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          SharedStrings.dontHaveAccount,
+                          style: Theme.of(context).primaryTextTheme.labelSmall,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUpScreen()),
+                            );
+                          },
+                          child: Text(
+                            SharedStrings.signUp,
+                            style: Theme.of(context).primaryTextTheme.titleSmall,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

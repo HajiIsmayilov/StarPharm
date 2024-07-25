@@ -31,178 +31,187 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: SharedPadding().horizontalPadding,
-        child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const JpgImage(
-                    url: SignUpScreen._url, width: SignUpScreen._imgWidth),
-                const Text(
-                  SharedStrings.signUp,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+      body: SafeArea(
+        child: Padding(
+          padding: SharedPadding().horizontalPadding,
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const JpgImage(
+                      url: SignUpScreen._url, width: SignUpScreen._imgWidth),
+                  const Text(
+                    SharedStrings.signUp,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                _space(),
-                // TextFormField(
-                //   validator: ValidationRules().userNameValidation,
-                //   decoration: const InputDecoration(
-                //     hintText: SharedHints.username,
-                //     labelText: SharedStrings.username,
-                //   ),
-                // ),
-                _CustomTextFormField(
-                  hint: SharedHints.username,
-                  label: SharedStrings.username,
-                  inputType: TextInputType.name,
-                  validation: ValidationRules().userNameValidation,
-                ),
-                _space(),
-                // TextFormField(
-                //   keyboardType: TextInputType.emailAddress,
-                //   validator: ValidationRules().emailValidation,
-                //   decoration: const InputDecoration(
-                //     hintText: SharedHints.email,
-                //     labelText: SharedStrings.email,
-                //   ),
-                // ),
-                _CustomTextFormField(
-                  hint: SharedHints.email,
-                  label: SharedStrings.email,
-                  inputType: TextInputType.emailAddress,
-                  validation: ValidationRules().emailValidation,
-                ),
-                _space(),
-                // TextFormField(
-                //   keyboardType: TextInputType.datetime,
-                //   decoration: const InputDecoration(
-                //     hintText: SharedHints.birthdate,
-                //     labelText: SharedStrings.birthdate,
-                //     border: OutlineInputBorder(),
-                //   ),
-                //   inputFormatters: [SharedMaskes().birthdayMask],
-                // ),
-                _CustomTextFormField(
-                  hint: SharedHints.birthdate,
-                  label: SharedStrings.birthdate,
-                  inputType: TextInputType.datetime,
-                  formatter: SharedMaskes().birthdayMask,
-                ),
-                _space(),
-                // TextFormField(
-                //   keyboardType: TextInputType.phone,
-                //   inputFormatters: [SharedMaskes().phoneMask],
-                //   decoration: const InputDecoration(
-                //     hintText: SharedHints.phone,
-                //     labelText: SharedStrings.phone,
-                //   ),
-                // ),
-                _CustomTextFormField(
-                  hint: SharedHints.phone,
-                  label: SharedStrings.phone,
-                  inputType: TextInputType.phone,
-                  formatter: SharedMaskes().phoneMask,
-                ),
-                _space(),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius:
-                        const BorderRadius.all(Radius.circular(_radius)),
+                  _space(),
+                  // TextFormField(
+                  //   validator: ValidationRules().userNameValidation,
+                  //   decoration: const InputDecoration(
+                  //     hintText: SharedHints.username,
+                  //     labelText: SharedStrings.username,
+                  //   ),
+                  // ),
+                  _CustomTextFormField(
+                    hint: SharedHints.username,
+                    label: SharedStrings.username,
+                    inputType: TextInputType.name,
+                    validation: ValidationRules().userNameValidation,
                   ),
-                  width: double.infinity,
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  _space(),
+                  // TextFormField(
+                  //   keyboardType: TextInputType.emailAddress,
+                  //   validator: ValidationRules().emailValidation,
+                  //   decoration: const InputDecoration(
+                  //     hintText: SharedHints.email,
+                  //     labelText: SharedStrings.email,
+                  //   ),
+                  // ),
+                  _CustomTextFormField(
+                    hint: SharedHints.email,
+                    label: SharedStrings.email,
+                    inputType: TextInputType.emailAddress,
+                    validation: ValidationRules().emailValidation,
+                  ),
+                  _space(),
+                  // TextFormField(
+                  //   keyboardType: TextInputType.datetime,
+                  //   decoration: const InputDecoration(
+                  //     hintText: SharedHints.birthdate,
+                  //     labelText: SharedStrings.birthdate,
+                  //     border: OutlineInputBorder(),
+                  //   ),
+                  //   inputFormatters: [SharedMaskes().birthdayMask],
+                  // ),
+                  _CustomTextFormField(
+                    hint: SharedHints.birthdate,
+                    label: SharedStrings.birthdate,
+                    inputType: TextInputType.datetime,
+                    formatter: SharedMaskes().birthdayMask,
+                  ),
+                  _space(),
+                  // TextFormField(
+                  //   keyboardType: TextInputType.phone,
+                  //   inputFormatters: [SharedMaskes().phoneMask],
+                  //   decoration: const InputDecoration(
+                  //     hintText: SharedHints.phone,
+                  //     labelText: SharedStrings.phone,
+                  //   ),
+                  // ),
+                  _CustomTextFormField(
+                    hint: SharedHints.phone,
+                    label: SharedStrings.phone,
+                    inputType: TextInputType.phone,
+                    formatter: SharedMaskes().phoneMask,
+                  ),
+                  _space(),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(_radius)),
+                    ),
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CountryCodePicker(
+                          textStyle: const TextStyle(
+                              fontSize: 18, color: Colors.black),
+                          searchDecoration: InputDecoration(
+                              border:
+                                  Theme.of(context).inputDecorationTheme.border,
+                              focusedBorder: Theme.of(context)
+                                  .inputDecorationTheme
+                                  .border),
+                          initialSelection: 'AZ',
+                          showOnlyCountryWhenClosed: true,
+                          showCountryOnly: true,
+                          flagWidth: 48,
+                        ),
+                      ],
+                    ),
+                  ),
+                  _space(),
+                  _CustomToggleButton3Options(
+                    firstOption: SharedStrings.male,
+                    secondOption: SharedStrings.female,
+                    thirdOption: SharedStrings.other,
+                    isSelected: isSelectedGender,
+                    func: _selectGender,
+                  ),
+                  _space(),
+                  _CustomToggleButton3Options(
+                    firstOption: SharedStrings.patient,
+                    secondOption: SharedStrings.doctor,
+                    thirdOption: SharedStrings.pharmacist,
+                    func: _selectedRole,
+                    isSelected: isSelectedUserRole,
+                  ),
+                  _space(),
+                  TextFormField(
+                      obscureText: _obscureText,
+                      validator: ValidationRules().passwordValidation,
+                      decoration: InputDecoration(
+                          labelText: SharedStrings.password,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(_radius),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(visibilityData()),
+                            onPressed: update,
+                          ))),
+                  _space(),
+                  TextFormField(
+                      obscureText: _obscureText,
+                      decoration: InputDecoration(
+                          labelText: SharedStrings.confirmPassword,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(_radius),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(visibilityData()),
+                            onPressed: update,
+                          ))),
+                  _space(),
+                  SizedBox(
+                    width: double.infinity,
+                    child: CustomRectangleBorderButton(
+                      title: SharedStrings.signUp,
+                      onPressed: () {
+                        _validate(context);
+                      },
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CountryCodePicker(
-                        textStyle: TextStyle(fontSize: 18, color: Colors.black),
-                        initialSelection: 'AZ',
-                        showOnlyCountryWhenClosed: true,
-                        showCountryOnly: true,
-                        flagWidth: 48,
+                      Text(
+                        SharedStrings.haveAccount,
+                        style: Theme.of(context).primaryTextTheme.labelSmall,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const SignInScreen()),
+                          );
+                        },
+                        child: Text(
+                          SharedStrings.logIn,
+                          style: Theme.of(context).primaryTextTheme.titleSmall,
+                        ),
                       ),
                     ],
-                  ),
-                ),
-                _space(),
-                _CustomToggleButton3Options(
-                  firstOption: SharedStrings.male,
-                  secondOption: SharedStrings.female,
-                  thirdOption: SharedStrings.other,
-                  isSelected: isSelectedGender,
-                  func: _selectGender,
-                ),
-                _space(),
-                _CustomToggleButton3Options(
-                  firstOption: SharedStrings.patient,
-                  secondOption: SharedStrings.doctor,
-                  thirdOption: SharedStrings.pharmacist,
-                  func: _selectedRole,
-                  isSelected: isSelectedUserRole,
-                ),
-                _space(),
-                TextFormField(
-                    obscureText: _obscureText,
-                    validator: ValidationRules().passwordValidation,
-                    decoration: InputDecoration(
-                        labelText: SharedStrings.password,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(_radius),
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(visibilityData()),
-                          onPressed: update,
-                        ))),
-                _space(),
-                TextFormField(
-                    obscureText: _obscureText,
-                    decoration: InputDecoration(
-                        labelText: SharedStrings.confirmPassword,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(_radius),
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(visibilityData()),
-                          onPressed: update,
-                        ))),
-                _space(),
-                SizedBox(
-                  width: double.infinity,
-                  child: CustomRectangleBorderButton(
-                    title: SharedStrings.signUp,
-                    onPressed: () {
-                      _validate(context);
-                    },
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      SharedStrings.haveAccount,
-                      style: Theme.of(context).primaryTextTheme.labelSmall,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const SignInScreen()),
-                        );
-                      },
-                      child: Text(
-                        SharedStrings.logIn,
-                        style: Theme.of(context).primaryTextTheme.titleSmall,
-                      ),
-                    ),
-                  ],
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

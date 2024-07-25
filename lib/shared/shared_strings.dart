@@ -41,7 +41,15 @@ class SharedStrings {
   static const String main = 'Əsas';
   static const String questionAnswer = 'Sual-Cavab';
   static const String account = 'Hesab';
+  static const String code = 'Kod';
   static const String editProfile = 'Profilinizi redaktə edin';
+  static const String forgotPasswordEmail =
+      'Parolunuzu unutmusunuzsa, e-poçt ünvanınızı daxil edin';
+  static const String emailCode =
+      'Zəhmət olmasa, e-poçtunuza gələn parolu daxil edin';
+  static const String enterPassword =
+      'Zəhmət olmasa yeni parolunuzu daxil edin';
+  static const confirm = 'Tesdiqle';
 }
 
 class SharedHints {

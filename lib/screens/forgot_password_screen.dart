@@ -9,7 +9,7 @@ import '../widgets/custom_rectangle_border_button.dart';
 import '../widgets/jpg_image.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
-  ForgotPasswordScreen({super.key});
+  const ForgotPasswordScreen({super.key});
 
   @override
   State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
@@ -32,7 +32,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             children: [
               const JpgImage(url: _url, width: _imgWidth),
               const SizedBox(height: 10),
-              const Text('Parolunuzu unutmusunuzsa, e-poçt ünvanınızı daxil edin', style: TextStyle(fontSize: 16),),
+              Text(
+                SharedStrings.forgotPasswordEmail,
+                style: Theme.of(context).primaryTextTheme.labelMedium,
+              ),
               const SizedBox(height: 10),
               TextFormField(
                 validator: ValidationRules().emailValidation,
@@ -47,7 +50,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               SizedBox(
                 width: double.infinity,
                 child: CustomRectangleBorderButton(
-                  title: 'Tesdiqle',
+                  title: SharedStrings.confirm,
                   onPressed: () {
                     showDialog(
                       context: context,
@@ -67,89 +70,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       ),
     );
   }
-
-  // Widget _codeCard(BuildContext context) {
-  //   return SizedBox(
-  //     height: 300,
-  //     child: Card(
-  //       child: Column(
-  //         children: [
-  //           TextFormField(
-  //             decoration: InputDecoration(
-  //               border: Theme.of(context).inputDecorationTheme.border,
-  //               focusedBorder: Theme.of(context).inputDecorationTheme.border,
-  //               labelText: 'Kod',
-  //             ),
-  //             inputFormatters: [SharedMaskes().codeMask],
-  //           ),
-  //           const SizedBox(height: 10),
-  //           SizedBox(
-  //             width: double.infinity,
-  //             child: CustomRectangleBorderButton(
-  //               title: SharedStrings.logIn,
-  //               onPressed: () {
-  //                 showDialog(
-  //                     context: context,
-  //                     builder: (context) => Padding(
-  //                           padding: SharedPadding().horizontalPadding,
-  //                           child: Column(
-  //                             children: [
-  //                               PasswordCard(),
-  //                             ],
-  //                           ),
-  //                         ));
-  //               },
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Widget _passwordCard(BuildContext context) {
-  //   return SizedBox(
-  //     height: 300,
-  //     child: Card(
-  //       child: Column(
-  //         children: [
-  //           TextFormField(
-  //               obscureText: _obscureText,
-  //               validator: ValidationRules().passwordValidation,
-  //               decoration: InputDecoration(
-  //                   labelText: SharedStrings.password,
-  //                   border: OutlineInputBorder(
-  //                     borderRadius: BorderRadius.circular(_radius),
-  //                   ),
-  //                   suffixIcon: IconButton(
-  //                     icon: Icon(visibilityData()),
-  //                     onPressed: update,
-  //                   ))),
-  //           const SizedBox(height: 10),
-  //           TextFormField(
-  //               obscureText: _obscureText,
-  //               decoration: InputDecoration(
-  //                   labelText: SharedStrings.confirmPassword,
-  //                   border: OutlineInputBorder(
-  //                     borderRadius: BorderRadius.circular(_radius),
-  //                   ),
-  //                   suffixIcon: IconButton(
-  //                     icon: Icon(visibilityData()),
-  //                     onPressed: update,
-  //                   ))),
-  //           const SizedBox(height: 10),
-  //           SizedBox(
-  //             width: double.infinity,
-  //             child: CustomRectangleBorderButton(
-  //               title: SharedStrings.logIn,
-  //               onPressed: () {},
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
 }
 
 class CodeCard extends StatelessWidget {
@@ -165,18 +85,18 @@ class CodeCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Zəhmət olmasa, e-poçtunuza gələn parolu daxil edin',
-                style: TextStyle(fontSize: 16),
+              Text(
+                SharedStrings.emailCode,
+                style: Theme.of(context).primaryTextTheme.labelMedium,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               TextFormField(
                 decoration: InputDecoration(
                   border: Theme.of(context).inputDecorationTheme.border,
                   focusedBorder: Theme.of(context).inputDecorationTheme.border,
-                  labelText: 'Kod',
+                  labelText: SharedStrings.code,
                 ),
                 inputFormatters: [SharedMaskes().codeMask],
               ),
@@ -225,9 +145,9 @@ class _PasswordCardState extends State<PasswordCard> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Zəhmət olmasa yeni parolunuzu daxil edin',
-                style: TextStyle(color: Colors.black, fontSize: 16),
+              Text(
+                SharedStrings.enterPassword,
+                style: Theme.of(context).primaryTextTheme.labelMedium,
               ),
               const SizedBox(height: 12),
               TextFormField(

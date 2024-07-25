@@ -11,65 +11,67 @@ class Qa2Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Center(
-          child: Card(
-            child: SizedBox(
-              height: 364,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://biturbo.az/flutter/doc1.jpg'),
-                          radius: 30,
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          _fullname,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  const SizedBox(height: 10),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Column(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Center(
+            child: Card(
+              child: SizedBox(
+                height: 364,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          TextFormField(
-                            controller: controller,
-                            decoration: InputDecoration(
-                                hintText: SharedHints.askYourQuestion,
-                                labelText: SharedStrings.ask,
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8.0))),
-                            minLines: 6,
-                            maxLines: 6,
-                            keyboardType: TextInputType.multiline,
+                          CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                'https://biturbo.az/flutter/doc1.jpg'),
+                            radius: 30,
                           ),
-                          const SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: CustomRectangleBorderButton(
-                              title: SharedStrings.send,
-                              onPressed: () {},
-                            ),
-                          )
+                          SizedBox(width: 10),
+                          Text(
+                            _fullname,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
                         ],
                       ),
                     ),
-                  ),
-                ],
+                    const Divider(),
+                    const SizedBox(height: 10),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              controller: controller,
+                              decoration: InputDecoration(
+                                  hintText: SharedHints.askYourQuestion,
+                                  labelText: SharedStrings.ask,
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0))),
+                              minLines: 6,
+                              maxLines: 6,
+                              keyboardType: TextInputType.multiline,
+                            ),
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              width: double.infinity,
+                              child: CustomRectangleBorderButton(
+                                title: SharedStrings.send,
+                                onPressed: () {},
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

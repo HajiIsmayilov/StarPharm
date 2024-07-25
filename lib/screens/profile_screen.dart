@@ -87,12 +87,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           const BorderRadius.all(Radius.circular(_radius)),
                     ),
                     width: double.infinity,
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         CountryCodePicker(
-                          textStyle:
-                              TextStyle(fontSize: 18, color: Colors.black),
+                          textStyle: const TextStyle(
+                              fontSize: 18, color: Colors.black),
+                          searchDecoration: InputDecoration(
+                              border:
+                                  Theme.of(context).inputDecorationTheme.border,
+                              focusedBorder: Theme.of(context)
+                                  .inputDecorationTheme
+                                  .border),
                           initialSelection: 'AZ',
                           showOnlyCountryWhenClosed: true,
                           showCountryOnly: true,

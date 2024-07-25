@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:grock/grock.dart';
 import 'package:star_pharm/cache/notification_cache.dart';
 import 'package:uuid/uuid.dart';
@@ -23,7 +24,6 @@ class FirebaseNotificationService {
   void connectNotification() async {
     NotificationCache notificationCache = NotificationCache();
     await Firebase.initializeApp(
-
       options: const FirebaseOptions(
         apiKey: 'AIzaSyCIjSMI2J2YubSNI1sy-uHoKuh54rfdV7E',
         appId: '1:188358117907:android:3d3faa7bf8151fcecb0de6',
@@ -42,8 +42,9 @@ class FirebaseNotificationService {
     settingNotification();
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
       Grock.snackBar(
-          title: "${event.notification?.title}",
-          description: "${event.notification?.body}");
+        title: "${event.notification?.title}",
+        description: "${event.notification?.body}",
+      );
 
       NotificationModel notification = NotificationModel(
           uuid: const Uuid().v4(),

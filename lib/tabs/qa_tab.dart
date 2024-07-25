@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:star_pharm/screens/qa2_screen.dart';
 import 'package:star_pharm/screens/qa_doctor_screen.dart';
 import 'package:star_pharm/widgets/qa_card.dart';
 import '../models/question.dart';
