@@ -9,13 +9,16 @@ class InternetCheckerV2 {
       print(state);
 
       ConnectivityResult type = state[0];
-
-      if ((type != ConnectivityResult.wifi) &&
-          (type != ConnectivityResult.mobile)) {
-        Get.toNamed(RoutePath.wifi);
-      } else if (type == ConnectivityResult.wifi ||
-          type == ConnectivityResult.mobile) {
-        Get.back();
+      try {
+        if ((type != ConnectivityResult.wifi) &&
+            (type != ConnectivityResult.mobile)) {
+          Get.toNamed(RoutePath.wifi);
+        } else if (type == ConnectivityResult.wifi ||
+            type == ConnectivityResult.mobile) {
+          Get.back();
+        }
+      } catch (e) {
+        print(e);
       }
     });
   }

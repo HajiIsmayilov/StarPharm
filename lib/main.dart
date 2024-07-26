@@ -8,7 +8,7 @@ import 'utilities/internet_checker_v2.dart';
 import 'services/firebase_notification_service.dart';
 import 'theme/theme.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   FirebaseMessaging.onBackgroundMessage(
