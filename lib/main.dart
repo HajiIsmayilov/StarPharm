@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:grock/grock.dart';
-import 'package:star_pharm/routes/route.dart';
+import 'routes/route.dart';
+import 'utilities/internet_checker_v2.dart';
 import 'services/firebase_notification_service.dart';
 import 'theme/theme.dart';
-import 'utilities/internet_checker.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +25,5 @@ void main() async {
   );
 
   runApp(app);
-
-  await InternetChecker().init();
+  InternetCheckerV2().Check();
 }
