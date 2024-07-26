@@ -5,7 +5,7 @@ import '../screens/forgot_password_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/notifications_screen.dart';
 import '../screens/profile_screen.dart';
-import '../screens/qa2_screen.dart';
+import '../screens/qa_screen.dart';
 import '../screens/qa_doctor_screen.dart';
 import '../screens/sign_up_screen.dart';
 import '../screens/sing_in_screen.dart';
@@ -37,7 +37,7 @@ class PageList {
         page: () => const ChangePasswordScreen()),
     GetPage(name: RoutePath.profile, page: () => const ProfileScreen()),
     GetPage(name: RoutePath.qaDoctor, page: () => QaDoctorScreen()),
-    GetPage(name: RoutePath.qa, page: () => Qa2Screen()),
+    GetPage(name: RoutePath.qa, page: () => QaScreen()),
     GetPage(
         name: RoutePath.notification, page: () => const NotificationsScreen()),
     GetPage(name: RoutePath.wifi, page: () => const WifiScreen()),
