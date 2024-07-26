@@ -50,6 +50,7 @@ class SharedStrings {
   static const String enterPassword =
       'Zəhmət olmasa yeni parolunuzu daxil edin';
   static const confirm = 'Tesdiqle';
+  static const noInternet = 'Internet yoxdur';
 }
 
 class SharedHints {

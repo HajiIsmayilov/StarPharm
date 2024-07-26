@@ -1,8 +1,9 @@
+import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 
-import 'sing_in_screen.dart';
+import '../routes/route.dart';
 import '../shared/shared_maskes.dart';
 import '../shared/shared_padding.dart';
 import '../shared/shared_strings.dart';
@@ -160,9 +161,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: ValidationRules().passwordValidation,
                       decoration: InputDecoration(
                           labelText: SharedStrings.password,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(_radius),
-                          ),
+                          border: Theme.of(context).inputDecorationTheme.border,
+                          focusedBorder:
+                              Theme.of(context).inputDecorationTheme.border,
                           suffixIcon: IconButton(
                             icon: Icon(visibilityData()),
                             onPressed: update,
@@ -172,9 +173,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       obscureText: _obscureText,
                       decoration: InputDecoration(
                           labelText: SharedStrings.confirmPassword,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(_radius),
-                          ),
+                          border: Theme.of(context).inputDecorationTheme.border,
+                          focusedBorder:
+                              Theme.of(context).inputDecorationTheme.border,
                           suffixIcon: IconButton(
                             icon: Icon(visibilityData()),
                             onPressed: update,
@@ -198,10 +199,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => const SignInScreen()),
-                          );
+                          Get.toNamed(RoutePath.signIn);
                         },
                         child: Text(
                           SharedStrings.logIn,

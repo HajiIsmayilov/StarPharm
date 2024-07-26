@@ -12,20 +12,42 @@ class _TestScreenState extends State<TestScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          Container(
-            height: double.infinity,
-            color: Theme.of(context).primaryColor,
+        body: Container(
+          color: Colors.red,
+          child: Center(
+            
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+            Container(
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+              padding: EdgeInsets.only(top: 36),
+              child: Text('Salam Dunya'),
+            ),
+            Container(
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+              padding: EdgeInsets.only(top: 36),
+              child: Text('Salam Dunya'),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 50),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+              padding: EdgeInsets.only(top: 36),
+              child: Text('Sene hec dexlisi yoxdu'),
+            ),
+            Container(
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+              padding: EdgeInsets.only(top: 36),
+              child: Text('Salam Dunya'),
+            )
+                  ],
+                ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: _bottom(),
-          ),
-        ],
-      ),
-    );
+        ));
   }
 
   Widget _bottom() {

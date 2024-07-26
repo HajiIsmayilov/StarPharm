@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:star_pharm/screens/forgot_password_screen.dart';
-import 'package:star_pharm/screens/home_screen.dart';
-import 'package:star_pharm/screens/sign_up_screen.dart';
+import 'package:get/get.dart';
 import 'package:star_pharm/shared/shared_padding.dart';
 import 'package:star_pharm/widgets/jpg_image.dart';
 
+import '../routes/route.dart';
 import '../shared/shared_strings.dart';
 import '../widgets/custom_rectangle_border_button.dart';
 
@@ -56,7 +55,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                             labelText: SharedStrings.password,
-                            border: Theme.of(context).inputDecorationTheme.border,
+                            border:
+                                Theme.of(context).inputDecorationTheme.border,
                             focusedBorder:
                                 Theme.of(context).inputDecorationTheme.border,
                             suffixIcon: IconButton(
@@ -67,10 +67,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       alignment: Alignment.topRight,
                       child: TextButton(
                         onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => ForgotPasswordScreen()),
-                          );
+                          Get.toNamed(RoutePath.forgotPassword);
                         },
                         child: const Text(
                           SharedStrings.forgotPassword,
@@ -83,10 +80,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: CustomRectangleBorderButton(
                         title: SharedStrings.logIn,
                         onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => const HomeScreen()),
-                          );
+                          Get.toNamed(RoutePath.home);
                         },
                       ),
                     ),
@@ -99,14 +93,12 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUpScreen()),
-                            );
+                            Get.toNamed(RoutePath.signUp);
                           },
                           child: Text(
                             SharedStrings.signUp,
-                            style: Theme.of(context).primaryTextTheme.titleSmall,
+                            style:
+                                Theme.of(context).primaryTextTheme.titleSmall,
                           ),
                         )
                       ],

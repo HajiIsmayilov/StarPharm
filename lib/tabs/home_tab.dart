@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:star_pharm/screens/notifications_screen.dart';
 import 'package:star_pharm/services/post_service.dart';
 import 'dart:convert';
 
 import '../models/category.dart';
 import '../models/post.dart';
+import '../routes/route.dart';
 import '../shared/shared_strings.dart';
 import '../widgets/doctor_card.dart';
 import '../widgets/category_cart.dart';
@@ -73,9 +74,7 @@ class HomeTab extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.notifications),
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => NotificationsScreen()),
-              );
+              Get.toNamed(RoutePath.notification);
             },
           ),
         ],

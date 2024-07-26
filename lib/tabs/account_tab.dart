@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:star_pharm/screens/change_password_screen.dart';
-import 'package:star_pharm/screens/profile_screen.dart';
+import '../routes/route.dart';
 import '../shared/shared_strings.dart';
 import '../widgets/account_card.dart';
 
@@ -28,7 +28,7 @@ class _AccountTabState extends State<AccountTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       title: Text(
+        title: Text(
           SharedStrings.account,
           style: Theme.of(context).primaryTextTheme.headlineLarge,
         ),
@@ -47,10 +47,7 @@ class _AccountTabState extends State<AccountTab> {
                 email: 'KazimKzm@gmail.com',
                 location: 'Azerbaijan',
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => const ProfileScreen()),
-                  );
+                  Get.toNamed(RoutePath.profile);
                 },
               ),
               CardSection(
@@ -76,10 +73,7 @@ class _AccountTabState extends State<AccountTab> {
               CardSection(
                   label: SharedStrings.passwordAdjustment,
                   onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => const ChangePasswordScreen()),
-                    );
+                    Get.toNamed(RoutePath.changePassword);
                   }),
               CardSection(label: SharedStrings.logOut, onTap: () {})
             ],

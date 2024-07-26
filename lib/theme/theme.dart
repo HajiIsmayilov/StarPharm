@@ -13,6 +13,10 @@ class AppTheme {
       primaryTextTheme: const TextTheme(
         headlineLarge: TextStyle(
             fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold),
+        titleLarge: TextStyle(
+          fontSize: 36,
+          color: Color.fromRGBO(255, 0, 0, 1),
+        ),
         labelLarge: TextStyle(fontSize: 20),
         labelMedium: TextStyle(fontSize: 16, color: Colors.black),
         labelSmall: TextStyle(fontSize: 12, color: Colors.black),

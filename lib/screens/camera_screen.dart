@@ -1,6 +1,5 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:star_pharm/screens/image_shower_screen.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -100,19 +99,6 @@ class _CameraScreenState extends State<CameraScreen> {
       setState(() {
         file = picture;
       });
-      // Navigate to the image view page after capturing the image
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => ImageViewPage(imagePath: imageFile!.path),
-      //   ),
-      // );
-
-      // ignore: use_build_context_synchronously
-      Navigator.of(context).push(
-        MaterialPageRoute(
-            builder: (context) => ImageShowerScreen(imagePath: file.path)),
-      );
     } catch (e) {
       print("Error taking picture: $e");
     }

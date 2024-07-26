@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:star_pharm/cache/notification_cache.dart';
 import 'package:star_pharm/models/notification.dart';
 
 class NotificationsScreen extends StatefulWidget {
-  NotificationsScreen({super.key});
+  const NotificationsScreen({super.key});
 
   @override
   State<NotificationsScreen> createState() => _NotificationsScreenState();
@@ -18,7 +19,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           IconButton(
               onPressed: () async {
                 deleteAll();
-                Navigator.of(context).pop();
+                Get.back();
               },
               icon: const Icon(Icons.delete))
         ],
