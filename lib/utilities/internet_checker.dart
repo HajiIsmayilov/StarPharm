@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 import '../routes/route.dart';
@@ -17,7 +18,9 @@ class InternetChecker {
     try {
       result = await _connectivity.checkConnectivity();
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
 
     return _updateConnectionStatus(result);

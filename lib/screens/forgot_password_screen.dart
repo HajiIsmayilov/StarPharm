@@ -110,7 +110,7 @@ class CodeCard extends StatelessWidget {
                         context: context,
                         builder: (context) => Padding(
                               padding: SharedPadding().horizontalPadding,
-                              child: Column(
+                              child: const Column(
                                 children: [
                                   PasswordCard(),
                                 ],
@@ -128,6 +128,8 @@ class CodeCard extends StatelessWidget {
 }
 
 class PasswordCard extends StatefulWidget {
+  const PasswordCard({super.key});
+
   @override
   State<PasswordCard> createState() => _PasswordCardState();
 }

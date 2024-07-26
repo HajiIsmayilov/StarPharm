@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:grock/grock.dart';
 import 'package:star_pharm/cache/notification_cache.dart';
 import 'package:uuid/uuid.dart';
@@ -37,7 +38,9 @@ class FirebaseNotificationService {
       badge: true,
     );
     var token = await FirebaseMessaging.instance.getToken();
-    print(token);
+    if (kDebugMode) {
+      print(token);
+    }
     settingNotification();
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
       Grock.snackBar(

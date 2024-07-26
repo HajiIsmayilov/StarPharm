@@ -55,20 +55,7 @@ class _AccountTabState extends State<AccountTab> {
                   onTap: () async {
                     final pickedFile = await ImagePicker()
                         .pickImage(source: ImageSource.camera);
-
-//Send
-                    setState(() {
-                      if (pickedFile != null) {
-                        // file = File(pickedFile.path);
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //       builder: (context) => ImageShowerScreen(
-                        //           imagePath: pickedFile.path)),
-                        // );
-                      } else {
-                        print('No image selected');
-                      }
-                    });
+                        //Send
                   }),
               CardSection(
                   label: SharedStrings.passwordAdjustment,
