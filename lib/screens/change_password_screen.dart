@@ -19,9 +19,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          SharedStrings.changePassword,
-          style: Theme.of(context).primaryTextTheme.headlineLarge,
+        automaticallyImplyLeading: false,
+        title: FittedBox(
+          child: Text(
+            SharedStrings.changePassword,
+            style: Theme.of(context).primaryTextTheme.headlineLarge,
+          ),
         ),
       ),
       body: SafeArea(

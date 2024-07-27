@@ -15,7 +15,6 @@ class AccountTab extends StatefulWidget {
 }
 
 class _AccountTabState extends State<AccountTab> {
-  final String username = 'Kazim Kazimli';
   late File? file;
 
   @override
@@ -28,9 +27,12 @@ class _AccountTabState extends State<AccountTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          SharedStrings.account,
-          style: Theme.of(context).primaryTextTheme.headlineLarge,
+        automaticallyImplyLeading: false,
+        title: FittedBox(
+          child: Text(
+            SharedStrings.account,
+            style: Theme.of(context).primaryTextTheme.headlineLarge,
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -55,7 +57,7 @@ class _AccountTabState extends State<AccountTab> {
                   onTap: () async {
                     final pickedFile = await ImagePicker()
                         .pickImage(source: ImageSource.camera);
-                        //Send
+                    //Send
                   }),
               CardSection(
                   label: SharedStrings.passwordAdjustment,

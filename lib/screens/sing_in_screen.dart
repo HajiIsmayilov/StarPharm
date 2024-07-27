@@ -33,7 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const JpgImage(
+                    const PngImage(
                         url: SignInScreen._url, width: SignInScreen._imgWidth),
                     _space(),
                     Text(

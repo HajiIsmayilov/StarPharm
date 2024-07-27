@@ -53,11 +53,14 @@ class _QATabState extends State<QATab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.only(left: 8.0),
-          child: Text(
-            SharedStrings.questions,
-            style: Theme.of(context).primaryTextTheme.headlineLarge,
+          child: FittedBox(
+            child: Text(
+              SharedStrings.questions,
+              style: Theme.of(context).primaryTextTheme.headlineLarge,
+            ),
           ),
         ),
         actions: [
@@ -135,14 +138,18 @@ class _QATabState extends State<QATab> {
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.16,
             child: const Center(
-                child: Text(SharedStrings.answered,
-                    style: TextStyle(fontSize: 13))),
+                child: FittedBox(
+                  child: Text(SharedStrings.answered,
+                      style: TextStyle(fontSize: 13)),
+                )),
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.16,
             child: const Center(
-              child: Text(SharedStrings.nonAnswered,
-                  style: TextStyle(fontSize: 13)),
+              child: FittedBox(
+                child: Text(SharedStrings.nonAnswered,
+                    style: TextStyle(fontSize: 13)),
+              ),
             ),
           ),
         ],

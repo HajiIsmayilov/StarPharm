@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:star_pharm/services/post_service.dart';
 import 'dart:convert';
 
-import '../models/category.dart';
 import '../models/post.dart';
 import '../routes/route.dart';
 import '../shared/shared_strings.dart';
@@ -15,6 +14,7 @@ import '../widgets/post_cart.dart';
 class HomeTab extends StatelessWidget {
   HomeTab({super.key});
   static const String _username = 'Dr. Anar';
+  final BoxConstraints _constraint = const BoxConstraints(minWidth: 96);
 
   Future<List<Doctor>> fetchDoctors() async {
     final response = await http.get(
@@ -27,35 +27,6 @@ class HomeTab extends StatelessWidget {
       throw Exception('Failed to load doctors');
     }
   }
-
-  final List<Category> _categories = [
-    Category(
-        title: 'Həkimlər', imageUrl: 'https://biturbo.az/flutter/doctor.png'),
-    Category(
-        title: 'Təqvim', imageUrl: 'https://biturbo.az/flutter/calendar.png'),
-    Category(
-        title: 'Suallar',
-        imageUrl: 'https://biturbo.az/flutter/question-mark.png'),
-    Category(
-        title: 'Məhsullar', imageUrl: 'https://biturbo.az/flutter/drugs.png')
-  ];
-
-  // final List<Post> _posts = [
-  //   Post(
-  //     title: 'Allergik rinitin nədir və əlamətləri hansılardır?',
-  //     authors: 'MBBS, BCS',
-  //     views: 1250,
-  //     imageUrl:
-  //         'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
-  //   ),
-  //   Post(
-  //     title: 'Qida allergiyasının ən effektiv müalicəsi',
-  //     authors: 'MBBS, BCS',
-  //     views: 1250,
-  //     imageUrl:
-  //         'https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg',
-  //   )
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -95,21 +66,37 @@ class HomeTab extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 98,
-                child: ListView.builder(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  itemCount: _categories.length,
-                  itemBuilder: (context, index) => Container(
-                    constraints: const BoxConstraints(minWidth: 94),
-                    child: CategoryCard(
-                        imageUrl: _categories[index].imageUrl,
-                        label: _categories[index].title),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                          constraints: _constraint,
+                          child: const CategoryCard(
+                              imageUrl: 'https://biturbo.az/flutter/doctor.png',
+                              label: 'Həkimlər')),
+                      Container(
+                          constraints: _constraint,
+                          child: const CategoryCard(
+                              imageUrl:
+                                  'https://biturbo.az/flutter/calendar.png',
+                              label: 'Təqvim')),
+                      Container(
+                          constraints: _constraint,
+                          child: const CategoryCard(
+                              imageUrl:
+                                  'https://biturbo.az/flutter/question-mark.png',
+                              label: 'Suallar')),
+                      Container(
+                          constraints: _constraint,
+                          child: const CategoryCard(
+                              imageUrl: 'https://biturbo.az/flutter/drugs.png',
+                              label: 'Məhsullar')),
+                    ],
                   ),
-                ),
-              ),
-            ),
+                )),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
@@ -150,7 +137,7 @@ class HomeTab extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.3448,
+              height: 294,
               child: FutureBuilder<List<Post>?>(
                 future: PostService().fetchPostAsync(),
                 builder: (context, snapshot) {
@@ -163,8 +150,7 @@ class HomeTab extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         children: snapshot.data!
                             .map((post) => SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.64,
+                                  width: 240,
                                   child: PostCard(post: post),
                                 ))
                             .toList());

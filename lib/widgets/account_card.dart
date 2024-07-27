@@ -41,29 +41,27 @@ class _AccountCardState extends State<AccountCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
-      child: SizedBox(
-        height: 248,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _upSide(context),
-            const Divider(height: 20, thickness: 1),
-            _bottomSide()
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(height: 12),
+          _upSide(context),
+          const Divider(height: 12, thickness: 1),
+          _bottomSide(),
+          const SizedBox(height: 12)
+        ],
       ),
     );
   }
 
   Widget _bottomSide() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 28),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 3,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _cardItem('Tam ad', widget.fullName),
@@ -71,16 +69,19 @@ class _AccountCardState extends State<AccountCard> {
               _cardItem('Email', widget.email),
             ],
           ),
-          Column(
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 3,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _cardItem('Doğum Tarixi', widget.birthdate),
               _cardItem('Phone', widget.phone),
               _cardItem('Location', widget.location),
             ],
-          )
-        ],
-      ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -126,15 +127,19 @@ class _AccountCardState extends State<AccountCard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          textAlign: TextAlign.start,
-          label,
+        FittedBox(
+          child: Text(
+            textAlign: TextAlign.start,
+            label,
+          ),
         ),
         const SizedBox(height: 4),
-        Text(
-          text,
-          textAlign: TextAlign.start,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+        FittedBox(
+          child: Text(
+            text,
+            textAlign: TextAlign.start,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
       ],
     );

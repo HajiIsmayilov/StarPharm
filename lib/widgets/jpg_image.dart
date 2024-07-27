@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class JpgImage extends StatelessWidget {
-  const JpgImage({
+class PngImage extends StatelessWidget {
+  const PngImage({
     super.key,
     required this.url,
     required this.width,

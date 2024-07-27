@@ -17,6 +17,15 @@ class QaDoctorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: FittedBox(
+          child: Text(
+            SharedStrings.doctorAnswer,
+            style: Theme.of(context).primaryTextTheme.headlineLarge,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -25,16 +34,6 @@ class QaDoctorScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    SharedStrings.doctorAnswer,
-                    style: Theme.of(context).primaryTextTheme.headlineLarge,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
                 QuestionCard(
                   imageUrl: imageUrl,
                   questioner: questioner,
@@ -42,7 +41,7 @@ class QaDoctorScreen extends StatelessWidget {
                   onPressed: null,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 12,
                 ),
                 TextFormField(
                   controller: controller,
@@ -58,7 +57,7 @@ class QaDoctorScreen extends StatelessWidget {
                   keyboardType: TextInputType.multiline,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 12,
                 ),
                 SizedBox(
                   width: double.infinity,

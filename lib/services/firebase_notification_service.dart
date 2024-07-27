@@ -18,7 +18,13 @@ class FirebaseNotificationService {
   }
 
   static Future<void> backgroundMessage(RemoteMessage message) async {
-    await Firebase.initializeApp();
+    try {
+      await Firebase.initializeApp();
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
   }
 
   void connectNotification() async {

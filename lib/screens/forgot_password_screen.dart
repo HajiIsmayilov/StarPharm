@@ -30,7 +30,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const JpgImage(url: _url, width: _imgWidth),
+              const PngImage(url: _url, width: _imgWidth),
               const SizedBox(height: 10),
               Text(
                 SharedStrings.forgotPasswordEmail,

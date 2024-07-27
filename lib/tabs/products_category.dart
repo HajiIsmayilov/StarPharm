@@ -35,9 +35,12 @@ class ProductsCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          SharedStrings.products,
-          style: Theme.of(context).primaryTextTheme.headlineLarge,
+        automaticallyImplyLeading: false,
+        title: FittedBox(
+          child: Text(
+            SharedStrings.products,
+            style: Theme.of(context).primaryTextTheme.headlineLarge,
+          ),
         ),
       ),
       body: Padding(

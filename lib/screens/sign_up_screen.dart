@@ -42,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const JpgImage(
+                  const PngImage(
                       url: SignUpScreen._url, width: SignUpScreen._imgWidth),
                   const Text(
                     SharedStrings.signUp,

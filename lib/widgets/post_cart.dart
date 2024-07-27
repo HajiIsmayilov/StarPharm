@@ -18,7 +18,7 @@ class PostCard extends StatelessWidget {
       elevation: 5,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
+        children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image.network(
@@ -43,14 +43,14 @@ class PostCard extends StatelessWidget {
                 Text(
                   post.authors,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 16,
                     color: Colors.grey[600],
                   ),
                 ),
                 Text(
                   'Views: ${post.views}',
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 12,
                     color: Colors.grey[600],
                   ),
                 ),
