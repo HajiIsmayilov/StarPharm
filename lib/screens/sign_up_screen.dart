@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,7 @@ import '../shared/shared_maskes.dart';
 import '../shared/shared_padding.dart';
 import '../shared/shared_strings.dart';
 import '../validations/regexes.dart';
-import '../widgets/jpg_image.dart';
+import '../widgets/png_image.dart';
 import "../widgets/custom_rectangle_border_button.dart";
 
 class SignUpScreen extends StatefulWidget {
@@ -199,7 +198,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.toNamed(RoutePath.signIn);
+                          Navigator.of(context).pushNamed(RoutePath.signIn);
                         },
                         child: Text(
                           SharedStrings.logIn,

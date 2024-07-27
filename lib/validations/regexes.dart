@@ -25,8 +25,10 @@ class ValidationRules {
   String? emailValidation(value) {
     if (value == null || value.isEmpty) {
       return 'Please enter some text';
-    } else if (RegExes.validateEmail(value)) {
-      return 'Email';
+    } else if (value.length < 5 || value.length > 50) {
+      return 'Email must be between 5 and 50 characters';
+    } else if (!RegExes.validateEmail(value)) {
+      return 'Invalid email format';
     }
     return null;
   }
@@ -34,8 +36,10 @@ class ValidationRules {
   String? userNameValidation(value) {
     if (value == null || value.isEmpty) {
       return 'Please enter some text';
-    } else if (RegExes.validateUsername(value)) {
-      return 'username';
+    } else if (value.length < 3 || value.length > 15) {
+      return 'Username must be between 3 and 15 characters';
+    } else if (!RegExes.validateUsername(value)) {
+      return 'Invalid username format';
     }
     return null;
   }
@@ -43,8 +47,10 @@ class ValidationRules {
   String? phoneValidation(value) {
     if (value == null || value.isEmpty) {
       return 'Please enter some text';
-    } else if (RegExes.validatePhone(value)) {
-      return 'phone';
+    } else if (value.length != 10) {
+      return 'Phone number must be exactly 10 digits';
+    } else if (!RegExes.validatePhone(value)) {
+      return 'Invalid phone number format';
     }
     return null;
   }
@@ -52,8 +58,10 @@ class ValidationRules {
   String? passwordValidation(value) {
     if (value == null || value.isEmpty) {
       return 'Please enter some text';
-    } else if (RegExes.validatePassword(value)) {
-      return 'password';
+    } else if (value.length < 8 || value.length > 20) {
+      return 'Password must be between 8 and 20 characters';
+    } else if (!RegExes.validatePassword(value)) {
+      return 'Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character';
     }
     return null;
   }

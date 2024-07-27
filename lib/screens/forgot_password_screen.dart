@@ -6,7 +6,7 @@ import 'package:star_pharm/shared/shared_strings.dart';
 import '../shared/shared_maskes.dart';
 import '../validations/regexes.dart';
 import '../widgets/custom_rectangle_border_button.dart';
-import '../widgets/jpg_image.dart';
+import '../widgets/png_image.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});

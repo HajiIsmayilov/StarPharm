@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:star_pharm/services/post_service.dart';
 import 'dart:convert';
@@ -45,7 +44,7 @@ class HomeTab extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.notifications),
             onPressed: () {
-              Get.toNamed(RoutePath.notification);
+              Navigator.of(context).pushNamed(RoutePath.notification);
             },
           ),
         ],

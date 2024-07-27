@@ -50,7 +50,6 @@ dependencies:
   lottie: ^3.0.0
   connectivity_plus: ^6.0.3
   ac_connectivity: ^0.2.0
-  get: ^4.6.6
   flutter_launcher_icons: ^0.13.1 
 
 dev_dependencies:

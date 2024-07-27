@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:flutter/widgets.dart';
 
 import '../screens/change_password_screen.dart';
 import '../screens/forgot_password_screen.dart';
@@ -24,22 +24,20 @@ class RoutePath {
   static const String wifi = '/wifi';
 }
 
-class PageList {
-  List<GetPage<dynamic>> pages = [
-    GetPage(name: RoutePath.signIn, page: () => const SignInScreen()),
-    GetPage(name: RoutePath.signUp, page: () => const SignUpScreen()),
-    GetPage(name: RoutePath.home, page: () => const HomeScreen()),
-    GetPage(
-        name: RoutePath.forgotPassword,
-        page: () => const ForgotPasswordScreen()),
-    GetPage(
-        name: RoutePath.changePassword,
-        page: () => const ChangePasswordScreen()),
-    GetPage(name: RoutePath.profile, page: () => const ProfileScreen()),
-    GetPage(name: RoutePath.qaDoctor, page: () => QaDoctorScreen()),
-    GetPage(name: RoutePath.qa, page: () => QaScreen()),
-    GetPage(
-        name: RoutePath.notification, page: () => const NotificationsScreen()),
-    GetPage(name: RoutePath.wifi, page: () => const WifiScreen()),
-  ];
+//  '/': (context) => const FirstScreen(),
+class ScreenList {
+  getScreens(BuildContext context) {
+    return {
+      RoutePath.signIn: (context) => const SignInScreen(),
+      RoutePath.signUp: (context) => const SignUpScreen(),
+      RoutePath.home: (context) => const HomeScreen(),
+      RoutePath.forgotPassword: (context) => const ForgotPasswordScreen(),
+      RoutePath.changePassword: (context) => const ChangePasswordScreen(),
+      RoutePath.profile: (context) => const ProfileScreen(),
+      RoutePath.qaDoctor: (context) => QaDoctorScreen(),
+      RoutePath.qa: (context) => QaScreen(),
+      RoutePath.notification: (context) => const NotificationsScreen(),
+      RoutePath.wifi: (context) => const WifiScreen(),
+    };
+  }
 }

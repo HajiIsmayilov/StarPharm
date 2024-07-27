@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:star_pharm/shared/shared_padding.dart';
-import 'package:star_pharm/widgets/jpg_image.dart';
+import 'package:star_pharm/widgets/png_image.dart';
 
 import '../routes/route.dart';
 import '../shared/shared_strings.dart';
@@ -67,7 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       alignment: Alignment.topRight,
                       child: TextButton(
                         onPressed: () {
-                          Get.toNamed(RoutePath.forgotPassword);
+                          Navigator.of(context).pushNamed(RoutePath.forgotPassword);
                         },
                         child: const Text(
                           SharedStrings.forgotPassword,
@@ -80,7 +79,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: CustomRectangleBorderButton(
                         title: SharedStrings.logIn,
                         onPressed: () {
-                          Get.toNamed(RoutePath.home);
+                          Navigator.of(context).pushNamed(RoutePath.home);
                         },
                       ),
                     ),
@@ -93,7 +92,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Get.toNamed(RoutePath.signUp);
+                            Navigator.of(context).pushNamed(RoutePath.signUp);
                           },
                           child: Text(
                             SharedStrings.signUp,

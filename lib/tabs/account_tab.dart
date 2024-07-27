@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../routes/route.dart';
 import '../shared/shared_strings.dart';
@@ -49,7 +48,7 @@ class _AccountTabState extends State<AccountTab> {
                 email: 'KazimKzm@gmail.com',
                 location: 'Azerbaijan',
                 onPressed: () {
-                  Get.toNamed(RoutePath.profile);
+                  Navigator.of(context).pushNamed(RoutePath.profile);
                 },
               ),
               CardSection(
@@ -62,7 +61,7 @@ class _AccountTabState extends State<AccountTab> {
               CardSection(
                   label: SharedStrings.passwordAdjustment,
                   onTap: () {
-                    Get.toNamed(RoutePath.changePassword);
+                    Navigator.of(context).pushNamed(RoutePath.changePassword);
                   }),
               CardSection(label: SharedStrings.logOut, onTap: () {})
             ],

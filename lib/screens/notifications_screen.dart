@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:star_pharm/cache/notification_cache.dart';
 import 'package:star_pharm/models/notification.dart';
 
@@ -20,7 +19,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           IconButton(
               onPressed: () async {
                 deleteAll();
-                Get.back();
+                Navigator.pop(context);
               },
               icon: const Icon(Icons.delete))
         ],
