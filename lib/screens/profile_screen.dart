@@ -1,7 +1,9 @@
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:star_pharm/models/user.dart';
 
+import '../cache/user_cache.dart';
 import '../shared/shared_padding.dart';
 import '../shared/shared_maskes.dart';
 import '../shared/shared_strings.dart';
@@ -17,14 +19,14 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    _user = UserCache.getUser();
+    super.initState();
+  }
+
   final _formKey = GlobalKey<FormState>();
-  String fullName = 'Malikoğlu Anar';
-  String username = '@mrAnar';
-  String birthDate = '07/07/2007';
-  String gender = 'Kişi';
-  String phone = '(099) 111-11-11';
-  String email = 'singh@gmail.com';
-  String location = 'India';
+  late User? _user;
 
   List<bool> isSelectedGender = [true, false, false];
   List<bool> isSelectedUserRole = [true, false, false];
@@ -50,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   _space(),
                   _CustomTextFormField(
-                    initialValue: username,
+                    initialValue: _user!.username,
                     hint: SharedHints.username,
                     label: SharedStrings.username,
                     inputType: TextInputType.name,
@@ -58,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   _space(),
                   _CustomTextFormField(
-                    initialValue: email,
+                    initialValue: _user!.email,
                     hint: SharedHints.email,
                     label: SharedStrings.email,
                     inputType: TextInputType.emailAddress,
@@ -68,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   _CustomTextFormField(
                     hint: SharedHints.birthdate,
                     label: SharedStrings.birthdate,
-                    initialValue: birthDate,
+                    initialValue: _user!.birthdate,
                     inputType: TextInputType.datetime,
                     formatter: SharedMaskes().birthdayMask,
                   ),
@@ -76,7 +78,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   _CustomTextFormField(
                     hint: SharedHints.phone,
                     label: SharedStrings.phone,
-                    initialValue: phone,
+                    initialValue: _user!.phone,
                     inputType: TextInputType.phone,
                     formatter: SharedMaskes().phoneMask,
                   ),
@@ -93,7 +95,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         CountryCodePicker(
                           textStyle: const TextStyle(
-                              fontSize: 18, color: Colors.black),
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
                           searchDecoration: InputDecoration(
                               border:
                                   Theme.of(context).inputDecorationTheme.border,

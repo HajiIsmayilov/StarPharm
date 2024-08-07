@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../cache/user_cache.dart';
+import '../models/user.dart';
 import '../routes/route.dart';
 import '../shared/shared_strings.dart';
 import '../widgets/account_card.dart';
@@ -15,11 +18,13 @@ class AccountTab extends StatefulWidget {
 
 class _AccountTabState extends State<AccountTab> {
   late File? file;
+  late User? user;
 
   @override
   void initState() {
-    super.initState();
+    user = UserCache.getUser();
     file = null;
+    super.initState();
   }
 
   @override
@@ -40,13 +45,7 @@ class _AccountTabState extends State<AccountTab> {
           child: Column(
             children: [
               AccountCard(
-                fullName: 'Kazim Kazimli',
-                username: '@mr.Kazim',
-                birthdate: '02.02.2020',
-                gender: 'Kisi',
-                phone: '0702111111',
-                email: 'KazimKzm@gmail.com',
-                location: 'Azerbaijan',
+                user: user!,
                 onPressed: () {
                   Navigator.of(context).pushNamed(RoutePath.profile);
                 },

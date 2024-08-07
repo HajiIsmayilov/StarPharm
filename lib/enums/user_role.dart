@@ -1,5 +1,5 @@
-enum UserRole{
+enum UserRole {
   patient,
   doctor,
-  pharmacist, 
+  pharmacist,
 }

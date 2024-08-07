@@ -1,6 +1,8 @@
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:star_pharm/cache/user_cache.dart';
+import 'package:star_pharm/models/user.dart';
 
 import '../routes/route.dart';
 import '../shared/shared_maskes.dart';
@@ -21,12 +23,35 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _firstnameController = TextEditingController();
+  final _lastnameController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _birthdateController = TextEditingController();
+  final _phoneController = TextEditingController();
+
   static bool _obscureText = true;
   static const double _radius = 8.0;
-  late String? dropdownValue = 'Male';
 
+  int _selectedGender = 0;
   List<bool> isSelectedGender = [true, false, false];
+
+  int _selectedUserRole = 0;
   List<bool> isSelectedUserRole = [true, false, false];
+
+  String _selectedCountry = '';
+
+  @override
+  void dispose() {
+    _firstnameController.dispose();
+    _lastnameController.dispose();
+    _usernameController.dispose();
+    _usernameController.dispose();
+    _emailController.dispose();
+    _birthdateController.dispose();
+    _phoneController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  _space(),
                   const PngImage(
                       url: SignUpScreen._url, width: SignUpScreen._imgWidth),
                   const Text(
@@ -51,60 +77,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   _space(),
-                  // TextFormField(
-                  //   validator: ValidationRules().userNameValidation,
-                  //   decoration: const InputDecoration(
-                  //     hintText: SharedHints.username,
-                  //     labelText: SharedStrings.username,
-                  //   ),
-                  // ),
                   _CustomTextFormField(
+                    controller: _firstnameController,
+                    hint: SharedHints.firstname,
+                    label: SharedStrings.firstname,
+                    inputType: TextInputType.name,
+                    validation: ValidationRules().userNameValidation,
+                  ),
+                  _space(),
+                  _CustomTextFormField(
+                    controller: _lastnameController,
+                    hint: SharedHints.lastname,
+                    label: SharedStrings.lastname,
+                    inputType: TextInputType.name,
+                    validation: ValidationRules().userNameValidation,
+                  ),
+                  _space(),
+                  _CustomTextFormField(
+                    controller: _usernameController,
                     hint: SharedHints.username,
                     label: SharedStrings.username,
                     inputType: TextInputType.name,
                     validation: ValidationRules().userNameValidation,
                   ),
                   _space(),
-                  // TextFormField(
-                  //   keyboardType: TextInputType.emailAddress,
-                  //   validator: ValidationRules().emailValidation,
-                  //   decoration: const InputDecoration(
-                  //     hintText: SharedHints.email,
-                  //     labelText: SharedStrings.email,
-                  //   ),
-                  // ),
                   _CustomTextFormField(
+                    controller: _emailController,
                     hint: SharedHints.email,
                     label: SharedStrings.email,
                     inputType: TextInputType.emailAddress,
                     validation: ValidationRules().emailValidation,
                   ),
                   _space(),
-                  // TextFormField(
-                  //   keyboardType: TextInputType.datetime,
-                  //   decoration: const InputDecoration(
-                  //     hintText: SharedHints.birthdate,
-                  //     labelText: SharedStrings.birthdate,
-                  //     border: OutlineInputBorder(),
-                  //   ),
-                  //   inputFormatters: [SharedMaskes().birthdayMask],
-                  // ),
                   _CustomTextFormField(
+                    controller: _birthdateController,
                     hint: SharedHints.birthdate,
                     label: SharedStrings.birthdate,
                     inputType: TextInputType.datetime,
                     formatter: SharedMaskes().birthdayMask,
                   ),
                   _space(),
-                  // TextFormField(
-                  //   keyboardType: TextInputType.phone,
-                  //   inputFormatters: [SharedMaskes().phoneMask],
-                  //   decoration: const InputDecoration(
-                  //     hintText: SharedHints.phone,
-                  //     labelText: SharedStrings.phone,
-                  //   ),
-                  // ),
                   _CustomTextFormField(
+                    controller: _phoneController,
                     hint: SharedHints.phone,
                     label: SharedStrings.phone,
                     inputType: TextInputType.phone,
@@ -123,7 +137,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         CountryCodePicker(
                           textStyle: const TextStyle(
-                              fontSize: 18, color: Colors.black),
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
                           searchDecoration: InputDecoration(
                               border:
                                   Theme.of(context).inputDecorationTheme.border,
@@ -134,6 +150,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           showOnlyCountryWhenClosed: true,
                           showCountryOnly: true,
                           flagWidth: 48,
+                          onChanged: (value) {
+                            _selectedCountry = value.code.toString();
+                          },
                         ),
                       ],
                     ),
@@ -144,14 +163,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     secondOption: SharedStrings.female,
                     thirdOption: SharedStrings.other,
                     isSelected: isSelectedGender,
-                    func: _selectGender,
+                    func: (value) {
+                      _selectedGender = _selectGender(value);
+                    },
                   ),
                   _space(),
                   _CustomToggleButton3Options(
                     firstOption: SharedStrings.patient,
                     secondOption: SharedStrings.doctor,
                     thirdOption: SharedStrings.pharmacist,
-                    func: _selectedRole,
+                    func: (value) {
+                      _selectedUserRole = _selectRole(value);
+                    },
                     isSelected: isSelectedUserRole,
                   ),
                   _space(),
@@ -184,8 +207,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     width: double.infinity,
                     child: CustomRectangleBorderButton(
                       title: SharedStrings.signUp,
-                      onPressed: () {
+                      onPressed: () async {
+                        String fullname = _firstnameController.text +
+                            ' ' +
+                            _lastnameController.text;
+
+                        var user = User(
+                            fullName: fullname,
+                            username: _usernameController.text,
+                            email: _emailController.text,
+                            birthdate: _birthdateController.text,
+                            phone: _phoneController.text,
+                            gender: _getSeletedGender(_selectedGender),
+                            role: _getSeletedRole(_selectedUserRole),
+                            location: 'Az');
                         _validate(context);
+
+                        UserCache.setUser(user);
                       },
                     ),
                   ),
@@ -216,36 +254,71 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  void _selectedRole(int newIndex) {
+  String _getSeletedRole(int index) {
+    String role;
+    switch (index) {
+      case 0:
+        role = SharedStrings.patient;
+        break;
+      case 1:
+        role = SharedStrings.doctor;
+        break;
+      case 2:
+        role = SharedStrings.pharmacist;
+        break;
+      default:
+        throw Exception('Unidentified role');
+    }
+    return role;
+  }
+
+  String _getSeletedGender(int index) {
+    String gender;
+    switch (index) {
+      case 0:
+        gender = SharedStrings.male;
+        break;
+      case 1:
+        gender = SharedStrings.female;
+        break;
+      case 2:
+        gender = SharedStrings.other;
+        break;
+      default:
+        throw Exception('Unidentified gender');
+    }
+    return gender;
+  }
+
+  int _selectRole(int newIndex) {
+    int selectedIndex = 0;
     setState(() {
       for (int index = 0; index < isSelectedUserRole.length; index++) {
         if (index == newIndex) {
           isSelectedUserRole[index] = true;
+          selectedIndex = index;
         } else {
           isSelectedUserRole[index] = false;
         }
       }
     });
+    return selectedIndex;
   }
 
-  void _selectGender(int newIndex) {
+  int _selectGender(int newIndex) {
+    int selectedIndex = 0;
     setState(() {
       for (int index = 0; index < isSelectedGender.length; index++) {
         if (index == newIndex) {
           isSelectedGender[index] = true;
+          selectedIndex = index;
         } else {
           isSelectedGender[index] = false;
         }
       }
     });
+    return selectedIndex;
   }
-
-  // String? _validateRule(value) {
-  //   if (value == null || value.isEmpty) {
-  //     return 'Please enter some text';
-  //   }
-  //   return null;
-  // }
 
   String? _validate(context) {
     if (_formKey.currentState!.validate()) {
@@ -256,7 +329,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return null;
   }
 
-  SizedBox _space() => const SizedBox(height: 16);
+  SizedBox _space() => const SizedBox(height: 12);
 
   IconData visibilityData() {
     return _obscureText ? Icons.visibility_off : Icons.visibility;
@@ -275,6 +348,7 @@ class _CustomTextFormField extends StatelessWidget {
   MaskTextInputFormatter? formatter;
   final String hint;
   final String label;
+  final TextEditingController controller;
   final TextInputType inputType;
 
   _CustomTextFormField(
@@ -282,11 +356,13 @@ class _CustomTextFormField extends StatelessWidget {
       required this.label,
       required this.inputType,
       this.validation,
-      this.formatter});
+      this.formatter,
+      required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       validator: validation,
       decoration: InputDecoration(
         border: Theme.of(context).inputDecorationTheme.border,

@@ -3,26 +3,15 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:star_pharm/models/user.dart';
 
 class AccountCard extends StatefulWidget {
-  final String fullName;
-  final String username;
-  final String birthdate;
-  final String gender;
-  final String phone;
-  final String email;
-  final String location;
+  final User user;
   final VoidCallback? onPressed;
 
   const AccountCard({
     super.key,
-    required this.fullName,
-    required this.username,
-    required this.birthdate,
-    required this.gender,
-    required this.phone,
-    required this.email,
-    required this.location,
+    required this.user,
     required this.onPressed,
   });
 
@@ -64,9 +53,9 @@ class _AccountCardState extends State<AccountCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _cardItem('Tam ad', widget.fullName),
-              _cardItem('Cinsiyyət', widget.gender),
-              _cardItem('Email', widget.email),
+              _cardItem('Tam ad', widget.user.fullName),
+              _cardItem('Cinsiyyət', widget.user.gender),
+              _cardItem('Email', widget.user.email),
             ],
           ),
         ),
@@ -75,9 +64,9 @@ class _AccountCardState extends State<AccountCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _cardItem('Doğum Tarixi', widget.birthdate),
-              _cardItem('Phone', widget.phone),
-              _cardItem('Location', widget.location),
+              _cardItem('Doğum Tarixi', widget.user.birthdate),
+              _cardItem('Phone', widget.user.phone),
+              _cardItem('Location', widget.user.location),
             ],
           ),
         ),
@@ -105,10 +94,10 @@ class _AccountCardState extends State<AccountCard> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              widget.fullName,
+              widget.user.fullName,
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            Text(widget.username),
+            Text(widget.user.username),
           ],
         ),
         const Spacer(),

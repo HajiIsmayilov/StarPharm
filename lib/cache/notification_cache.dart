@@ -1,44 +1,39 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../models/notification.dart';
 
 class NotificationCache {
   final String name = 'notification';
-  void add(NotificationModel notification) async {
+  static late Box<dynamic>? hive;
+
+  void init() async {
     await Hive.initFlutter();
     await Hive.openBox(name);
-    var hive = Hive.box(name);
-
-    hive.put(notification.uuid, notification.toRawJson());
-    hive.close();
+    hive = Hive.box(name);
   }
 
-  Future<List> getData() async {
-    await Hive.initFlutter();
-    await Hive.openBox(name);
-
-    var hive = Hive.box(name);
-    var result = hive.values.toList();
-
-    return result;
+  void add(NotificationModel notification) {
+    hive!.put(notification.uuid, notification.toRawJson());
   }
 
-  Future<void> remove(String uuid) async {
-    await Hive.initFlutter();
-    await Hive.openBox(name);
-
-    var hive = Hive.box(name);
-
-    hive.delete(uuid);
+  ValueListenable<Box<dynamic>> listener() {
+    return Hive.box(name).listenable();
   }
 
-  Future<void> removeAll() async {
-    await Hive.initFlutter();
-    await Hive.openBox(name);
-
-    var hive = Hive.box(name);
-
-    hive.clear();
+  List getData() {
+    return hive!.values.toList();
   }
 
+  void remove(String uuid) {
+    hive!.delete(uuid);
+  }
+
+  void removeAll() {
+    hive!.clear();
+  }
+
+  void close() {
+    hive!.close();
+  }
 }

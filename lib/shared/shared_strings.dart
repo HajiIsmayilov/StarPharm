@@ -1,4 +1,6 @@
 class SharedStrings {
+  static const String firstname = 'Ad';
+  static const String lastname = 'Soyad';
   static const String logIn = 'Daxil ol';
   static const String signUp = 'Qeydiyyatdan keçmək';
   static const String email = 'Email';
@@ -54,6 +56,8 @@ class SharedStrings {
 }
 
 class SharedHints {
+  static const String firstname = 'Kerim';
+  static const String lastname = 'Kerimli';
   static const String username = 'Kerim Kerimli';
   static const String email = 'kerimkrm@gmail.com';
   static const String birthdate = '07/07/2007';

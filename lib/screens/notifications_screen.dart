@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:star_pharm/cache/notification_cache.dart';
 import 'package:star_pharm/models/notification.dart';
 
@@ -25,34 +26,28 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         ],
       ),
       body: SafeArea(
-        child: FutureBuilder(
-            future: get(),
-            builder: (context, snapshot) {
-              return ListView.builder(
-                  itemCount: snapshot.data?.length,
-                  itemBuilder: (context, index) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Center(child: Text('Error: ${snapshot.error}'));
-                    } else {
-                      return Card(
-                        child: ListTile(
-                          title: Text(snapshot.data![index].title),
-                          subtitle: Text(snapshot.data![index].text),
-                        ),
-                      );
-                    }
-                  });
-            }),
-      ),
+          child: ValueListenableBuilder(
+        valueListenable: NotificationCache().listener(),
+        builder: (context, value, child) {
+          var list = getList(value);
+          return Column(
+            children: List.generate(
+                list.length,
+                (index) => Card(
+                      child: ListTile(
+                        title: Text(list[index].title),
+                        subtitle: Text(list[index].text),
+                      ),
+                    )),
+          );
+        },
+      )),
     );
   }
 
-  Future<List<NotificationModel>> get() async {
-    NotificationCache cache = NotificationCache();
-    var result = await cache.getData();
-    return result.map((n) => NotificationModel.fromRawJson(n)).toList();
+  List<NotificationModel> getList(Box<dynamic> box) {
+    List list = box.values.toList();
+    return list.map((n) => NotificationModel.fromRawJson(n)).toList();
   }
 
   void deleteAll() async {
