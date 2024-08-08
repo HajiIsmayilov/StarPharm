@@ -19,11 +19,12 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-              onPressed: () async {
-                deleteAll();
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.delete))
+            onPressed: () {
+              deleteAll();
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.delete),
+          )
         ],
       ),
       body: SafeArea(
@@ -32,28 +33,30 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         builder: (context, value, child) {
           var list = getList(value);
           return Column(
-            children: List.generate(
-              list.length,
-              (index) => SlidableCard(
-                  card: Card(
-                    child: ListTile(
-                      title: Text(list[index].title),
-                      subtitle: Text(list[index].text),
-                    ),
-                  ),
-                  icon: const Icon(
-                    Icons.delete_sweep,
-                    size: 32,
-                    color: Colors.white,
-                  ),
-                  onSlided: () {
-                    print('Slided');
-                  }),
-            ),
+            children:
+                List.generate(list.length, (index) => _buildCard(list, index)),
           );
         },
       )),
     );
+  }
+
+  Widget _buildCard(List<NotificationModel> list, int index) {
+    return SlidableCard(
+        card: Card(
+          child: ListTile(
+            title: Text(list[index].title),
+            subtitle: Text(list[index].text),
+          ),
+        ),
+        icon: const Icon(
+          Icons.delete_sweep,
+          size: 32,
+          color: Colors.white,
+        ),
+        onSlided: () {
+          delete(list[index]);
+        });
   }
 
   List<NotificationModel> getList(Box<dynamic> box) {
@@ -61,8 +64,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     return list.map((n) => NotificationModel.fromRawJson(n)).toList();
   }
 
-  void deleteAll() async {
-    NotificationCache cache = NotificationCache();
-    cache.removeAll();
+  void delete(NotificationModel notification) {
+    NotificationCache().remove(notification);
+  }
+
+  void deleteAll() {
+    NotificationCache().removeAll();
   }
 }

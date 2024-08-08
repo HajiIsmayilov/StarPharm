@@ -25,8 +25,8 @@ class NotificationCache {
     return hive!.values.toList();
   }
 
-  void remove(String uuid) {
-    hive!.delete(uuid);
+  void remove(NotificationModel notification) {
+    hive!.delete(notification);
   }
 
   void removeAll() {
