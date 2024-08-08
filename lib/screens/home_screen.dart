@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:star_pharm/services/firebase_notification_service.dart';
 import '../shared/shared_strings.dart';
 import '../tabs/home_tab.dart';
 import '../tabs/search_tab.dart';
