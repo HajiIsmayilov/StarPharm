@@ -12,14 +12,7 @@ import 'theme/theme.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  FirebaseMessaging.onBackgroundMessage(
-      FirebaseNotificationService.backgroundMessage);
-
-  UserCache().init();
-
   runApp(const App());
-
-  InternetCheckerV2().Check();
 }
 
 class App extends StatefulWidget {
@@ -33,6 +26,9 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
+
+    FirebaseMessaging.onBackgroundMessage(
+        FirebaseNotificationService.backgroundMessage);
 
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
@@ -48,7 +44,13 @@ class _AppState extends State<App> {
   }
 
   void _asyncMethod() async {
+    FirebaseNotificationService().connectNotification();
+
     NotificationCache().init();
+
+    UserCache().init();
+
+    InternetCheckerV2().Check();
   }
 
   @override

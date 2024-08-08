@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+//import 'package:image_picker/image_picker.dart';
 
 import '../cache/user_cache.dart';
 import '../models/user.dart';
@@ -23,7 +23,6 @@ class _AccountTabState extends State<AccountTab> {
   @override
   void initState() {
     user = UserCache.getUser();
-    file = null;
     super.initState();
   }
 
@@ -53,8 +52,8 @@ class _AccountTabState extends State<AccountTab> {
               CardSection(
                   label: SharedStrings.receipts,
                   onTap: () async {
-                    final pickedFile = await ImagePicker()
-                        .pickImage(source: ImageSource.camera);
+                    // final pickedFile = await ImagePicker()
+                    //     .pickImage(source: ImageSource.camera);
                     //Send
                   }),
               CardSection(

@@ -4,8 +4,6 @@ import 'package:grock/grock.dart';
 import '../enums/interner_state.dart';
 import '../routes/route.dart';
 
-
-
 class InternetCheckerV2 {
   late InternetState? internetState = null;
   void Check() {

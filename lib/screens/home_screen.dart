@@ -16,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _service = FirebaseNotificationService();
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = [
@@ -31,12 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedIndex = index;
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _service.connectNotification();
   }
 
   @override

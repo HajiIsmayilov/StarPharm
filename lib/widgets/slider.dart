@@ -6,7 +6,8 @@ class SlidableWidget extends StatefulWidget {
   final VoidCallback onSlided;
   final double actionThreshold;
 
-  const SlidableWidget({super.key, 
+  const SlidableWidget({
+    super.key,
     required this.child,
     required this.background,
     required this.onSlided,
@@ -32,8 +33,8 @@ class _SlidableWidgetState extends State<SlidableWidget>
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:star_pharm/models/user.dart';
 
 class AccountCard extends StatefulWidget {
-  final User user;
+  final User? user;
   final VoidCallback? onPressed;
 
   const AccountCard({
@@ -53,9 +53,9 @@ class _AccountCardState extends State<AccountCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _cardItem('Tam ad', widget.user.fullName),
-              _cardItem('Cinsiyyət', widget.user.gender),
-              _cardItem('Email', widget.user.email),
+              _cardItem('Tam ad', widget.user?.fullName ?? 'null'),
+              _cardItem('Cinsiyyət', widget.user?.gender ?? 'null'),
+              _cardItem('Email', widget.user?.email ?? 'null'),
             ],
           ),
         ),
@@ -64,9 +64,9 @@ class _AccountCardState extends State<AccountCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _cardItem('Doğum Tarixi', widget.user.birthdate),
-              _cardItem('Phone', widget.user.phone),
-              _cardItem('Location', widget.user.location),
+              _cardItem('Doğum Tarixi', widget.user?.birthdate ?? 'null'),
+              _cardItem('Phone', widget.user?.phone ?? 'null'),
+              _cardItem('Location', widget.user?.location ?? 'null'),
             ],
           ),
         ),
@@ -94,10 +94,10 @@ class _AccountCardState extends State<AccountCard> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              widget.user.fullName,
+              widget.user?.fullName ?? 'null',
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            Text(widget.user.username),
+            Text(widget.user?.username ?? 'null'),
           ],
         ),
         const Spacer(),

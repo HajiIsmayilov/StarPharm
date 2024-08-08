@@ -4,6 +4,8 @@ import 'package:star_pharm/cache/notification_cache.dart';
 import 'package:star_pharm/models/notification.dart';
 import 'package:star_pharm/widgets/slidable_card.dart';
 
+import '../shared/shared_strings.dart';
+
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
 
@@ -17,6 +19,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        title: Text(
+          SharedStrings.notifications,
+          style: Theme.of(context).primaryTextTheme.headlineLarge,
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -32,9 +38,15 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         valueListenable: NotificationCache().listener(),
         builder: (context, value, child) {
           var list = getList(value);
-          return Column(
-            children:
-                List.generate(list.length, (index) => _buildCard(list, index)),
+          return Padding(
+            padding: EdgeInsets.all(12),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: List.generate(
+                    list.length, (index) => _buildCard(list, index)),
+              ),
+            ),
           );
         },
       )),
@@ -42,21 +54,25 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   }
 
   Widget _buildCard(List<NotificationModel> list, int index) {
-    return SlidableCard(
-        card: Card(
-          child: ListTile(
-            title: Text(list[index].title),
-            subtitle: Text(list[index].text),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 6),
+      child: SlidableCard(
+          card: Card(
+            margin: EdgeInsets.zero,
+            child: ListTile(
+              title: Text(list[index].title),
+              subtitle: Text(list[index].text),
+            ),
           ),
-        ),
-        icon: const Icon(
-          Icons.delete_sweep,
-          size: 32,
-          color: Colors.white,
-        ),
-        onSlided: () {
-          delete(list[index]);
-        });
+          icon: const Icon(
+            Icons.delete_sweep,
+            size: 32,
+            color: Colors.red,
+          ),
+          onSlided: () {
+            delete(list[index]);
+          }),
+    );
   }
 
   List<NotificationModel> getList(Box<dynamic> box) {

@@ -53,6 +53,7 @@ class SharedStrings {
       'Zəhmət olmasa yeni parolunuzu daxil edin';
   static const confirm = 'Tesdiqle';
   static const noInternet = 'Internet yoxdur';
+  static const notifications = 'Bildirişlər';
 }
 
 class SharedHints {
