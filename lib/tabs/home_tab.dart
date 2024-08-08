@@ -76,12 +76,12 @@ class HomeTab extends StatelessWidget {
                           child: const CategoryCard(
                               imageUrl: 'https://biturbo.az/flutter/doctor.png',
                               label: 'Həkimlər')),
-                      Container(
-                          constraints: _constraint,
-                          child: const CategoryCard(
-                              imageUrl:
-                                  'https://biturbo.az/flutter/calendar.png',
-                              label: 'Təqvim')),
+                      // Container(
+                      //     constraints: _constraint,
+                      //     child: const CategoryCard(
+                      //         imageUrl:
+                      //             'https://biturbo.az/flutter/calendar.png',
+                      //         label: 'Təqvim')),
                       Container(
                           constraints: _constraint,
                           child: const CategoryCard(
