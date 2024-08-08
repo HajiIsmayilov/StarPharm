@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:star_pharm/cache/notification_cache.dart';
 import 'package:star_pharm/models/notification.dart';
+import 'package:star_pharm/widgets/slidable_card.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
@@ -32,13 +33,23 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           var list = getList(value);
           return Column(
             children: List.generate(
-                list.length,
-                (index) => Card(
-                      child: ListTile(
-                        title: Text(list[index].title),
-                        subtitle: Text(list[index].text),
-                      ),
-                    )),
+              list.length,
+              (index) => SlidableCard(
+                  card: Card(
+                    child: ListTile(
+                      title: Text(list[index].title),
+                      subtitle: Text(list[index].text),
+                    ),
+                  ),
+                  icon: const Icon(
+                    Icons.delete_sweep,
+                    size: 32,
+                    color: Colors.white,
+                  ),
+                  onSlided: () {
+                    print('Slided');
+                  }),
+            ),
           );
         },
       )),
